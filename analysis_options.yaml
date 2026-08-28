@@ -1,0 +1,32 @@
+include: package:flutter_lints/flutter.yaml
+
+linter:
+  rules:
+    # ─── Clean Architecture & Style Rules ─────────────────────────────────────
+    
+    # Ensures consistent import style. Relative imports are easier to move.
+    prefer_relative_imports: true
+    
+    # Prevents accidental production logs. Use AppLogger instead.
+    avoid_print: true
+    
+    # Encourages explicit typing for better readability and compiler optimization.
+    always_specify_types: false # Keep false for brief code, but consider true for strictness.
+    omit_local_variable_types: true
+    
+    # Security & Performance
+    use_key_in_widget_constructors: true
+    prefer_const_constructors: true
+    prefer_const_literals_to_create_immutables: true
+    
+    # Code Quality
+    unnecessary_await_in_return: true
+    unnecessary_parenthesis: true
+    sort_pub_dependencies: true
+    
+analyzer:
+  exclude:
+    - "**/*.g.dart"
+    - "**/*.freezed.dart"
+  errors:
+    invalid_annotation_target: ignore

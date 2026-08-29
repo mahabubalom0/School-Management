@@ -25,6 +25,8 @@ class ShipXColors {
   // ── Brand / Semantic ──────────────────
   static const Color primary = Color(0xFFD61721);
   static const Color green = Color(0xFF3B9D53);
+  static const Color teal = Color(0xFF27C09B);
+  static const Color blue = Color(0xFF144BB8);
   static const Color red = Color(0xFFF62527);
   
   static const Color success = green;

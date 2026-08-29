@@ -5,7 +5,6 @@ import 'package:get/get.dart';
 import '../../../core/core.dart';
 import '../../../core/utils/app_images.dart';
 import '../../../core/widgets/custom_image_view.dart';
-import '../../../core/widgets/custom_svg_icon.dart';
 import '../controller/splash_controller.dart';
 
 class SplashScreen extends StatelessWidget {
@@ -37,7 +36,7 @@ class SplashScreen extends StatelessWidget {
               height: 280.r,
               width: 280.r,
               decoration: const BoxDecoration(
-                color: Color(0xFF27C09B),
+                color: ShipXColors.teal,
                 shape: BoxShape.circle,
               ),
             ),
@@ -56,25 +55,22 @@ class SplashScreen extends StatelessWidget {
           ),
           Positioned(
             bottom: -160.r,
-            left: -100.w,
-            right: -100.w,
+            left: 0,
+            right: 0,
             child: ClipOval(
               child: Container(
-                height: 400.r,
+                height: 350.r,
                 width: double.infinity,
                 alignment: Alignment.topCenter,
                 padding: EdgeInsets.only(top: 65.r),
                 decoration: BoxDecoration(
-                  color: const Color(0xFF1243AF),
+                  color: ShipXColors.blue,
                   borderRadius: BorderRadius.circular(999.r),
                 ),
-                child: Text(
-                  'Powered by:XYZ COM',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 11.sp,
-                    fontWeight: FontWeight.w400,
-                  ),
+                child: CustomText(
+                  text: 'Powered by:XYZ COM',
+                  fontSize: AppDimensions.fontXS.sp,
+                  color: ShipXColors.background,
                 ),
               ),
             ),

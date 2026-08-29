@@ -17,6 +17,7 @@ class AppDimensions {
   static const double radiusXL = 16.0;
   static const double radiusXXL = 20.0;
   static const double radiusCircular = 100.0;
+  static const double curveRadius = 200.0;
 
   //splash icon
   static const double splashIconHeight = 120.0;
@@ -68,4 +69,7 @@ class AppDimensions {
   static const double spaceXXL = 32.0;
   static const double spaceHuge = 48.0;
   static const double spaceMassive = 64.0;
+
+  //Image Spacing
+  static const double imageSize60 = 60.0;
 }

@@ -13,7 +13,7 @@ class SplashController extends GetxController {
 
   Future<void> _navigateToNextScreen() async {
     // Standard delay for splash screen visibility
-    await Future.delayed(const Duration(minutes:20));
+    await Future.delayed(const Duration(seconds:3));
 
     final token = await _storageService.getAccessToken();
     final hasOnboarded = _storageService.hasOnboarded();

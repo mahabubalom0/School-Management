@@ -1,4 +1,6 @@
 import 'package:get/get.dart';
+import '../features/auth/register/binding/register_binding.dart';
+import '../features/auth/register/view/register_screen.dart';
 import 'app_routes.dart';
 
 import '../features/splash/view/splash_screen.dart';
@@ -38,6 +40,11 @@ class AppPages {
       name: AppRoutes.home,
       page: () => const HomeScreen(),
       binding: HomeBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.register,
+      page: () => const RegisterScreen(),
+      binding: RegisterBinding(),
     ),
   ];
 }

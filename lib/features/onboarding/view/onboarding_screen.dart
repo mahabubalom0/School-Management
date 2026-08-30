@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import '../../../core/core.dart';
 import '../../../core/utils/app_images.dart';
 import '../../../core/widgets/custom_top_design.dart';
+import '../../../routes/app_routes.dart';
 import '../controller/onboarding_controller.dart';
 import '../widget/management_item.dart';
 
@@ -49,6 +50,7 @@ class OnboardingScreen extends StatelessWidget {
                       iconPath: ImagePath.studentMale,
                       onTap: () {
                         // Handle tap
+                        Get.toNamed(AppRoutes.login);
                       },
                     ),
                     AppDimensions.spaceHuge.w.horizontalSpace,
@@ -60,8 +62,9 @@ class OnboardingScreen extends StatelessWidget {
                       },
                     ),
                   ],
-                ),  AppDimensions.spaceHuge.h.verticalSpace,
-              
+                ),
+                AppDimensions.spaceHuge.h.verticalSpace,
+
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [

@@ -11,6 +11,7 @@ class CustomTextField extends StatelessWidget {
   final VoidCallback? onTogglePassword;
   final TextInputType keyboardType;
   final String? Function(String?)? validator;
+  final Widget? prefixIcon;
 
   const CustomTextField({
     super.key,
@@ -21,6 +22,7 @@ class CustomTextField extends StatelessWidget {
     this.onTogglePassword,
     this.keyboardType = TextInputType.text,
     this.validator,
+    this.prefixIcon,
   });
 
   @override
@@ -29,8 +31,9 @@ class CustomTextField extends StatelessWidget {
 
     return TextFormField(
       controller: controller,
-      obscureText:  obscureText,
+      obscureText: obscureText,
       keyboardType: keyboardType,
+
       validator: validator,
       style: ShipXTextStyles.body3.copyWith(
         color: colors.textPrimary,
@@ -38,6 +41,8 @@ class CustomTextField extends StatelessWidget {
       ),
       decoration: InputDecoration(
         hintText: hintText,
+        prefixIcon: prefixIcon,
+
         hintStyle: ShipXTextStyles.body3.copyWith(
           color: const Color(0xFF94A3B8),
           fontSize: getSp(16),
@@ -77,7 +82,9 @@ class CustomTextField extends StatelessWidget {
                 padding: EdgeInsets.only(right: getWidth(ShipXSpacing.sm)),
                 child: IconButton(
                   icon: Icon(
-                    obscureText ? Icons.visibility_off_outlined : Icons.visibility_outlined,
+                    obscureText
+                        ? Icons.visibility_off_outlined
+                        : Icons.visibility_outlined,
                     color: colors.textSecondary.withValues(alpha: 0.6),
                     size: getSp(20),
                   ),

@@ -8,7 +8,7 @@ import '../../../../routes/app_routes.dart';
 class LoginController extends GetxController {
   final StorageService _storageService = Get.find<StorageService>();
 
-  final emailController = TextEditingController();
+  final usernameController = TextEditingController();
   final passwordController = TextEditingController();
 
   final isLoading = false.obs;
@@ -19,7 +19,7 @@ class LoginController extends GetxController {
   void onToggleRemember(bool? value) => rememberMe.value = value ?? false;
 
   Future<void> login() async {
-    if (emailController.text.trim().isEmpty ||
+    if (usernameController.text.trim().isEmpty ||
         passwordController.text.isEmpty) {
       _showSnackbar(AppStrings.loginError.tr, AppStrings.fillFields.tr);
       return;
@@ -45,7 +45,7 @@ class LoginController extends GetxController {
 
   @override
   void onClose() {
-    emailController.dispose();
+    usernameController.dispose();
     passwordController.dispose();
     super.onClose();
   }

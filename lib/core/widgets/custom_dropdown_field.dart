@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-
 import '../core.dart';
 import '../utils/app_icons.dart';
 import 'custom_svg_icon.dart';
-
 
 class CustomDropdownField<T> extends StatelessWidget {
   final T? initialValue;
@@ -22,7 +20,7 @@ class CustomDropdownField<T> extends StatelessWidget {
     required this.getLabel,
     required this.onChanged,
     this.validator,
-    this.fieldColor=true,
+    this.fieldColor = true,
   });
 
   @override
@@ -41,7 +39,7 @@ class CustomDropdownField<T> extends StatelessWidget {
       ),
       decoration: InputDecoration(
         filled: true,
-        fillColor:fieldColor? colors.background:Colors.transparent,
+        fillColor: fieldColor ? colors.background : Colors.transparent,
         contentPadding: EdgeInsets.symmetric(
           horizontal: getWidth(AppDimensions.paddingM),
           vertical: getHeight(AppDimensions.paddingM),
@@ -90,7 +88,7 @@ class CustomDropdownField<T> extends StatelessWidget {
                 ),
               ),
             ],
-          ),
+          ), 
         );
       }).toList(),
       onChanged: onChanged,

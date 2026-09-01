@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-
 import '../../../../core/core.dart';
 import '../../../../core/utils/app_images.dart';
 import '../../../../core/widgets/custom_label_textfiled_item.dart';

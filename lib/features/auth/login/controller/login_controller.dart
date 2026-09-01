@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../../core/storage/storage_service.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../../../core/utils/app_strings.dart';
 import '../../../../core/widgets/app_snackbar.dart';
 import '../../../../routes/app_routes.dart';
+import '../../service/login_service.dart';
 
 class LoginController extends GetxController {
-  final StorageService _storageService = Get.find<StorageService>();
-
   final usernameController = TextEditingController();
   final passwordController = TextEditingController();
+  final loginService = LoginService(Supabase.instance.client);
 
   final isLoading = false.obs;
   final rememberMe = false.obs;
@@ -27,7 +27,13 @@ class LoginController extends GetxController {
     isLoading.value = true;
 
     try {
-      Get.offAllNamed(AppRoutes.main);
+      final authResponse = await loginService.login(
+        email: usernameController.text.trim(),
+        password: passwordController.text,
+      );
+      if (authResponse.session != null) {
+        Get.offAllNamed(AppRoutes.main);
+      }
     } catch (e) {
       _showSnackbar(AppStrings.error.tr, e.toString());
     } finally {

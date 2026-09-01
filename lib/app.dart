@@ -64,7 +64,7 @@ class MyApp extends StatelessWidget {
             Locale('bn', 'BD'),
           ],
           builder: (context, child) {
-            final previewChild = DevicePreview.appBuilder(context, child);
+            final previewChild = child ?? const SizedBox.shrink();
             AppSizeClass.init(context);
 
             // ✅ Make status bar theme-aware

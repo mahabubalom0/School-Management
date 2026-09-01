@@ -8,12 +8,14 @@ import '../../../../core/widgets/custom_dropdown_field.dart';
 import '../../../../core/widgets/custom_label_textfiled_item.dart';
 import '../../../../core/widgets/custom_top_design.dart';
 import '../../../../routes/app_routes.dart';
+import '../controller/register_controller.dart';
 
 class RegisterScreen extends StatelessWidget {
   const RegisterScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final controller=Get.find<RegisterController>();
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -31,54 +33,63 @@ class RegisterScreen extends StatelessWidget {
                     CustomLabelTextfiledItem(
                       title: "Name",
                       hintText: "Enter Your Name",
-                      controller: TextEditingController(),
+                      controller: controller.nameController,
                     ),
                     AppDimensions.spaceM.h.verticalSpace,
                     CustomLabelTextfiledItem(
                       title: "Email",
                       hintText: "Enter Your Email",
-                      controller: TextEditingController(),
+                      controller: controller.emailController,
+                    ),
+                     CustomLabelTextfiledItem(
+                      title: "Password",
+                      hintText: "Enter Your Password",
+                      controller: controller.passwordController,
                     ),
                     AppDimensions.spaceM.h.verticalSpace,
                     CustomLabelTextfiledItem(
                       title: "Class",
                       hintText: "Enter Your Class",
-                      controller: TextEditingController(),
+                      controller: controller.classController,
                     ),
                     AppDimensions.spaceM.h.verticalSpace,
                     CustomLabelTextfiledItem(
                       title: "Section",
                       hintText: "Enter Your Sction",
-                      controller: TextEditingController(),
+                      controller: controller.sectionController,
                     ),
                     AppDimensions.spaceM.h.verticalSpace,
                     CustomLabelTextfiledItem(
                       title: "Roll No",
                       hintText: "Enter Your Roll No",
-                      controller: TextEditingController(),
+                      controller: controller.rollNoController,
                     ),
                     AppDimensions.spaceM.h.verticalSpace,
                     CustomLabelTextfiledItem(
                       title: "Group",
                       hintText: "Enter Your Group",
-                      controller: TextEditingController(),
+                      controller: controller.groupController,
                     ),
 
                     AppDimensions.spaceM.h.verticalSpace,
                     CustomLabelTextfiledItem(
                       title: "Address",
                       hintText: "Enter Your Address",
-                      controller: TextEditingController(),
+                      controller: controller.addressController,
                     ),
                     AppDimensions.spaceM.h.verticalSpace,
                     CustomDropdownField<String>(
                       hintText: "Gender",
-                      items: const ['Male', 'Female', 'Other'],
+                      items: controller.genderOptions,
                       getLabel: (String value) => value,
-                      onChanged: (String? change) {},
+                      onChanged: (String? change) {
+                        controller.genderController.text = change!;
+                      },
                     ),
                     AppDimensions.spaceHuge.h.verticalSpace,
-                    CustomButton(text: "Singin", onPressed: () {}),
+                    CustomButton(text: "Singin", onPressed: () {
+                      controller.handleRegistration();
+                    }),
                     AppDimensions.spaceM.h.verticalSpace,
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,

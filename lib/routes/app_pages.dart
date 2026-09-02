@@ -1,6 +1,8 @@
 import 'package:get/get.dart';
 import '../features/auth/register/binding/register_binding.dart';
 import '../features/auth/register/view/register_screen.dart';
+import '../features/studentDashord/binding/student_dashbord_binding.dart';
+import '../features/studentDashord/view/student_dashbord_screen.dart';
 import 'app_routes.dart';
 
 import '../features/splash/view/splash_screen.dart';
@@ -45,6 +47,11 @@ class AppPages {
       name: AppRoutes.register,
       page: () => const RegisterScreen(),
       binding: RegisterBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.studentDashbord,
+      page: () => const StudentDashbordScreen(),
+      binding: StudentDashbordBinding(),
     ),
   ];
 }

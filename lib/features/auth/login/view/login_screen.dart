@@ -42,7 +42,9 @@ class LoginScreen extends StatelessWidget {
                     controller: controller.passwordController,
                   ),
                   AppDimensions.paddingXXL.h.verticalSpace,
-                  CustomButton(text: "Login", onPressed: () {}),
+                  CustomButton(text: "Login", onPressed: () {
+                    controller.login();
+                  }),
                   AppDimensions.spaceXL.h.verticalSpace,
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,

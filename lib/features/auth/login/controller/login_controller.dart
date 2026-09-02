@@ -32,7 +32,7 @@ class LoginController extends GetxController {
         password: passwordController.text,
       );
       if (authResponse.session != null) {
-        Get.offAllNamed(AppRoutes.main);
+        Get.offAllNamed(AppRoutes.studentDashbord);
       }
     } catch (e) {
       _showSnackbar(AppStrings.error.tr, e.toString());
@@ -42,11 +42,21 @@ class LoginController extends GetxController {
   }
 
   void _showSnackbar(String title, String message) {
-    AppSnackbar.error(
-      title: title,
-      message: message,
-      position: SnackbarPosition.bottom,
-    );
+    if (Get.context != null) {
+      ScaffoldMessenger.of(Get.context!).clearSnackBars();
+      ScaffoldMessenger.of(Get.context!).showSnackBar(
+        SnackBar(
+          content: Text("$title: $message", style: const TextStyle(color: Colors.white)),
+          backgroundColor: Colors.redAccent,
+          behavior: SnackBarBehavior.floating,
+          margin: const EdgeInsets.all(10),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+          duration: const Duration(seconds: 3),
+        ),
+      );
+    } else {
+      print("Error: Get.context is null. Cannot show snackbar.");
+    }
   }
 
   @override

@@ -7,4 +7,5 @@ class ImagePath {
   static const String studentMale = '${asset}student_male_image.png';
   static const String tutionImage = "${asset}tuition_image.png";
   static const String persionImage = "${asset}person_image.png";
+  static const String happyImage="${asset}happy_image.png";
 }

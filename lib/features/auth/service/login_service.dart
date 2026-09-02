@@ -14,8 +14,10 @@ class LoginService {
         password: password,
       );
       return response;
+    } on AuthException catch (e) {
+      throw e.message;
     } catch (e) {
-      throw e.toString();
+      throw "An unexpected error occurred. Please try again.";
     }
   }
 

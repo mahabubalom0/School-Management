@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/route_manager.dart';
+import 'package:get/state_manager.dart';
 
 import '../../../core/core.dart';
 import '../../../core/utils/app_images.dart';
 import '../../../core/widgets/custom_top_design.dart';
+import '../../../routes/app_routes.dart';
 import '../widgets/feature_card_widget.dart';
 import '../widgets/top_massage.dart';
 
@@ -27,8 +30,10 @@ class StudentDashbordScreen extends StatelessWidget {
                   ),
                   child: Column(
                     children: [
-                      Container(height: AppDimensions.spaceXL.h, width: double.infinity),
-
+                      const SizedBox(
+                        height: AppDimensions.spaceXL,
+                        width: double.infinity,
+                      ),
                       const TopMassageCard(
                         title: 'Welcome Back!',
                         subtitle: 'Stay updated with your academic activities.',
@@ -36,46 +41,55 @@ class StudentDashbordScreen extends StatelessWidget {
                             'Here you can find your daily classes, upcoming assignments, and important school announcements. Keep up the great work!',
                       ),
                       AppDimensions.spaceHuge.h.verticalSpace,
-                      const Row(
+                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           FeatureCardWidget(
                             imagePath: ImagePath.attenndenceImage,
                             title: 'Attendance',
+                            onTap: (){
+                              Get.toNamed(AppRoutes.studentAttendance);
+                            },
                           ),
                           FeatureCardWidget(
                             imagePath: ImagePath.homeWorkImage,
                             title: 'Homework',
+                            onTap: (){},
                           ),
                           FeatureCardWidget(
                             imagePath: ImagePath.resultImage,
                             title: 'Result',
+                            onTap: (){},
                           ),
                         ],
                       ),
                       AppDimensions.spaceS.h.verticalSpace,
-                      const Row(
+                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           FeatureCardWidget(
                             imagePath: ImagePath.examRutineImage,
                             title: 'Exam Routine',
+                            onTap: (){},
                           ),
                           FeatureCardWidget(
                             imagePath: ImagePath.solutionImage,
                             title: 'Solution',
+                            onTap: (){},
                           ),
                           FeatureCardWidget(
                             imagePath: ImagePath.noticeImage,
                             title: 'Notice',
+                            onTap: (){},
                           ),
                         ],
                       ),
-                      const Row(
+                       Row(
                         children: [
                           FeatureCardWidget(
                             imagePath: ImagePath.addUserMale,
                             title: "Add User ",
+                            onTap: (){},
                           ),
                         ],
                       ),

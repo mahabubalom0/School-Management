@@ -59,7 +59,9 @@ class StudentDashbordScreen extends StatelessWidget {
                           FeatureCardWidget(
                             imagePath: ImagePath.resultImage,
                             title: 'Result',
-                            onTap: (){},
+                            onTap: (){
+                              Get.toNamed(AppRoutes.studentResult);
+                            },
                           ),
                         ],
                       ),

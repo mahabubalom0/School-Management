@@ -30,7 +30,7 @@ class StudentAttendanceScreen extends StatelessWidget {
           ),
           AppDimensions.spaceM.w.horizontalSpace,
         ],
-        backgroundColor: Colors.white,
+        backgroundColor: ShipXColors.green ,
         elevation: 1,
         iconTheme: const IconThemeData(color: Colors.black),
       ),
@@ -39,9 +39,11 @@ class StudentAttendanceScreen extends StatelessWidget {
           // Header Row
           Container(
             color: const Color(0xFF4A72D4), // Matching the blue in the image
-            padding: EdgeInsets.symmetric(
-              horizontal: AppDimensions.paddingL.w,
-              vertical: AppDimensions.paddingM.h,
+            padding: EdgeInsets.only(
+              left: AppDimensions.paddingL.w,
+              right: AppDimensions.paddingL.w,
+              bottom: AppDimensions.paddingM.h,
+              top: AppDimensions.paddingM.h
             ),
             child: Row(
               children: [

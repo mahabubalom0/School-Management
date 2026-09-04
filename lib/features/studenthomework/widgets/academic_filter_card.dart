@@ -30,7 +30,7 @@ class _AcademicFilterCardState extends State<AcademicFilterCard> {
         borderRadius: BorderRadius.circular(12.r),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.1),
+            color: Colors.black.withValues(alpha: 0.1),
             blurRadius: 10,
             offset: const Offset(0, 4),
           ),
@@ -107,7 +107,7 @@ class _AcademicFilterCardState extends State<AcademicFilterCard> {
           width: double.infinity,
           decoration: BoxDecoration(
             color: const Color(0xFFE5E5E5),
-            borderRadius: BorderRadius.circular(2.r),
+            borderRadius: BorderRadius.circular(8.r),
           ),
           padding: EdgeInsets.symmetric(horizontal: AppDimensions.paddingS.w),
           child: DropdownButtonHideUnderline(

@@ -8,4 +8,5 @@ class AppRoutes {
   static const String studentDashbord = '/studentDashbord';
   static const String studentAttendance = '/studentAttendance';
   static const String studentResult = '/studentResult';
+  static const String studentHomeWork = '/studentHomeWork';
 }

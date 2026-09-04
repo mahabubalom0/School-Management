@@ -41,57 +41,59 @@ class StudentDashbordScreen extends StatelessWidget {
                             'Here you can find your daily classes, upcoming assignments, and important school announcements. Keep up the great work!',
                       ),
                       AppDimensions.spaceHuge.h.verticalSpace,
-                       Row(
+                      Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           FeatureCardWidget(
                             imagePath: ImagePath.attenndenceImage,
                             title: 'Attendance',
-                            onTap: (){
+                            onTap: () {
                               Get.toNamed(AppRoutes.studentAttendance);
                             },
                           ),
                           FeatureCardWidget(
                             imagePath: ImagePath.homeWorkImage,
                             title: 'Homework',
-                            onTap: (){},
+                            onTap: () {
+                              Get.toNamed(AppRoutes.studentHomeWork);
+                            },
                           ),
                           FeatureCardWidget(
                             imagePath: ImagePath.resultImage,
                             title: 'Result',
-                            onTap: (){
+                            onTap: () {
                               Get.toNamed(AppRoutes.studentResult);
                             },
                           ),
                         ],
                       ),
                       AppDimensions.spaceS.h.verticalSpace,
-                       Row(
+                      Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           FeatureCardWidget(
                             imagePath: ImagePath.examRutineImage,
                             title: 'Exam Routine',
-                            onTap: (){},
+                            onTap: () {},
                           ),
                           FeatureCardWidget(
                             imagePath: ImagePath.solutionImage,
                             title: 'Solution',
-                            onTap: (){},
+                            onTap: () {},
                           ),
                           FeatureCardWidget(
                             imagePath: ImagePath.noticeImage,
                             title: 'Notice',
-                            onTap: (){},
+                            onTap: () {},
                           ),
                         ],
                       ),
-                       Row(
+                      Row(
                         children: [
                           FeatureCardWidget(
                             imagePath: ImagePath.addUserMale,
                             title: "Add User ",
-                            onTap: (){},
+                            onTap: () {},
                           ),
                         ],
                       ),

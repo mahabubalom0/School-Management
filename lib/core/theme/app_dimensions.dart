@@ -72,4 +72,5 @@ class AppDimensions {
 
   //Image Spacing
   static const double imageSize60 = 60.0;
+  static const double imageSize38 = 38.0;
 }

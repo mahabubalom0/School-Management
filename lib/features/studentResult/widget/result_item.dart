@@ -6,9 +6,11 @@ import '../../../core/core.dart';
 
 class ResultItem extends StatelessWidget {
   final String title;
+  final VoidCallback? onTap;
   const ResultItem({
     super.key,
     required this.title,
+    this.onTap,
   });
 
   @override
@@ -54,7 +56,7 @@ class ResultItem extends StatelessWidget {
                     text: title,
                     fontSize: AppDimensions.fontL.sp,
                     fontWeight: FontWeight.bold,
-                    color: const Color(0xFF0F47B2),
+                    color: ShipXColors.deepBlue,
                   ),
                   
                   AppDimensions.spaceL.h.verticalSpace,
@@ -63,7 +65,7 @@ class ResultItem extends StatelessWidget {
                   Container(
                     height: 80.h,
                     width: double.infinity,
-                    color: const Color(0xFFC4C4C4),
+                    color: ShipXColors.placeholderLight,
                   ),
                   
                   AppDimensions.spaceM.h.verticalSpace,
@@ -72,7 +74,7 @@ class ResultItem extends StatelessWidget {
                   Align(
                     alignment: Alignment.centerRight,
                     child: TextButton(
-                      onPressed: () {},
+                      onPressed:onTap,
                       style: TextButton.styleFrom(
                         padding: EdgeInsets.zero,
                         minimumSize: Size.zero,
@@ -82,7 +84,7 @@ class ResultItem extends StatelessWidget {
                         text: "PUBLISH",
                         fontSize: AppDimensions.fontM.sp,
                         fontWeight: FontWeight.w600,
-                        color: const Color(0xFF0F47B2),
+                        color: ShipXColors.deepBlue,
                       ),
                     ),
                   ),

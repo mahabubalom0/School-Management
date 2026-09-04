@@ -28,7 +28,7 @@ class AttendanceRowWidget extends StatelessWidget {
         ),
       ),
       padding: EdgeInsets.symmetric(
-        horizontal: AppDimensions.paddingL.w,
+        horizontal: AppDimensions.paddingM.w,
         vertical: 8.h, // minimal vertical padding to match the image
       ),
       child: Row(

@@ -7,8 +7,9 @@ import '../features/studentDasbord/binding/student_dashbord_binding.dart';
 import '../features/studentDasbord/view/student_dashbord_screen.dart';
 import '../features/studentResult/binding/student_result_binding,.dart';
 import '../features/studentResult/view/student_result_screen.dart';
+import '../features/studenthomework/binding/student_home_work_binding.dart';
+import '../features/studenthomework/view/student_home_work_screen.dart';
 import 'app_routes.dart';
-
 import '../features/splash/view/splash_screen.dart';
 import '../features/splash/binding/splash_binding.dart';
 import '../features/onboarding/view/onboarding_screen.dart';
@@ -67,6 +68,12 @@ class AppPages {
       name: AppRoutes.studentResult,
       page: () => const StudentResultScreen(),
       binding: StudentResultBinding(),
+      transition: Transition.leftToRight,
+    ),
+    GetPage(
+      name: AppRoutes.studentHomeWork,
+      page: () => const StudentHomeWorkScreen(),
+      binding: StudentHomeworkBinding(),
       transition: Transition.leftToRight,
     ),
   ];

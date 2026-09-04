@@ -17,6 +17,7 @@ class ShipXColors {
   // ── Dark Theme Tokens ─────────────────
   static const Color backgroundDark = Color(0xFFFFFFFF);
   static const Color bg1Dark =Color(0xffF6F6F6);
+  static const Color placeholderLight = Color(0xFFC4C4C4);
   static const Color bg2Dark = Color(0xFFFDF1F2);
   static const Color borderDark = Color(0xFFE2E8F0);
   static const Color titleDark = Color(0xFF0F172A);
@@ -24,6 +25,7 @@ class ShipXColors {
 
   // ── Brand / Semantic ──────────────────
   static const Color primary = Color(0xFFD61721);
+  static const Color deepBlue = Color(0xFF0F47B2);
   static const Color green = Color(0xFF3B9D53);
   static const Color teal = Color(0xFF27C09B);
   static const Color blue = Color(0xFF144BB8);

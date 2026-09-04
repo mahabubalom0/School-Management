@@ -1,19 +1,18 @@
 import 'package:get/get.dart';
-import '../../../core/storage/storage_service.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
+
 import '../../../routes/app_routes.dart';
 
 class OnboardingController extends GetxController {
-  final StorageService _storageService = Get.find<StorageService>();
+  final supabase = Supabase.instance.client;
 
-  // Function to complete onboarding and go to Login
-  Future<void> navigateToLogin() async {
-    // await _storageService.setOnboarded();
-    Get.offAllNamed(AppRoutes.login);
-  }
+  void getStudent() async {
+    final isLoggedIn = supabase.auth.currentSession != null;
 
-  // Function to complete onboarding and go to Login
-  Future<void> navigateToRegister() async {
-    // await _storageService.setOnboarded();
-    Get.offAllNamed(AppRoutes.login);
+    if (isLoggedIn) {
+      Get.offAllNamed(AppRoutes.studentDashbord);
+    } else {
+      Get.offAllNamed(AppRoutes.login);
+    }
   }
 }

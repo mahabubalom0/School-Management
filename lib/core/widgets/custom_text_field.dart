@@ -12,6 +12,8 @@ class CustomTextField extends StatelessWidget {
   final TextInputType keyboardType;
   final String? Function(String?)? validator;
   final Widget? prefixIcon;
+  final int? maxLine;
+  final int? minLine;
 
   const CustomTextField({
     super.key,
@@ -23,6 +25,8 @@ class CustomTextField extends StatelessWidget {
     this.keyboardType = TextInputType.text,
     this.validator,
     this.prefixIcon,
+    this.maxLine,
+    this.minLine
   });
 
   @override
@@ -33,7 +37,8 @@ class CustomTextField extends StatelessWidget {
       controller: controller,
       obscureText: obscureText,
       keyboardType: keyboardType,
-
+      maxLines: maxLine,
+      minLines: minLine,
       validator: validator,
       style: ShipXTextStyles.body3.copyWith(
         color: colors.textPrimary,
@@ -49,10 +54,12 @@ class CustomTextField extends StatelessWidget {
         ),
         filled: true,
         fillColor: colors.surface,
-        constraints: BoxConstraints(
-          maxHeight: getHeight(50),
-          minHeight: getHeight(50),
-        ),
+        constraints: ((maxLine != null && maxLine! > 1) || (minLine != null && minLine! > 1))
+            ? null
+            : BoxConstraints(
+                maxHeight: getHeight(50),
+                minHeight: getHeight(50),
+              ),
         contentPadding: EdgeInsets.symmetric(
           horizontal: getWidth(ShipXSpacing.md),
           vertical: getHeight(12),

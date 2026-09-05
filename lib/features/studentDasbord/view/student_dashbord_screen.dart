@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/route_manager.dart';
-import 'package:get/state_manager.dart';
-
 import '../../../core/core.dart';
 import '../../../core/utils/app_images.dart';
 import '../../../core/widgets/custom_top_design.dart';
@@ -30,10 +28,6 @@ class StudentDashbordScreen extends StatelessWidget {
                   ),
                   child: Column(
                     children: [
-                      const SizedBox(
-                        height: AppDimensions.spaceXL,
-                        width: double.infinity,
-                      ),
                       const TopMassageCard(
                         title: 'Welcome Back!',
                         subtitle: 'Stay updated with your academic activities.',
@@ -84,7 +78,9 @@ class StudentDashbordScreen extends StatelessWidget {
                           FeatureCardWidget(
                             imagePath: ImagePath.noticeImage,
                             title: 'Notice',
-                            onTap: () {},
+                            onTap: () {
+                              Get.toNamed(AppRoutes.studentNutice);
+                            },
                           ),
                         ],
                       ),

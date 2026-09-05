@@ -19,10 +19,10 @@ class TopMassageCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      padding: const EdgeInsets.all(24),
+      padding: EdgeInsets.all(AppDimensions.paddingXL.r),
       decoration: BoxDecoration(
         color: const Color(0xFF1546C9), // Deep blue color matching the image
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(AppDimensions.radiusL.r),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

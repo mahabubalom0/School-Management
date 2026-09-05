@@ -10,4 +10,5 @@ class AppRoutes {
   static const String studentResult = '/studentResult';
   static const String studentHomeWork = '/studentHomeWork';
   static const String studentNutice = '/studentNutice';
+  static const String studentSolution = '/studentSolution';
 }

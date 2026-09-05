@@ -11,6 +11,8 @@ import '../features/studentSolution/binding/student_solution_binding.dart';
 import '../features/studentSolution/view/student_solution_screen.dart';
 import '../features/student_nutice/binding/student_nutice_binding.dart';
 import '../features/student_nutice/view/student_nutice_screen.dart';
+import '../features/studentaddMark/binding/student_add_mark_binding.dart';
+import '../features/studentaddMark/view/student_add_mark_screen.dart';
 import '../features/studenthomework/binding/student_home_work_binding.dart';
 import '../features/studenthomework/view/student_home_work_screen.dart';
 import 'app_routes.dart';
@@ -91,6 +93,12 @@ class AppPages {
       name: AppRoutes.studentSolution,
       page: () => const StudentSolutionScreen(),
       binding: StudentSolutionBinding(),
+      transition: Transition.leftToRight,
+    ),
+    GetPage(
+      name: AppRoutes.studentAddMark,
+      page: () => const StudentAddMarkScreen(),
+      binding: StudentAddMarkBinding(),
       transition: Transition.leftToRight,
     ),
   ];

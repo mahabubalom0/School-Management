@@ -34,6 +34,11 @@ class CustomButton extends StatelessWidget {
         onPressed: isLoading ? null : onPressed,
         style: ElevatedButton.styleFrom(
           backgroundColor: color ?? context.appColors.primary,
+          foregroundColor: textColor ?? Colors.white,
+          textStyle: TextStyle(
+            fontSize: getSp(AppDimensions.fontL),
+            fontWeight: FontWeight.bold,
+          ),
           elevation: 0,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(borderRadius ?? getRadius(AppDimensions.radiusL)),
@@ -52,17 +57,10 @@ class CustomButton extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   if (icon != null) ...[
-                    Icon(icon, color: textColor ?? Colors.white, size: getRadius(AppDimensions.iconM)),
+                    Icon(icon, size: getRadius(AppDimensions.iconM)),
                     SizedBox(width: getWidth(AppDimensions.spaceS)),
                   ],
-                  Text(
-                    text,
-                    style: TextStyle(
-                      fontSize: getSp(AppDimensions.fontL),
-                      fontWeight: FontWeight.bold,
-                      color: textColor ?? Colors.white,
-                    ),
-                  ),
+                  Text(text),
                 ],
               ),
       ),

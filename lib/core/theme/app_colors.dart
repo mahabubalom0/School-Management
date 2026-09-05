@@ -110,7 +110,7 @@ class AppColorScheme extends ThemeExtension<AppColorScheme> {
     overlay: Color(0x1A0057FF),
     scrim: Color(0x80000000),
     primaryGradient: LinearGradient(
-      colors: [ShipXColors.primary],
+      colors: [ShipXColors.primary, ShipXColors.primary],
       begin: Alignment.topLeft,
       end: Alignment.bottomRight,
     ),
@@ -137,7 +137,7 @@ class AppColorScheme extends ThemeExtension<AppColorScheme> {
     overlay: Color(0x1A0057FF),
     scrim: Color(0xB3000000),
     primaryGradient: LinearGradient(
-      colors: [ShipXColors.primary],
+      colors: [ShipXColors.primary, ShipXColors.primary],
       begin: Alignment.topLeft,
       end: Alignment.bottomRight,
     ),

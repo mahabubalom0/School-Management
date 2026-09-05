@@ -5,6 +5,7 @@ import '../../../core/core.dart';
 import '../../../core/utils/app_images.dart';
 import '../../../core/widgets/custom_top_design.dart';
 import '../../../routes/app_routes.dart';
+import '../../profile/view/profile_screen.dart';
 import '../widgets/feature_card_widget.dart';
 import '../widgets/top_massage.dart';
 
@@ -17,7 +18,12 @@ class StudentDashbordScreen extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            const CustomTopDesign(iconPath: ImagePath.happyImage),
+            CustomTopDesign(
+              iconPath: ImagePath.happyImage,
+              onSettingTap: () {
+                Get.to(const ProfileScreen());
+              },
+            ),
 
             Expanded(
               child: SingleChildScrollView(
@@ -86,6 +92,7 @@ class StudentDashbordScreen extends StatelessWidget {
                           ),
                         ],
                       ),
+                      AppDimensions.spaceS.h.verticalSpace,
                       Row(
                         children: [
                           FeatureCardWidget(

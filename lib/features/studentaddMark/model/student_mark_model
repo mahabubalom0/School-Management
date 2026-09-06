@@ -1,0 +1,13 @@
+class StudentMarkModel {
+  final String id;
+  final String name;
+  final String rollNumber;
+  String mark;
+
+  StudentMarkModel({
+    required this.id,
+    required this.name,
+    required this.rollNumber,
+    this.mark = '',
+  });
+}

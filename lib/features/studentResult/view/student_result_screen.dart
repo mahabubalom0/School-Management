@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/route_manager.dart';
 
 import '../../../core/core.dart';
+import '../../../routes/app_routes.dart';
 import '../widget/result_item.dart';
 
 class StudentResultScreen extends StatelessWidget {
@@ -18,12 +20,17 @@ class StudentResultScreen extends StatelessWidget {
           fontSize: AppDimensions.fontL.sp,
         ),
       ),
-      body: const SingleChildScrollView(
+      body: SingleChildScrollView(
         child: Column(
           children: [
-            ResultItem(title: "Second Semester Exam"),
-            ResultItem(title: "First Semester Exam"),
-            ResultItem(title: "Final Exam"),
+            ResultItem(
+              title: "Second Semester Exam",
+              onTap: () {
+                Get.toNamed(AppRoutes.studentAddMark);
+              },
+            ),
+            ResultItem(title: "First Semester Exam", onTap: () {}),
+            ResultItem(title: "Final Exam", onTap: () {}),
           ],
         ),
       ),

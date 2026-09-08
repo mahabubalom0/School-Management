@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../../../core/utils/app_strings.dart';
-import '../../../../core/widgets/app_snackbar.dart';
 import '../../../../routes/app_routes.dart';
 import '../../service/login_service.dart';
 
@@ -32,7 +31,7 @@ class LoginController extends GetxController {
         password: passwordController.text,
       );
       if (authResponse.session != null) {
-        Get.offAllNamed(AppRoutes.studentDashbord);
+        Get.offAllNamed(AppRoutes.teacherDashbord);
       }
     } catch (e) {
       _showSnackbar(AppStrings.error.tr, e.toString());

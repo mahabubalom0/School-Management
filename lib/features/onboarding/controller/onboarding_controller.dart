@@ -6,11 +6,11 @@ import '../../../routes/app_routes.dart';
 class OnboardingController extends GetxController {
   final supabase = Supabase.instance.client;
 
-  void getStudent() async {
+  void getTeacher() async {
     final isLoggedIn = supabase.auth.currentSession != null;
 
     if (isLoggedIn) {
-      Get.offAllNamed(AppRoutes.studentDashbord);
+      Get.offAllNamed(AppRoutes.teacherDashbord);
     } else {
       Get.offAllNamed(AppRoutes.login);
     }

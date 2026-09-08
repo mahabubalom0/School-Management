@@ -9,8 +9,8 @@ import '../../profile/view/profile_screen.dart';
 import '../widgets/feature_card_widget.dart';
 import '../widgets/top_massage.dart';
 
-class StudentDashbordScreen extends StatelessWidget {
-  const StudentDashbordScreen({super.key});
+class TeacherDashbordScreen extends StatelessWidget {
+  const TeacherDashbordScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -55,14 +55,14 @@ class StudentDashbordScreen extends StatelessWidget {
                             imagePath: ImagePath.homeWorkImage,
                             title: 'Homework',
                             onTap: () {
-                              Get.toNamed(AppRoutes.studentHomeWork);
+                              Get.toNamed(AppRoutes.teacherHomeWork);
                             },
                           ),
                           FeatureCardWidget(
                             imagePath: ImagePath.resultImage,
                             title: 'Result',
                             onTap: () {
-                              Get.toNamed(AppRoutes.studentResult);
+                              Get.toNamed(AppRoutes.teacherResult);
                             },
                           ),
                         ],

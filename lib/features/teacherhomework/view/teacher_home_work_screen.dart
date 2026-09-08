@@ -4,15 +4,15 @@ import 'package:get/get.dart';
 import '../../../core/core.dart';
 import '../../../core/utils/app_images.dart';
 import '../../../core/widgets/custom_image_view.dart';
-import '../controller/student_home_work_controller.dart';
+import '../controller/teacher_home_work_controller.dart';
 import '../widgets/academic_filter_card.dart';
 
-class StudentHomeWorkScreen extends StatelessWidget {
-  const StudentHomeWorkScreen({super.key});
+class TeacherHomeWorkScreen extends StatelessWidget {
+  const TeacherHomeWorkScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.find<StudentHomeWorkController>();
+    final controller = Get.find<TeacherHomeWorkController>();
     return Scaffold(
       appBar: AppBar(
         leading: Padding(

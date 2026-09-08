@@ -6,8 +6,8 @@ import '../../../core/core.dart';
 import '../../../routes/app_routes.dart';
 import '../widget/result_item.dart';
 
-class StudentResultScreen extends StatelessWidget {
-  const StudentResultScreen({super.key});
+class TeacherResultScreen extends StatelessWidget {
+  const TeacherResultScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

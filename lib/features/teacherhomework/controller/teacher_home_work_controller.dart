@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-class StudentHomeWorkController extends GetxController {
+class TeacherHomeWorkController extends GetxController {
   final List<String> classList = [
     "Fast Semister",
     "Second Semister",

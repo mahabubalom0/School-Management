@@ -15,4 +15,12 @@ class ImagePath {
   static const String solutionImage = "${asset}solution_image.png";
   static const String noticeImage = "${asset}notice_events_image.png";
   static const String addUserMale = "${asset}add_user_male_image.png";
+  static const String schoolHouseImage = "${asset}school_house_image.png";
+  static const String profilePublicatonImage =
+      "${asset}profile_publication_image.png";
+  static const String emergencyContactImage =
+      "${asset}emergency_contacts_image.png";
+  static const String settingImage = "${asset}setting_image.png";
+  static const String logOutImage = "${asset}logout_image.png";
+  static const String quizeImage = "${asset}quiz_image.png";
 }

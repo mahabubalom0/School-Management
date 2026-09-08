@@ -7,7 +7,13 @@ import 'custom_image_view.dart';
 class CustomTopDesign extends StatelessWidget {
   final String iconPath;
   final VoidCallback? onSettingTap;
-  const CustomTopDesign({super.key, required this.iconPath, this.onSettingTap});
+  final bool? isSetting;
+  const CustomTopDesign({
+    super.key,
+    required this.iconPath,
+    this.onSettingTap,
+    this.isSetting = true,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -30,18 +36,20 @@ class CustomTopDesign extends StatelessWidget {
               child: Container(height: 450.h, color: ShipXColors.teal),
             ),
           ),
-          Positioned(
-            right: 10.w,
-            top: 20.h,
-            child: IconButton(
-              onPressed: onSettingTap ?? () {},
-              icon: Icon(
-                Icons.settings,
-                size: AppDimensions.iconXL.sp,
-                color: ShipXColors.background,
-              ),
-            ),
-          ),
+          isSetting == true
+              ? Positioned(
+                  right: 10.w,
+                  top: 20.h,
+                  child: IconButton(
+                    onPressed: onSettingTap ?? () {},
+                    icon: Icon(
+                      Icons.settings,
+                      size: AppDimensions.iconXL.sp,
+                      color: ShipXColors.background,
+                    ),
+                  ),
+                )
+              : const SizedBox.shrink(),
 
           // White Circle with Logo
           Positioned(

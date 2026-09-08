@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-class StudentDashbordController extends GetxController {
+class TeacherDashbordController extends GetxController {
   @override
   void onInit() {
     super.onInit();

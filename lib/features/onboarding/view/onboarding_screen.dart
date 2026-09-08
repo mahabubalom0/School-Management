@@ -15,7 +15,6 @@ class OnboardingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.find<OnboardingController>();
-   
 
     return Scaffold(
       backgroundColor: context.appColors.background,
@@ -46,7 +45,7 @@ class OnboardingScreen extends StatelessWidget {
                       iconPath: ImagePath.studentMale,
                       onTap: () {
                         // Handle tap
-                       controller.getStudent();
+                        Get.toNamed(AppRoutes.studentDashbord);
                       },
                     ),
                     AppDimensions.spaceHuge.w.horizontalSpace,
@@ -55,6 +54,7 @@ class OnboardingScreen extends StatelessWidget {
                       iconPath: ImagePath.tutionImage,
                       onTap: () {
                         // Handle tap
+                        controller.getTeacher();
                       },
                     ),
                   ],

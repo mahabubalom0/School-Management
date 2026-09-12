@@ -49,6 +49,26 @@ class CustomDropdownField<T> extends StatelessWidget {
           color: colors.textPrimary,
         ),
         suffixIconConstraints: const BoxConstraints(minWidth: 0, minHeight: 0),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(AppDimensions.radiusM),
+          borderSide: BorderSide(color: colors.border, width: 1.0),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(AppDimensions.radiusM),
+          borderSide: BorderSide(color: colors.border, width: 1.0),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(AppDimensions.radiusM),
+          borderSide: BorderSide(color: colors.primary, width: 1.5),
+        ),
+        errorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(AppDimensions.radiusM),
+          borderSide: BorderSide(color: colors.error, width: 1.0),
+        ),
+        focusedErrorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(AppDimensions.radiusM),
+          borderSide: BorderSide(color: colors.error, width: 1.5),
+        ),
       ),
       dropdownColor: colors.background,
       menuMaxHeight: 350,

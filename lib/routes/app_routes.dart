@@ -14,5 +14,6 @@ class AppRoutes {
   static const String studentAddMark='/studentAddMark';
 
   static const String studentDashbord="/studentDashbord";
+  static const String addAccount="/addAccount";
   
 }

@@ -1,6 +1,8 @@
 import 'package:get/get.dart';
 import '../features/addAcount/binding/add_account_binding.dart';
 import '../features/addAcount/view/add_account_screen.dart';
+import '../features/allStudent/binding/all_sttudent_binding.dart';
+import '../features/allStudent/view/all_student_screen.dart';
 import '../features/auth/register/binding/register_binding.dart';
 import '../features/auth/register/view/register_screen.dart';
 import '../features/student/student_dashbord/binding/student_dashbord_binding.dart';
@@ -115,6 +117,12 @@ class AppPages {
       name: AppRoutes.addAccount,
       page: () => const AddAccountScreen(),
       binding: AddAccountBinding(),
+      transition: Transition.leftToRight,
+    ),
+    GetPage(
+      name: AppRoutes.allStudent,
+      page: () => const AllStudentScreen(),
+      binding: AllSttudentBinding(),
       transition: Transition.leftToRight,
     ),
   ];

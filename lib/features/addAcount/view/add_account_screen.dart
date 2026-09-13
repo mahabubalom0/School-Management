@@ -40,7 +40,7 @@ class AddAccountScreen extends StatelessWidget {
                 CustomLabelTextfiledItem(
                   title: "Email Address",
                   hintText: "Enter Your Email Address",
-                  controller: controller.emailAddressClt,
+                  controller: controller.emailController,
                 ),
                 AppDimensions.spaceM.h.verticalSpace,
                 CustomLabelTextfiledItem(
@@ -91,6 +91,12 @@ class AddAccountScreen extends StatelessWidget {
                   controller: controller.dateOfBirthController,
                 ),
                 AppDimensions.spaceM.h.verticalSpace,
+                CustomLabelTextfiledItem(
+                  title: "Address",
+                  hintText: "Enter Your Address",
+                  controller: controller.addressController,
+                ),
+                AppDimensions.spaceM.h.verticalSpace,
                 const CustomText(
                   text: "Religion",
                   fontSize: AppDimensions.fontM,
@@ -128,7 +134,16 @@ class AddAccountScreen extends StatelessWidget {
                   controller: controller.gradientPhoneNumberClt,
                 ),
                 AppDimensions.spaceXXL.h.verticalSpace,
-                CustomButton(text: "Add Student", onPressed: () {}),
+                Obx(
+                  () => controller.isLoading.value
+                      ? const Center(child: CircularProgressIndicator())
+                      : CustomButton(
+                          text: "Add Student",
+                          onPressed: () {
+                            controller.addStudent();
+                          },
+                        ),
+                ),
               ],
             ),
           ),

@@ -74,7 +74,9 @@ class TeacherDashbordScreen extends StatelessWidget {
                           FeatureCardWidget(
                             imagePath: ImagePath.examRutineImage,
                             title: 'Exam Routine',
-                            onTap: () {},
+                            onTap: () {
+                              Get.toNamed(AppRoutes.allStudent);
+                            },
                           ),
                           FeatureCardWidget(
                             imagePath: ImagePath.solutionImage,

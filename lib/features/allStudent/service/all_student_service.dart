@@ -19,4 +19,13 @@ class AllStudentService {
       throw e.toString();
     }
   }
+
+  Future<void> getStudentDeletd({required String studentId}) async {
+    try {
+      await _supabaseClient.from("student_list").delete().eq("student_id", studentId);
+      return;
+    } catch (e) {
+      throw e.toString();
+    }
+  }
 }

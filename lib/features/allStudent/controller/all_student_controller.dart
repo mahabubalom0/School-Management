@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -7,9 +6,11 @@ import '../model/all_student_model.dart';
 import '../service/all_student_service.dart';
 
 class AllStudentController extends GetxController {
-  final AllStudentService studentService=AllStudentService(Supabase.instance.client);
-  final RxList<AllStudentModel> allStudentList=RxList<AllStudentModel>();
-  final RxBool isLoading=false.obs;
+  final AllStudentService studentService = AllStudentService(
+    Supabase.instance.client,
+  );
+  final RxList<AllStudentModel> allStudentList = RxList<AllStudentModel>();
+  final RxBool isLoading = false.obs;
   final List<String> semesterName = [
     "All Student",
     "1st",
@@ -27,24 +28,45 @@ class AllStudentController extends GetxController {
     super.onInit();
     getAllStudent();
   }
-  Future<void>getAllStudent()async{
-  try{
-    isLoading.value=true;
-    final allStudent=await studentService.getAllStudent();
-    allStudentList.assignAll(allStudent);
-  _showSnackbar("Success", "All student fetched successfully");
-  }catch(e){
-    _showSnackbar('Error', e.toString());
-  }finally{
-    isLoading.value=false;
+
+  //Added Student Data Show  And Scroll To Data
+  Future<void> getAllStudent() async {
+    try {
+      isLoading.value = true;
+      final allStudent = await studentService.getAllStudent();
+      allStudentList.assignAll(allStudent);
+      _showSnackbar("Success", "All student fetched successfully");
+    } catch (e) {
+      _showSnackbar('Error', e.toString());
+    } finally {
+      isLoading.value = false;
+    }
   }
+
+  //Deleted Student Data
+  Future<void> getStudentDeletd({required String studentId}) async {
+    try {
+      isLoading.value = true;
+      await studentService.getStudentDeletd(studentId: studentId);
+      allStudentList.removeWhere((element) => element.studentId == studentId);
+      _showSnackbar("Success", "Student deleted successfully");
+      Get.back();
+    } catch (e) {
+      _showSnackbar('Error', e.toString());
+    } finally {
+      isLoading.value = false;
+    }
   }
-   void _showSnackbar(String title, String message) {
+
+  void _showSnackbar(String title, String message) {
     if (Get.context != null) {
       ScaffoldMessenger.of(Get.context!).clearSnackBars();
       ScaffoldMessenger.of(Get.context!).showSnackBar(
         SnackBar(
-          content: Text("$title: $message", style: const TextStyle(color: Colors.white)),
+          content: Text(
+            "$title: $message",
+            style: const TextStyle(color: Colors.white),
+          ),
           backgroundColor: Colors.redAccent,
           behavior: SnackBarBehavior.floating,
           margin: const EdgeInsets.all(10),

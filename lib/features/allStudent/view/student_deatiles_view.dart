@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import '../../../core/theme/app_dimensions.dart';
-import '../../../core/widgets/custom_text.dart';
+import '../../../core/core.dart';
+import '../controller/all_student_controller.dart';
 import '../model/all_student_model.dart';
+import 'shipXAlert.dart';
 
 class StudentDeatilesView extends StatelessWidget {
   const StudentDeatilesView({super.key});
@@ -11,11 +12,38 @@ class StudentDeatilesView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final arguments = Get.arguments as AllStudentModel;
-
+    final controller = Get.put(AllStudentController());
     return Scaffold(
       backgroundColor: Colors.grey.shade50,
       appBar: AppBar(
         backgroundColor: Colors.white,
+        actions: [
+          IconButton(
+            onPressed: () {
+              Get.dialog(
+                ShipXAlert(
+                  title: "Delete Student",
+                  content: "Are you sure you want to delete this student?",
+                  cancelTap: () {
+                    Get.back();
+                  },
+                  okTap: () {
+                    controller.getStudentDeletd(
+                      studentId: arguments.studentId.toString(),
+                    );
+                    Get.back();
+                  },
+                ),
+              );
+            },
+            icon: const Icon(
+              Icons.delete,
+              size: AppDimensions.iconXL,
+              color: ShipXColors.error,
+            ),
+          ),
+          AppDimensions.spaceM.w.horizontalSpace,
+        ],
         elevation: 0,
         centerTitle: true,
         iconTheme: const IconThemeData(color: Colors.black87),

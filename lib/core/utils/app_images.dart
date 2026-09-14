@@ -23,4 +23,5 @@ class ImagePath {
   static const String settingImage = "${asset}setting_image.png";
   static const String logOutImage = "${asset}logout_image.png";
   static const String quizeImage = "${asset}quiz_image.png";
+  static const String noDataaImage = "${asset}no_data_image.png";
 }

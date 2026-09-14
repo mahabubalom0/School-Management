@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../core/core.dart';
+import '../../../core/utils/app_images.dart';
 import '../../../routes/app_routes.dart';
 import '../controller/all_student_controller.dart';
+import '../widgets/no_data_item.dart';
 import '../widgets/student_item_card.dart';
 
 class AllStudentScreen extends StatelessWidget {
@@ -86,28 +88,33 @@ class AllStudentScreen extends StatelessWidget {
                     ),
                   ),
                   AppDimensions.spaceL.h.verticalSpace,
-                  Obx(
-                    () => controller.isLoading.value
-                        ? const Center(child: CircularProgressIndicator())
-                        : ListView.builder(
-                            itemCount: controller.allStudentList.length,
-                            shrinkWrap: true,
-                            itemBuilder: (_, index) {
-                              final item = controller.allStudentList[index];
-                              return StudentItemCard(
-                                onTap: () {
-                                  Get.toNamed(
-                                    AppRoutes.studentDeatilesScreen,
-                                    arguments: item,
-                                  );
-                                },
-                                className: item.studentClass ?? 'N/A',
-                                name: item.name ?? 'Unknown',
-                                studentId: item.studentId ?? 'N/A',
-                              );
-                            },
-                          ),
-                  ),
+                  Obx(() {
+                    if (controller.isLoading.value) {
+                      return const Center(child: CircularProgressIndicator());
+                    }
+
+                    if (controller.allStudentList.isEmpty) {
+                      return const NoDataItem();
+                    }
+                    return ListView.builder(
+                      itemCount: controller.allStudentList.length,
+                      shrinkWrap: true,
+                      itemBuilder: (_, index) {
+                        final item = controller.allStudentList[index];
+                        return StudentItemCard(
+                          onTap: () {
+                            Get.toNamed(
+                              AppRoutes.studentDeatilesScreen,
+                              arguments: item,
+                            );
+                          },
+                          className: item.studentClass ?? 'N/A',
+                          name: item.name ?? 'Unknown',
+                          studentId: item.studentId ?? 'N/A',
+                        );
+                      },
+                    );
+                  }),
                 ],
               ),
             ),

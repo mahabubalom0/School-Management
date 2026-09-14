@@ -99,7 +99,7 @@ class TeacherDashbordScreen extends StatelessWidget {
                         children: [
                           FeatureCardWidget(
                             imagePath: ImagePath.addUserMale,
-                            title: "Add User ",
+                            title: "Add Student ",
                             onTap: () {
                               Get.toNamed(AppRoutes.addAccount);
                             },

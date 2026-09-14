@@ -17,4 +17,5 @@ class AppRoutes {
   static const String addAccount="/addAccount";
   static const String allStudent="/allStudent";
   
+  static const String studentDeatilesScreen="/studentDeatilesScreen";
 }

@@ -10,12 +10,12 @@ import '../features/student/student_dashbord/binding/student_dashbord_binding.da
 import '../features/student/student_dashbord/view/student_dashbord_screen.dart';
 import '../features/studentAttendance/binding/student_attendance_binding.dart';
 import '../features/studentAttendance/view/student_attendance_screen.dart';
+import '../features/studentSolution/binding/teacher_solution_binding.dart';
+import '../features/studentSolution/view/teacher_solution_screen.dart';
 import '../features/teacherDasbord/binding/teacher_dashbord_binding.dart';
 import '../features/teacherDasbord/view/teacher_dashbord_screen.dart';
 import '../features/teacherResult/binding/teacher_result_binding,.dart';
 import '../features/teacherResult/view/teacher_result_screen.dart';
-import '../features/studentSolution/binding/student_solution_binding.dart';
-import '../features/studentSolution/view/student_solution_screen.dart';
 import '../features/student_nutice/binding/student_nutice_binding.dart';
 import '../features/student_nutice/view/student_nutice_screen.dart';
 import '../features/studentaddMark/binding/student_add_mark_binding.dart';
@@ -97,9 +97,9 @@ class AppPages {
     ),
 
     GetPage(
-      name: AppRoutes.studentSolution,
-      page: () => const StudentSolutionScreen(),
-      binding: StudentSolutionBinding(),
+      name: AppRoutes.teacherSolution,
+      page: () => const TeacherSolutionScreen(),
+      binding: TeacherSolutionBinding(),
       transition: Transition.leftToRight,
     ),
     GetPage(
@@ -126,7 +126,7 @@ class AppPages {
       binding: AllSttudentBinding(),
       transition: Transition.leftToRight,
     ),
-     GetPage(
+    GetPage(
       name: AppRoutes.studentDeatilesScreen,
       page: () => const StudentDeatilesView(),
       binding: AllSttudentBinding(),

@@ -82,7 +82,7 @@ class TeacherDashbordScreen extends StatelessWidget {
                             imagePath: ImagePath.solutionImage,
                             title: 'Solution',
                             onTap: () {
-                              Get.toNamed(AppRoutes.studentSolution);
+                              Get.toNamed(AppRoutes.teacherSolution);
                             },
                           ),
                           FeatureCardWidget(

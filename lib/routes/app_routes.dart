@@ -10,7 +10,7 @@ class AppRoutes {
   static const String teacherResult = '/teacherResult';
   static const String teacherHomeWork = '/teacherHomeWork';
   static const String studentNutice = '/studentNutice';
-  static const String studentSolution = '/studentSolution';
+  static const String teacherSolution = '/teacherSolution';
   static const String studentAddMark='/studentAddMark';
 
   static const String studentDashbord="/studentDashbord";

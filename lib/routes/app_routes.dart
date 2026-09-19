@@ -18,4 +18,6 @@ class AppRoutes {
   static const String allStudent="/allStudent";
   
   static const String studentDeatilesScreen="/studentDeatilesScreen";
+  static const String studentSolution="/studentSolution";
+  static const String studentAddQuestion="/studentAddQuestion";
 }

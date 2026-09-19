@@ -6,6 +6,9 @@ import '../features/allStudent/view/all_student_screen.dart';
 import '../features/allStudent/view/student_deatiles_view.dart';
 import '../features/auth/register/binding/register_binding.dart';
 import '../features/auth/register/view/register_screen.dart';
+import '../features/student/studentSolution/binding/student_solution_binding.dart';
+import '../features/student/studentSolution/view/student_add_question.dart';
+import '../features/student/studentSolution/view/student_solution_screen.dart';
 import '../features/student/student_dashbord/binding/student_dashbord_binding.dart';
 import '../features/student/student_dashbord/view/student_dashbord_screen.dart';
 import '../features/studentAttendance/binding/student_attendance_binding.dart';
@@ -131,6 +134,18 @@ class AppPages {
       page: () => const StudentDeatilesView(),
       binding: AllSttudentBinding(),
       transition: Transition.leftToRight,
+    ),
+    GetPage(
+      name: AppRoutes.studentSolution,
+      page: () => const StudentSolutionScreen(),
+      binding: StudentSolutionBinding(),
+      transition: Transition.leftToRight,
+    ),
+    GetPage(
+      name: AppRoutes.studentAddQuestion,
+      page: () => const StudentAddQuestion(),
+      binding: StudentSolutionBinding(),
+      transition: Transition.circularReveal,
     ),
   ];
 }

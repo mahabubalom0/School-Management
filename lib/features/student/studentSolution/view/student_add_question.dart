@@ -33,6 +33,27 @@ class StudentAddQuestion extends StatelessWidget {
           ],
         ),
       ),
+      body: Padding(
+        padding: EdgeInsets.symmetric(
+          vertical: AppDimensions.paddingXXL.h,
+          horizontal: AppDimensions.paddingXL.w,
+        ),
+        child: Column(
+          children: [
+            const CustomText(
+              text: "Write Your Question",
+              fontSize: AppDimensions.fontL,
+            ),
+            AppDimensions.spaceXS.h.verticalSpace,
+            CustomTextField(
+              controller: TextEditingController(),
+              hintText: "Write your question",
+              maxLine: 8,
+              minLine: 8,
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

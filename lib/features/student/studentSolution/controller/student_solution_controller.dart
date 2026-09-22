@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
+import '../model/student_question_model.dart';
 import '../service/student_solution_service.dart';
 
 class StudentSolutionController extends GetxController {
@@ -11,6 +12,13 @@ class StudentSolutionController extends GetxController {
   );
   final user = Supabase.instance.client.auth.currentUser;
   final isLoading = false.obs;
+  RxList<StudentQuestionModel> questionsList = RxList<StudentQuestionModel>();
+
+  @override
+  void onInit() {
+    super.onInit();
+    getQuestions();
+  }
 
   Future<void> askQuestion() async {
     if (questionController.text.trim().isEmpty) {
@@ -29,12 +37,41 @@ class StudentSolutionController extends GetxController {
       );
       _showSnackbar("Success", "Question added successfully");
       questionController.clear();
+      getQuestions();
       Get.back();
     } catch (e) {
       _showSnackbar("Error", e.toString());
       debugPrint(e.toString());
     } finally {
       isLoading.value = false;
+    }
+  }
+
+  Future<void> getQuestions() async {
+    try {
+      isLoading.value = true;
+      final response = await service.getQuestion();
+      if (response.isNotEmpty) {
+        questionsList.assignAll(response);
+      }
+    } catch (e) {
+      _showSnackbar("Error", e.toString());
+      debugPrint(e.toString());
+    } finally {
+      isLoading.value = false;
+    }
+  }
+
+  Future<bool> deleteQuestion(int id) async {
+    try {
+      await service.deleteQuestion(id);
+      questionsList.removeWhere((element) => element.id == id);
+      _showSnackbar("Success", "Question deleted successfully");
+      return true;
+    } catch (e) {
+      _showSnackbar("Error", e.toString());
+      debugPrint(e.toString());
+      return false;
     }
   }
 

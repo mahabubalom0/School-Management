@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/route_manager.dart';
+import 'package:get/get.dart';
 import '../../../../core/core.dart';
 import '../../../../core/utils/app_images.dart';
 import '../../../../core/widgets/custom_image_view.dart';
 import '../../../../routes/app_routes.dart';
+import '../controller/student_solution_controller.dart';
 import '../widgets/student_question_item.dart';
 
 class StudentSolutionScreen extends StatelessWidget {
@@ -12,6 +13,7 @@ class StudentSolutionScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.find<StudentSolutionController>();
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -56,17 +58,53 @@ class StudentSolutionScreen extends StatelessWidget {
         ),
       ),
 
-      body: Padding(
-        padding: EdgeInsetsGeometry.only(
-          left: AppDimensions.paddingXL.w,
-          right: AppDimensions.paddingXL.w,
-          top: AppDimensions.paddingS.h,
-          bottom: AppDimensions.paddingS.h,
-        ),
-        child:const Column(
-          children: [
-            StudentQuestionItem(questionTitle: "hhhhhhhhhhhhhhhhhhhhhhhh"),
-          ],
+      body: RefreshIndicator(
+        onRefresh: () async {
+          controller.getQuestions();
+        },
+        child: Padding(
+          padding: EdgeInsetsGeometry.only(
+            left: AppDimensions.paddingXL.w,
+            right: AppDimensions.paddingXL.w,
+            top: AppDimensions.paddingS.h,
+            bottom: AppDimensions.paddingS.h,
+          ),
+          child: Obx(() {
+            if (controller.isLoading.value) {
+              return const Center(child: CircularProgressIndicator());
+            }
+            if (controller.questionsList.isEmpty) {
+              return const Center(
+                child: CustomText(text: "No questions found", color: Colors.red),
+              );
+            }
+            return ListView.builder(
+              itemCount: controller.questionsList.length,
+              shrinkWrap: true,
+              itemBuilder: (context, index) {
+                final item = controller.questionsList[index];
+                return Dismissible(
+                  key: Key(item.id.toString()),
+                  direction: DismissDirection.startToEnd,
+                  background: Container(
+                    color: Colors.red,
+                    alignment: Alignment.centerLeft,
+                    padding: EdgeInsets.symmetric(horizontal: AppDimensions.paddingL.w),
+                    child: const Icon(Icons.delete, color: Colors.white),
+                  ),
+                  confirmDismiss: (direction) async {
+                    if (item.id != null) {
+                      return  controller.deleteQuestion(item.id!);
+                    }
+                    return false;
+                  },
+                  child: StudentQuestionItem(
+                    questionTitle: item.question,
+                  ),
+                );
+              },
+            );
+          }),
         ),
       ),
     );

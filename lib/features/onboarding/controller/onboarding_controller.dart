@@ -10,7 +10,7 @@ class OnboardingController extends GetxController {
     final isLoggedIn = supabase.auth.currentSession != null;
 
     if (isLoggedIn) {
-      Get.offAllNamed(AppRoutes.teacherDashbord);
+      Get.offAllNamed(AppRoutes.studentDashbord);
     } else {
       Get.offAllNamed(AppRoutes.login);
     }

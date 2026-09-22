@@ -45,7 +45,7 @@ class OnboardingScreen extends StatelessWidget {
                       iconPath: ImagePath.studentMale,
                       onTap: () {
                         // Handle tap
-                        Get.toNamed(AppRoutes.studentDashbord);
+                       controller.getTeacher();
                       },
                     ),
                     AppDimensions.spaceHuge.w.horizontalSpace,
@@ -54,7 +54,7 @@ class OnboardingScreen extends StatelessWidget {
                       iconPath: ImagePath.tutionImage,
                       onTap: () {
                         // Handle tap
-                        controller.getTeacher();
+                        Get.toNamed(AppRoutes.teacherDashbord);
                       },
                     ),
                   ],

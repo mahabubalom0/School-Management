@@ -36,4 +36,24 @@ class StudentSolutionService {
       throw e.toString();
     }
   }
+
+  Future<void> editeQuestion({
+    required int id,
+    required String question,
+    required String name,
+    required String questionAns,
+  }) async {
+    try {
+      await _supabaseClient
+          .from("student_question")
+          .update({
+            "question": question,
+            "name": name,
+            "question_ans": questionAns,
+          })
+          .eq("id", id);
+    } catch (e) {
+      throw e.toString();
+    }
+  }
 }

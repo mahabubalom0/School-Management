@@ -7,6 +7,7 @@ import '../../../../core/widgets/custom_image_view.dart';
 import '../../../../routes/app_routes.dart';
 import '../controller/student_solution_controller.dart';
 import '../widgets/student_question_item.dart';
+import 'edite_question_student.dart';
 
 class StudentSolutionScreen extends StatelessWidget {
   const StudentSolutionScreen({super.key});
@@ -75,7 +76,10 @@ class StudentSolutionScreen extends StatelessWidget {
             }
             if (controller.questionsList.isEmpty) {
               return const Center(
-                child: CustomText(text: "No questions found", color: Colors.red),
+                child: CustomText(
+                  text: "No questions found",
+                  color: Colors.red,
+                ),
               );
             }
             return ListView.builder(
@@ -85,22 +89,56 @@ class StudentSolutionScreen extends StatelessWidget {
                 final item = controller.questionsList[index];
                 return Dismissible(
                   key: Key(item.id.toString()),
-                  direction: DismissDirection.startToEnd,
+                  direction: DismissDirection.horizontal,
                   background: Container(
                     color: Colors.red,
                     alignment: Alignment.centerLeft,
-                    padding: EdgeInsets.symmetric(horizontal: AppDimensions.paddingL.w),
+                    padding: EdgeInsets.symmetric(
+                      horizontal: AppDimensions.paddingL.w,
+                    ),
                     child: const Icon(Icons.delete, color: Colors.white),
                   ),
+                  secondaryBackground: Container(
+                    color: Colors.blue,
+                    alignment: Alignment.centerRight,
+                    padding: EdgeInsets.symmetric(
+                      horizontal: AppDimensions.paddingL.w,
+                    ),
+                    child: const Icon(Icons.edit, color: Colors.white),
+                  ),
+                  onDismissed: (direction) async {
+                    if (direction == DismissDirection.startToEnd) {
+                    } else if (direction == DismissDirection.endToStart) {
+                      // Right to left: Edit action
+                      if (item.id != null) {
+                        controller.editequestionController.text = item.question;
+                        Get.to(
+                          EditeQuestionStudent(id: item.id!),
+                          transition: Transition.circularReveal,
+                        );
+                      }
+                    }
+                  },
                   confirmDismiss: (direction) async {
-                    if (item.id != null) {
-                      return  controller.deleteQuestion(item.id!);
+                    if (direction == DismissDirection.startToEnd) {
+                      // Left to Right (Delete)
+                      if (item.id != null) {
+                        return controller.deleteQuestion(item.id!);
+                      }
+                    } else if (direction == DismissDirection.endToStart) {
+                      // Right to Left (Edit)
+                      if (item.id != null) {
+                        controller.editequestionController.text = item.question;
+                        Get.to(
+                          EditeQuestionStudent(id: item.id!),
+                          transition: Transition.circularReveal,
+                        );
+                        return false;
+                      }
                     }
                     return false;
                   },
-                  child: StudentQuestionItem(
-                    questionTitle: item.question,
-                  ),
+                  child: StudentQuestionItem(questionTitle: item.question),
                 );
               },
             );

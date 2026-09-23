@@ -7,13 +7,16 @@ import '../service/student_solution_service.dart';
 
 class StudentSolutionController extends GetxController {
   final questionController = TextEditingController();
+
   final StudentSolutionService service = StudentSolutionService(
     Supabase.instance.client,
   );
   final user = Supabase.instance.client.auth.currentUser;
   final isLoading = false.obs;
   RxList<StudentQuestionModel> questionsList = RxList<StudentQuestionModel>();
-
+  // edite funtion variable
+  final editequestionAnsController = TextEditingController();
+  final editequestionController = TextEditingController();
   @override
   void onInit() {
     super.onInit();
@@ -72,6 +75,35 @@ class StudentSolutionController extends GetxController {
       _showSnackbar("Error", e.toString());
       debugPrint(e.toString());
       return false;
+    }
+  }
+
+  Future<void> editeQuestion(int id) async {
+    if (editequestionController.text.trim().isEmpty) {
+      _showSnackbar("Error", "Please enter a question");
+      return;
+    }
+    if (user == null) {
+      _showSnackbar("Error", "You are not logged in");
+      return;
+    }
+    try {
+      isLoading.value = true;
+      await service.editeQuestion(
+        id: id,
+        question: editequestionController.text,
+        name: user!.email ?? "Unknown",
+        questionAns: editequestionAnsController.text,
+      );
+      _showSnackbar("Success", "Question edite successfully");
+      questionController.clear();
+      getQuestions();
+      Get.back();
+    } catch (e) {
+      _showSnackbar("Error", e.toString());
+      debugPrint(e.toString());
+    } finally {
+      isLoading.value = false;
     }
   }
 

@@ -75,7 +75,7 @@ class AllStudentController extends GetxController {
         ),
       );
     } else {
-      print("Error: Get.context is null. Cannot show snackbar.");
+      debugPrint("Error: Get.context is null. Cannot show snackbar.");
     }
   }
 }

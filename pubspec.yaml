@@ -1,4 +1,4 @@
-name: Shipx
+name: SchoolManagment
 description: "A production-ready Flutter application built with Clean Architecture and GetX."
 
 publish_to: 'none' 

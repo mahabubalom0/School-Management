@@ -89,27 +89,20 @@ class TeacherHomeWorkScreen extends StatelessWidget {
                 ),
                 AppDimensions.spaceM.h.verticalSpace,
                 CustomTextField(
-                  controller: TextEditingController(),
+                  controller: controller.addHomeWorkClt,
                   hintText: "enter home work..",
                 ),
                 AppDimensions.spaceXL.h.verticalSpace,
-                CustomButton(
-                  text: "Submit",
-                  onPressed: () {
-                    controller.submitButton();
-                  },
-                ),
-                AppDimensions.spaceXXL.h.verticalSpace,
-                Align(
-                  alignment: AlignmentGeometry.center,
-                  child: CustomText(
-                    text: "File is uploaded sucessfully!",
-                    color: ShipXColors.teal,
-                    fontSize: AppDimensions.fontM.sp,
-                    fontWeight: FontWeight.w500,
+                Obx(
+                  () => CustomButton(
+                    isLoading: controller.isloading.value,
+                    text: "Submit",
+                    onPressed: () {
+                      controller.submitButton();
+                    },
                   ),
                 ),
-                AppDimensions.spaceXL.h.verticalSpace,
+                AppDimensions.spaceXXL.h.verticalSpace,
               ],
             ),
           ),

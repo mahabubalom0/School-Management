@@ -3,12 +3,12 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import '../model/all_student_model.dart';
 
 class AllStudentService {
-  SupabaseClient _supabaseClient;
-  AllStudentService(this._supabaseClient);
+  SupabaseClient supabaseClient;
+  AllStudentService(this.supabaseClient);
 
   Future<List<AllStudentModel>> getAllStudent() async {
     try {
-      final response = await _supabaseClient.from("student_list").select("*");
+      final response = await supabaseClient.from("student_list").select("*");
       if (response.isEmpty) {
         throw Exception("No student found");
       }
@@ -22,7 +22,7 @@ class AllStudentService {
 
   Future<void> getStudentDeletd({required String studentId}) async {
     try {
-      await _supabaseClient.from("student_list").delete().eq("student_id", studentId);
+      await supabaseClient.from("student_list").delete().eq("student_id", studentId);
       return;
     } catch (e) {
       throw e.toString();

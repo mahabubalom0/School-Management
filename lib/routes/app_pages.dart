@@ -35,8 +35,6 @@ import '../features/auth/login/view/login_screen.dart';
 import '../features/auth/login/binding/login_binding.dart';
 import '../features/main/view/main_screen.dart';
 import '../features/main/binding/main_binding.dart';
-import '../features/home/view/home_screen.dart';
-import '../features/home/binding/home_binding.dart';
 
 class AppPages {
   static final routes = [
@@ -60,11 +58,7 @@ class AppPages {
       page: () => const MainScreen(),
       binding: MainBinding(),
     ),
-    GetPage(
-      name: AppRoutes.home,
-      page: () => const HomeScreen(),
-      binding: HomeBinding(),
-    ),
+   
     GetPage(
       name: AppRoutes.register,
       page: () => const RegisterScreen(),

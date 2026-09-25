@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import '../../../core/core.dart';
+import '../controller/teacher_home_work_controller.dart';
 
 class AcademicFilterCard extends StatefulWidget {
   final List<String> classList;
@@ -24,6 +26,7 @@ class _AcademicFilterCardState extends State<AcademicFilterCard> {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(TeacherHomeWorkController());
     return Container(
       decoration: BoxDecoration(
         color: ShipXColors.white,
@@ -63,21 +66,36 @@ class _AcademicFilterCardState extends State<AcademicFilterCard> {
                   title: "Class",
                   items: widget.classList,
                   selectedValue: selectedClass,
-                  onChanged: (val) => setState(() => selectedClass = val),
+                  onChanged: (val) {
+                    if (val != null) {
+                      setState(() => selectedClass = val);
+                      controller.selectedClass = val;
+                    }
+                  },
                 ),
                 AppDimensions.spaceL.h.verticalSpace,
                 _buildFilterItem(
                   title: "Section",
                   items: widget.sectionsList,
                   selectedValue: selectedSection,
-                  onChanged: (val) => setState(() => selectedSection = val),
+                  onChanged: (val) {
+                    if (val != null) {
+                      setState(() => selectedSection = val);
+                      controller.selectedSection = val;
+                    }
+                  },
                 ),
                 AppDimensions.spaceL.h.verticalSpace,
                 _buildFilterItem(
                   title: "Subject",
                   items: widget.subjectsList,
                   selectedValue: selectedSubject,
-                  onChanged: (val) => setState(() => selectedSubject = val),
+                  onChanged: (val) {
+                    if (val != null) {
+                      setState(() => selectedSubject = val);
+                      controller.selectedSubject = val;
+                    }
+                  },
                 ),
               ],
             ),

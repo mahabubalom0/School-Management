@@ -1,7 +1,7 @@
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-
 import '../service/add_student_service.dart';
 
 class AddAccountController extends GetxController {
@@ -46,13 +46,13 @@ class AddAccountController extends GetxController {
         address: addressController.text,
       );
       if (response == null) {
-        print("SUPABASE ERROR: ttt");
+        debugPrint("SUPABASE ERROR: ttt");
       }
 
       close();
       Get.back();
     } catch (e) {
-      print("SUPABASE ERROR: $e");
+      debugPrint("SUPABASE ERROR: $e");
     } finally {
       isLoading.value = false;
     }

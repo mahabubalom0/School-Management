@@ -138,7 +138,16 @@ class StudentSolutionScreen extends StatelessWidget {
                     }
                     return false;
                   },
-                  child: StudentQuestionItem(questionTitle: item.question),
+                  child: StudentQuestionItem(
+                    questionTitle: item.question,
+                    index: index + 1,
+                    onViewPressed: () {
+                      Get.toNamed(
+                        AppRoutes.studentDeatilsSolution,
+                        arguments: {"item": item, "index": index},
+                      );
+                    },
+                  ),
                 );
               },
             );

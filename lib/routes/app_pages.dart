@@ -8,6 +8,7 @@ import '../features/auth/register/binding/register_binding.dart';
 import '../features/auth/register/view/register_screen.dart';
 import '../features/student/studentSolution/binding/student_solution_binding.dart';
 import '../features/student/studentSolution/view/student_add_question.dart';
+import '../features/student/studentSolution/view/student_deatils_solution.dart';
 import '../features/student/studentSolution/view/student_solution_screen.dart';
 import '../features/student/student_dashbord/binding/student_dashbord_binding.dart';
 import '../features/student/student_dashbord/view/student_dashbord_screen.dart';
@@ -146,6 +147,12 @@ class AppPages {
       page: () => const StudentAddQuestion(),
       binding: StudentSolutionBinding(),
       transition: Transition.circularReveal,
+    ),
+    GetPage(
+      name: AppRoutes.studentDeatilsSolution,
+      page: () => const StudentDeatilsSolution(),
+      binding: StudentSolutionBinding(),
+      transition: Transition.zoom,
     ),
   ];
 }

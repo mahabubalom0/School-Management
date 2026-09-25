@@ -4,7 +4,14 @@ import '../../../../core/core.dart';
 
 class StudentQuestionItem extends StatelessWidget {
   final String questionTitle;
-  const StudentQuestionItem({super.key, required this.questionTitle});
+  final VoidCallback? onViewPressed;
+  final int? index;
+  const StudentQuestionItem({
+    super.key,
+    required this.questionTitle,
+    this.onViewPressed,
+    this.index,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -42,8 +49,8 @@ class StudentQuestionItem extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const CustomText(
-                  text: "Question",
+                CustomText(
+                  text: "Question #$index",
                   fontSize: AppDimensions.fontL,
                   fontWeight: FontWeight.bold,
                   color: ShipXColors.blue,
@@ -52,12 +59,14 @@ class StudentQuestionItem extends StatelessWidget {
                   text: questionTitle,
                   fontSize: AppDimensions.fontS,
                   color: ShipXColors.body,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                 ),
                 AppDimensions.spaceS.h.verticalSpace,
                 Align(
                   alignment: Alignment.centerRight,
                   child: TextButton(
-                    onPressed: () {},
+                    onPressed: onViewPressed,
                     style: TextButton.styleFrom(
                       padding: EdgeInsets.symmetric(
                         horizontal: AppDimensions.paddingM.w,

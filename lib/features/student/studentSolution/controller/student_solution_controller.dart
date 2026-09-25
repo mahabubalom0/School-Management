@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:pdf/pdf.dart';
+import 'package:pdf/widgets.dart' as pw;
+import 'package:printing/printing.dart';
 
 import '../model/student_question_model.dart';
 import '../service/student_solution_service.dart';
@@ -25,11 +28,11 @@ class StudentSolutionController extends GetxController {
 
   Future<void> askQuestion() async {
     if (questionController.text.trim().isEmpty) {
-      _showSnackbar("Error", "Please enter a question");
+      showSnackbar("Error", "Please enter a question");
       return;
     }
     if (user == null) {
-      _showSnackbar("Error", "You are not logged in");
+      showSnackbar("Error", "You are not logged in");
       return;
     }
     try {
@@ -38,12 +41,12 @@ class StudentSolutionController extends GetxController {
         question: questionController.text,
         name: user!.email ?? "Unknown",
       );
-      _showSnackbar("Success", "Question added successfully");
+      showSnackbar("Success", "Question added successfully");
       questionController.clear();
       getQuestions();
       Get.back();
     } catch (e) {
-      _showSnackbar("Error", e.toString());
+      showSnackbar("Error", e.toString());
       debugPrint(e.toString());
     } finally {
       isLoading.value = false;
@@ -58,7 +61,7 @@ class StudentSolutionController extends GetxController {
         questionsList.assignAll(response);
       }
     } catch (e) {
-      _showSnackbar("Error", e.toString());
+      showSnackbar("Error", e.toString());
       debugPrint(e.toString());
     } finally {
       isLoading.value = false;
@@ -69,10 +72,10 @@ class StudentSolutionController extends GetxController {
     try {
       await service.deleteQuestion(id);
       questionsList.removeWhere((element) => element.id == id);
-      _showSnackbar("Success", "Question deleted successfully");
+      showSnackbar("Success", "Question deleted successfully");
       return true;
     } catch (e) {
-      _showSnackbar("Error", e.toString());
+      showSnackbar("Error", e.toString());
       debugPrint(e.toString());
       return false;
     }
@@ -80,11 +83,11 @@ class StudentSolutionController extends GetxController {
 
   Future<void> editeQuestion(int id) async {
     if (editequestionController.text.trim().isEmpty) {
-      _showSnackbar("Error", "Please enter a question");
+      showSnackbar("Error", "Please enter a question");
       return;
     }
     if (user == null) {
-      _showSnackbar("Error", "You are not logged in");
+      showSnackbar("Error", "You are not logged in");
       return;
     }
     try {
@@ -95,19 +98,75 @@ class StudentSolutionController extends GetxController {
         name: user!.email ?? "Unknown",
         questionAns: editequestionAnsController.text,
       );
-      _showSnackbar("Success", "Question edite successfully");
+      showSnackbar("Success", "Question edite successfully");
       questionController.clear();
       getQuestions();
       Get.back();
     } catch (e) {
-      _showSnackbar("Error", e.toString());
+      showSnackbar("Error", e.toString());
       debugPrint(e.toString());
     } finally {
       isLoading.value = false;
     }
   }
 
-  void _showSnackbar(String title, String message) {
+  Future<void> downloadAnswerAsPdf(String question, String answer) async {
+    try {
+      final pdf = pw.Document();
+
+      // Load Unicode-supported fonts for Bengali / other languages
+      final font = await PdfGoogleFonts.notoSansBengaliRegular();
+      final boldFont = await PdfGoogleFonts.notoSansBengaliBold();
+
+      pdf.addPage(
+        pw.Page(
+          pageFormat: PdfPageFormat.a4,
+          theme: pw.ThemeData.withFont(base: font, bold: boldFont),
+          build: (pw.Context context) {
+            return pw.Padding(
+              padding: const pw.EdgeInsets.all(10),
+              child: pw.Column(
+                crossAxisAlignment: pw.CrossAxisAlignment.start,
+                children: [
+                  pw.Text(
+                    "Question:",
+                    style: pw.TextStyle(
+                      fontSize: 24,
+                      fontWeight: pw.FontWeight.bold,
+                    ),
+                  ),
+                  pw.SizedBox(height: 10),
+                  pw.Text(question, style: const pw.TextStyle(fontSize: 18)),
+                  pw.SizedBox(height: 20),
+                  pw.Divider(),
+                  pw.SizedBox(height: 20),
+                  pw.Text(
+                    "Solution:",
+                    style: pw.TextStyle(
+                      fontSize: 24,
+                      fontWeight: pw.FontWeight.bold,
+                    ),
+                  ),
+                  pw.SizedBox(height: 10),
+                  pw.Text(answer, style: const pw.TextStyle(fontSize: 18)),
+                ],
+              ),
+            );
+          },
+        ),
+      );
+
+      await Printing.sharePdf(
+        bytes: await pdf.save(),
+        filename: '$question solution.pdf',
+      );
+    } catch (e) {
+      showSnackbar("Error", "Could not generate PDF: ${e.toString()}");
+      debugPrint(e.toString());
+    }
+  }
+
+  void showSnackbar(String title, String message) {
     if (Get.context != null) {
       ScaffoldMessenger.of(Get.context!).clearSnackBars();
       ScaffoldMessenger.of(Get.context!).showSnackBar(

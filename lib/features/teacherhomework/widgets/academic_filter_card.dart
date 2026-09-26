@@ -86,16 +86,94 @@ class _AcademicFilterCardState extends State<AcademicFilterCard> {
                   },
                 ),
                 AppDimensions.spaceL.h.verticalSpace,
-                _buildFilterItem(
-                  title: "Subject",
-                  items: widget.subjectsList,
-                  selectedValue: selectedSubject,
-                  onChanged: (val) {
-                    if (val != null) {
-                      setState(() => selectedSubject = val);
-                      controller.selectedSubject = val;
-                    }
-                  },
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    Expanded(
+                      flex: 10,
+                      child: Obx(() {
+                        return controller.selectedBool.value
+                            ? Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  CustomText(
+                                    text: "Subject",
+                                    fontSize: AppDimensions.fontS.sp,
+                                    color: ShipXColors.black,
+                                  ),
+                                  AppDimensions.spaceS.h.verticalSpace,
+                                  TextFormField(
+                                    style: TextStyle(
+                                      fontSize: AppDimensions.fontM.sp,
+                                      color: ShipXColors.black,
+                                    ),
+                                    controller: controller.seletedsubjectCLT,
+                                    onChanged: (val) {
+                                      controller.selectedSubject = val;
+                                    },
+                                    decoration: InputDecoration(
+                                      isDense: true,
+                                      contentPadding: EdgeInsets.symmetric(
+                                        horizontal: AppDimensions.paddingXS.w,
+                                        vertical: 5.h,
+                                      ),
+                                      border: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(
+                                          AppDimensions.radiusS.r,
+                                        ),
+                                      ),
+                                      enabledBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(
+                                          AppDimensions.radiusS.r,
+                                        ),
+                                      ),
+                                      focusedBorder: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(
+                                          AppDimensions.radiusS.r,
+                                        ),
+                                      ),
+                                      hintText: "Enter Subject",
+                                      hintStyle: TextStyle(
+                                        fontSize: AppDimensions.fontS.sp,
+                                        color: ShipXColors.bodyLight,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              )
+                            : _buildFilterItem(
+                                title: "Subject",
+                                items: widget.subjectsList,
+                                selectedValue: selectedSubject,
+                                onChanged: (val) {
+                                  if (val != null) {
+                                    setState(() => selectedSubject = val);
+                                    controller.selectedSubject = val;
+                                  }
+                                },
+                              );
+                      }),
+                    ),
+                    AppDimensions.spaceS.w.horizontalSpace,
+                    Expanded(
+                      flex: 1,
+                      child: IconButton(
+                        onPressed: () {
+                          controller.selectedBool.value =
+                              !controller.selectedBool.value;
+                        },
+                        icon: Obx(() {
+                          return Icon(
+                            controller.selectedBool.value
+                                ? Icons.add
+                                : Icons.search,
+                            size: AppDimensions.iconXL,
+                            color: ShipXColors.black,
+                          );
+                        }),
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),

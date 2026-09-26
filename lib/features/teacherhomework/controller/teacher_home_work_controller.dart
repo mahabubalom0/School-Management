@@ -9,6 +9,8 @@ class TeacherHomeWorkController extends GetxController {
   String selectedClass = "Select Class";
   String selectedSection = "Select Section";
   String selectedSubject = "Select Subject";
+  final seletedsubjectCLT = TextEditingController();
+  final RxBool selectedBool = false.obs;
   final RxBool isloading = false.obs;
   final TeacherHomeWorkService service = TeacherHomeWorkService(
     Supabase.instance.client,

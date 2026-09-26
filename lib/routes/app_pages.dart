@@ -20,8 +20,8 @@ import '../features/teacherDasbord/binding/teacher_dashbord_binding.dart';
 import '../features/teacherDasbord/view/teacher_dashbord_screen.dart';
 import '../features/teacherResult/binding/teacher_result_binding,.dart';
 import '../features/teacherResult/view/teacher_result_screen.dart';
-import '../features/student_nutice/binding/student_nutice_binding.dart';
-import '../features/student_nutice/view/student_nutice_screen.dart';
+import '../features/teacher_nutice/binding/teacher_notice_binding.dart';
+import '../features/teacher_nutice/view/teacher_nutice_screen.dart';
 import '../features/studentaddMark/binding/student_add_mark_binding.dart';
 import '../features/studentaddMark/view/student_add_mark_screen.dart';
 import '../features/teacherhomework/binding/teacher_home_work_binding.dart';
@@ -88,9 +88,9 @@ class AppPages {
       transition: Transition.leftToRight,
     ),
     GetPage(
-      name: AppRoutes.studentNutice,
-      page: () => const StudentNuticeScreen(),
-      binding: StudentNuticeBinding(),
+      name: AppRoutes.teacherNotice,
+      page: () => const TeacherNoticeScreen(),
+      binding: TeacherNoticeBinding(),
       transition: Transition.leftToRight,
     ),
 

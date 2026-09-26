@@ -89,7 +89,7 @@ class TeacherDashbordScreen extends StatelessWidget {
                             imagePath: ImagePath.noticeImage,
                             title: 'Notice',
                             onTap: () {
-                              Get.toNamed(AppRoutes.studentNutice);
+                              Get.toNamed(AppRoutes.teacherNotice);
                             },
                           ),
                         ],

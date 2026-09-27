@@ -23,6 +23,30 @@ class AllStudentController extends GetxController {
     "8th",
   ];
   final RxInt selectedSemesterIndex = 0.obs;
+
+  List<AllStudentModel> get filteredStudentList {
+    if (selectedSemesterIndex.value == 0) {
+      return allStudentList;
+    } else {
+      final selectedSemester = semesterName[selectedSemesterIndex.value];
+      final selectedNumber = selectedSemester.replaceAll(RegExp(r'[^0-9]'), '');
+
+      return allStudentList.where((student) {
+        if (student.studentClass == null) return false;
+
+        // Exact match (e.g. "1st" == "1st")
+        if (student.studentClass == selectedSemester) return true;
+
+        // Number match (e.g. "1" == "1")
+        final studentClassNumber = student.studentClass!.replaceAll(
+          RegExp(r'[^0-9]'),
+          '',
+        );
+        return studentClassNumber == selectedNumber;
+      }).toList();
+    }
+  }
+
   @override
   void onInit() {
     super.onInit();

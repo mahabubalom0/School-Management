@@ -70,51 +70,58 @@ class AllStudentScreen extends StatelessWidget {
             ),
 
             AppDimensions.spaceL.h.verticalSpace,
-            Padding(
-              padding: EdgeInsetsGeometry.symmetric(
-                horizontal: AppDimensions.paddingXL.w,
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Obx(
-                    () => CustomText(
-                      text: controller.selectedSemesterIndex.value == 0
-                          ? "All Student (${controller.allStudentList.length})"
-                          : "Semester ${controller.selectedSemesterIndex.value} (${controller.allStudentList.length})",
-                      fontSize: AppDimensions.fontL,
-                      fontWeight: FontWeight.bold,
-                    ),
+            Expanded(
+              child: SingleChildScrollView(
+                child: Padding(
+                  padding: EdgeInsetsGeometry.symmetric(
+                    horizontal: AppDimensions.paddingXL.w,
                   ),
-                  AppDimensions.spaceL.h.verticalSpace,
-                  Obx(() {
-                    if (controller.isLoading.value) {
-                      return const Center(child: CircularProgressIndicator());
-                    }
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Obx(
+                        () => CustomText(
+                          text: controller.selectedSemesterIndex.value == 0
+                              ? "All Student (${controller.filteredStudentList.length})"
+                              : "${controller.semesterName[controller.selectedSemesterIndex.value]} Semester (${controller.filteredStudentList.length})",
+                          fontSize: AppDimensions.fontL,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      AppDimensions.spaceL.h.verticalSpace,
+                      Obx(() {
+                        if (controller.isLoading.value) {
+                          return const Center(
+                            child: CircularProgressIndicator(),
+                          );
+                        }
 
-                    if (controller.allStudentList.isEmpty) {
-                      return const NoDataItem();
-                    }
-                    return ListView.builder(
-                      itemCount: controller.allStudentList.length,
-                      shrinkWrap: true,
-                      itemBuilder: (_, index) {
-                        final item = controller.allStudentList[index];
-                        return StudentItemCard(
-                          onTap: () {
-                            Get.toNamed(
-                              AppRoutes.studentDeatilesScreen,
-                              arguments: item,
+                        if (controller.filteredStudentList.isEmpty) {
+                          return const NoDataItem();
+                        }
+                        return ListView.builder(
+                          itemCount: controller.filteredStudentList.length,
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemBuilder: (_, index) {
+                            final item = controller.filteredStudentList[index];
+                            return StudentItemCard(
+                              onTap: () {
+                                Get.toNamed(
+                                  AppRoutes.studentDeatilesScreen,
+                                  arguments: item,
+                                );
+                              },
+                              className: item.studentClass ?? 'N/A',
+                              name: item.name ?? 'Unknown',
+                              studentId: item.studentId ?? 'N/A',
                             );
                           },
-                          className: item.studentClass ?? 'N/A',
-                          name: item.name ?? 'Unknown',
-                          studentId: item.studentId ?? 'N/A',
                         );
-                      },
-                    );
-                  }),
-                ],
+                      }),
+                    ],
+                  ),
+                ),
               ),
             ),
           ],

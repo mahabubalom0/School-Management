@@ -8,13 +8,14 @@ class StudentMarkTile extends StatelessWidget {
   final TextEditingController rollNumber;
   final TextEditingController initialMark;
   final Function(String) onMarkChanged;
-
+  final VoidCallback? deleteOnTap;
   const StudentMarkTile({
     super.key,
     required this.name,
     required this.rollNumber,
     required this.initialMark,
     required this.onMarkChanged,
+    this.deleteOnTap,
   });
 
   @override
@@ -34,19 +35,8 @@ class StudentMarkTile extends StatelessWidget {
         ],
       ),
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          CircleAvatar(
-            backgroundColor: Colors.blue.shade100,
-            child: Text(
-              name.text.isNotEmpty
-                  ? name.text.substring(0, 1).toUpperCase()
-                  : 'S',
-              style: TextStyle(
-                color: Colors.blue.shade800,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ),
           const SizedBox(width: 16),
           Expanded(
             child: Column(
@@ -65,33 +55,50 @@ class StudentMarkTile extends StatelessWidget {
             ),
           ),
           AppDimensions.spaceXL.w.horizontalSpace,
-          SizedBox(
-            width: 80,
-            child: TextFormField(
-              controller: initialMark,
-              keyboardType: TextInputType.number,
-              textAlign: TextAlign.center,
-              decoration: InputDecoration(
-                hintText: 'Mark',
-                contentPadding: const EdgeInsets.symmetric(
-                  horizontal: 8,
-                  vertical: 12,
-                ),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(8),
-                  borderSide: BorderSide(color: Colors.grey.shade300),
-                ),
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(8),
-                  borderSide: BorderSide(color: Colors.grey.shade300),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(8),
-                  borderSide: const BorderSide(color: Colors.blue, width: 2),
+          Column(
+            children: [
+              IconButton(
+                onPressed: deleteOnTap,
+                icon: const Icon(Icons.delete, color: Colors.red),
+              ),
+              AppDimensions.spaceM.h.verticalSpace,
+              SizedBox(
+                width: 80,
+                child: TextFormField(
+                  controller: initialMark,
+                  keyboardType: TextInputType.number,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.grey.shade800,
+                  ),
+                  decoration: InputDecoration(
+                    hintText: 'Mark',
+                    contentPadding: const EdgeInsets.symmetric(
+                      horizontal: 8,
+                      vertical: 12,
+                    ),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(8),
+                      borderSide: BorderSide(color: Colors.grey.shade300),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(8),
+                      borderSide: BorderSide(color: Colors.grey.shade300),
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(8),
+                      borderSide: const BorderSide(
+                        color: Colors.blue,
+                        width: 2,
+                      ),
+                    ),
+                  ),
+                  onChanged: onMarkChanged,
                 ),
               ),
-              onChanged: onMarkChanged,
-            ),
+            ],
           ),
         ],
       ),

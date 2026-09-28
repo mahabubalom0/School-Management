@@ -33,7 +33,7 @@ class DropdownSelector extends StatelessWidget {
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 12),
           decoration: BoxDecoration(
-            color: Colors.grey.shade50,
+            color: const Color.fromARGB(255, 188, 51, 51),
             borderRadius: BorderRadius.circular(8),
             border: Border.all(color: Colors.grey.shade300),
           ),
@@ -44,10 +44,7 @@ class DropdownSelector extends StatelessWidget {
               hint: Text(hint),
               icon: const Icon(Icons.keyboard_arrow_down, color: Colors.grey),
               items: items.map((String item) {
-                return DropdownMenuItem<String>(
-                  value: item,
-                  child: Text(item),
-                );
+                return DropdownMenuItem<String>(value: item, child: Text(item));
               }).toList(),
               onChanged: onChanged,
             ),

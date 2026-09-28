@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-
 import '../../../core/core.dart';
 import '../controller/student_add_mark_controller.dart';
 import '../widgets/dropdown_selector.dart';
@@ -21,7 +20,7 @@ class StudentAddMarkScreen extends StatelessWidget {
           'Add Student Marks',
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
-        backgroundColor: Colors.white,
+        backgroundColor: ShipXColors.primary,
         foregroundColor: Colors.black,
         elevation: 0,
         centerTitle: true,
@@ -187,6 +186,9 @@ class StudentAddMarkScreen extends StatelessWidget {
                       rollNumber: inputItem.rollController,
                       initialMark: inputItem.markController,
                       onMarkChanged: (val) {},
+                      deleteOnTap: () {
+                        controller.removeStudentInput(index);
+                      },
                     );
                   },
                 );

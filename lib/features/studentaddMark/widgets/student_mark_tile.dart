@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../../core/core.dart';
 
 class StudentMarkTile extends StatelessWidget {
-  final String name;
-  final String rollNumber;
-  final String initialMark;
+  final TextEditingController name;
+  final TextEditingController rollNumber;
+  final TextEditingController initialMark;
   final Function(String) onMarkChanged;
 
   const StudentMarkTile({
@@ -35,7 +38,9 @@ class StudentMarkTile extends StatelessWidget {
           CircleAvatar(
             backgroundColor: Colors.blue.shade100,
             child: Text(
-              name.isNotEmpty ? name.substring(0, 1).toUpperCase() : 'S',
+              name.text.isNotEmpty
+                  ? name.text.substring(0, 1).toUpperCase()
+                  : 'S',
               style: TextStyle(
                 color: Colors.blue.shade800,
                 fontWeight: FontWeight.bold,
@@ -47,28 +52,23 @@ class StudentMarkTile extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  name,
-                  style: const TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                  ),
+                CustomTextField(
+                  controller: name,
+                  hintText: "Enter Student Name",
                 ),
-                const SizedBox(height: 4),
-                Text(
-                  'Roll: $rollNumber',
-                  style: TextStyle(
-                    fontSize: 13,
-                    color: Colors.grey.shade600,
-                  ),
+                const SizedBox(height: AppDimensions.spaceL),
+                CustomTextField(
+                  controller: rollNumber,
+                  hintText: "Enter Roll Number",
                 ),
               ],
             ),
           ),
+          AppDimensions.spaceXL.w.horizontalSpace,
           SizedBox(
             width: 80,
             child: TextFormField(
-              initialValue: initialMark,
+              controller: initialMark,
               keyboardType: TextInputType.number,
               textAlign: TextAlign.center,
               decoration: InputDecoration(

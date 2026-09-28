@@ -1,9 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
+import '../service/student_mark_service.dart';
 
-import '../model/student_mark_model';
+class StudentMarkInputItem {
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController rollController = TextEditingController();
+  final TextEditingController markController = TextEditingController();
 
-
+  void dispose() {
+    nameController.dispose();
+    rollController.dispose();
+    markController.dispose();
+  }
+}
 
 class StudentAddMarkController extends GetxController {
   // Dropdown selections
@@ -12,65 +22,120 @@ class StudentAddMarkController extends GetxController {
   final selectedSubject = ''.obs;
   final selectedExam = ''.obs;
 
+  final service = StudentMarkService(supabase: Supabase.instance.client);
+
   // Options for dropdowns
-  final classes = ['Class 1', 'Class 2', 'Class 3', 'Class 4', 'Class 5'];
+  final classes = ['1st', '2nd', '3rd', '4th', '5th', '6th', '7th', '8th'];
   final sections = ['A', 'B', 'C'];
   final subjects = ['Mathematics', 'Science', 'English', 'History'];
   final exams = ['First Term', 'Mid Term', 'Final Exam'];
 
-  // Students list
-  final students = <StudentMarkModel>[].obs;
+  // Dynamic inputs
+  final studentInputs = <StudentMarkInputItem>[].obs;
   final isLoading = false.obs;
 
   @override
   void onInit() {
     super.onInit();
-    // Load some dummy students initially
-    _loadDummyStudents();
+    addStudentInput();
   }
 
-  void _loadDummyStudents() {
-    students.value = [
-      StudentMarkModel(id: '1', name: 'John Doe', rollNumber: '101'),
-      StudentMarkModel(id: '2', name: 'Jane Smith', rollNumber: '102'),
-      StudentMarkModel(id: '3', name: 'Alice Johnson', rollNumber: '103'),
-      StudentMarkModel(id: '4', name: 'Bob Brown', rollNumber: '104'),
-    ];
+  void addStudentInput() {
+    studentInputs.add(StudentMarkInputItem());
   }
 
-  // Update mark in the list
-  void updateMark(String studentId, String newMark) {
-    final index = students.indexWhere((s) => s.id == studentId);
-    if (index != -1) {
-      students[index].mark = newMark;
+  void removeStudentInput(int index) {
+    if (studentInputs.length > 1) {
+      studentInputs[index].dispose();
+      studentInputs.removeAt(index);
     }
   }
 
-  // Submit data to Supabase (Mocked for now)
-  void submitMarks() {
-    if (selectedClass.value.isEmpty || selectedSubject.value.isEmpty) {
-      Get.snackbar(
-        'Error',
-        'Please select class and subject first',
-        snackPosition: SnackPosition.BOTTOM,
-        backgroundColor: Colors.red.shade600,
-        colorText: Colors.white,
+  @override
+  void onClose() {
+    for (var input in studentInputs) {
+      input.dispose();
+    }
+    super.onClose();
+  }
+
+  // Submit all marks to Supabase
+  Future<void> submitMarks() async {
+    try {
+      isLoading.value = true;
+      if (selectedClass.value.isEmpty ||
+          selectedSubject.value.isEmpty ||
+          selectedSection.value.isEmpty ||
+          selectedExam.value.isEmpty) {
+        _showSnackbar(
+          "Error",
+          "Please select class, section, subject and exam",
+        );
+        return;
+      }
+
+      bool hasError = false;
+
+      for (var input in studentInputs) {
+        if (input.nameController.text.isEmpty ||
+            input.rollController.text.isEmpty ||
+            input.markController.text.isEmpty) {
+          hasError = true;
+          break;
+        }
+      }
+
+      if (hasError) {
+        _showSnackbar("Error", "Please fill all the student fields");
+        return;
+      }
+
+      for (var input in studentInputs) {
+        await service.addMark(
+          input.nameController.text,
+          input.rollController.text,
+          selectedClass.value,
+          selectedSection.value,
+          selectedSubject.value,
+          selectedExam.value,
+          input.markController.text,
+        );
+      }
+
+      _showSnackbar("Success", "Marks added successfully");
+
+      // Reset inputs after successful submission
+      for (var input in studentInputs) {
+        input.dispose();
+      }
+      studentInputs.clear();
+      addStudentInput();
+    } catch (e) {
+      debugPrint(e.toString());
+      _showSnackbar("Error", "Failed to add mark");
+    } finally {
+      isLoading.value = false;
+    }
+  }
+
+  void _showSnackbar(String title, String message) {
+    if (Get.context != null) {
+      ScaffoldMessenger.of(Get.context!).clearSnackBars();
+      ScaffoldMessenger.of(Get.context!).showSnackBar(
+        SnackBar(
+          content: Text(
+            "$title: $message",
+            style: const TextStyle(color: Colors.white),
+          ),
+          backgroundColor: title == "Error" ? Colors.redAccent : Colors.green,
+          behavior: SnackBarBehavior.floating,
+          margin: const EdgeInsets.all(10),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+          duration: const Duration(seconds: 3),
+        ),
       );
-      return;
+    } else {
+      debugPrint("Error: Get.context is null. Cannot show snackbar.");
     }
-
-    // Here we will eventually send the data to Supabase
-    debugPrint('Submitting marks to Supabase...');
-    for (var student in students) {
-      debugPrint('Student: ${student.name}, Mark: ${student.mark}');
-    }
-    
-    Get.snackbar(
-      'Success',
-      'Marks saved successfully!',
-      snackPosition: SnackPosition.BOTTOM,
-      backgroundColor: Colors.green.shade600,
-      colorText: Colors.white,
-    );
   }
 }

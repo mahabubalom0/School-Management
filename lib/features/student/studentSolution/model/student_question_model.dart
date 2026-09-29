@@ -19,7 +19,9 @@ class StudentQuestionModel with _$StudentQuestionModel {
     @JsonKey(name: 'name') required String name,
     @JsonKey(name: 'question') required String question,
     @JsonKey(name: 'question_ans') String? questionAns,
-    @JsonKey(name: 'ans_replly', fromJson: _boolFromJson) @Default(false) bool ansReplly,
+    @JsonKey(name: 'ans_replly', fromJson: _boolFromJson)
+    @Default(false)
+    bool ansReplly,
   }) = _StudentQuestionModel;
 
   factory StudentQuestionModel.fromJson(Map<String, dynamic> json) =>

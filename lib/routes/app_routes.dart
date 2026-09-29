@@ -11,6 +11,7 @@ class AppRoutes {
   static const String teacherHomeWork = '/teacherHomeWork';
   static const String teacherNotice = '/teacherNotice';
   static const String teacherSolution = '/teacherSolution';
+  static const String teacherSolutionQuestionList = '/teacherSolutionQuestionList';
   static const String studentAddMark='/studentAddMark';
 
   static const String studentDashbord="/studentDashbord";

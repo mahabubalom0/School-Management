@@ -15,6 +15,7 @@ import '../features/student/student_dashbord/view/student_dashbord_screen.dart';
 import '../features/studentAttendance/binding/student_attendance_binding.dart';
 import '../features/studentAttendance/view/student_attendance_screen.dart';
 import '../features/studentSolution/binding/teacher_solution_binding.dart';
+import '../features/studentSolution/view/teacher_solution_question_list_screen.dart';
 import '../features/studentSolution/view/teacher_solution_screen.dart';
 import '../features/teacherDasbord/binding/teacher_dashbord_binding.dart';
 import '../features/teacherDasbord/view/teacher_dashbord_screen.dart';
@@ -58,7 +59,7 @@ class AppPages {
       page: () => const MainScreen(),
       binding: MainBinding(),
     ),
-   
+
     GetPage(
       name: AppRoutes.register,
       page: () => const RegisterScreen(),
@@ -97,6 +98,12 @@ class AppPages {
     GetPage(
       name: AppRoutes.teacherSolution,
       page: () => const TeacherSolutionScreen(),
+      binding: TeacherSolutionBinding(),
+      transition: Transition.leftToRight,
+    ),
+    GetPage(
+      name: AppRoutes.teacherSolutionQuestionList,
+      page: () => const TeacherSolutionQuestionListScreen(),
       binding: TeacherSolutionBinding(),
       transition: Transition.leftToRight,
     ),

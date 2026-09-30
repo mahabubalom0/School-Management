@@ -26,6 +26,8 @@ class AppDimensions {
 
   // ─── Font Sizes ───────────────────────────────────────────────────────────
   static const double fontXS = 12.0;
+  static const double font10=10.0;
+  static const double font13=13.0;
   static const double fontS = 14.0;
   static const double fontM = 15.0;
   static const double fontL = 16.0;

@@ -22,6 +22,7 @@ class StudentQuestionModel with _$StudentQuestionModel {
     @JsonKey(name: 'ans_replly', fromJson: _boolFromJson)
     @Default(false)
     bool ansReplly,
+    @JsonKey(name: 'created_at') String? createdAt,
   }) = _StudentQuestionModel;
 
   factory StudentQuestionModel.fromJson(Map<String, dynamic> json) =>

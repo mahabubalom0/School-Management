@@ -16,6 +16,7 @@ _$StudentQuestionModelImpl _$$StudentQuestionModelImplFromJson(
   ansReplly: json['ans_replly'] == null
       ? false
       : _boolFromJson(json['ans_replly']),
+  createdAt: json['created_at'] as String?,
 );
 
 Map<String, dynamic> _$$StudentQuestionModelImplToJson(
@@ -26,4 +27,5 @@ Map<String, dynamic> _$$StudentQuestionModelImplToJson(
   'question': instance.question,
   'question_ans': instance.questionAns,
   'ans_replly': instance.ansReplly,
+  'created_at': instance.createdAt,
 };

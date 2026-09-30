@@ -1,17 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get_navigation/src/extension_navigation.dart';
-import 'package:get/state_manager.dart';
-
+import 'package:get/get.dart';
 import '../../../core/core.dart';
 import '../../../core/utils/app_images.dart';
 import '../../../core/widgets/custom_image_view.dart';
+import '../../student/studentSolution/model/student_question_model.dart';
+import '../controller/teacher_solution_controller.dart';
 
 class TeacherSolutionScreen extends StatelessWidget {
   const TeacherSolutionScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final arg = Get.arguments;
+    final StudentQuestionModel data = arg["data"];
+    final int index = arg["index"];
+    final cobntroller = Get.put(TeacherSolutionController());
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 100.0,
@@ -59,14 +63,21 @@ class TeacherSolutionScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               CustomText(
-                text: "Question #1",
+                text: "Name: ${data.name}",
+                fontSize: AppDimensions.fontXS.sp,
+                fontWeight: FontWeight.bold,
+                color: ShipXColors.black,
+              ),
+              AppDimensions.spaceS.h.verticalSpace,
+              CustomText(
+                text: "Question #${index + 1}",
                 fontSize: AppDimensions.fontM.sp,
                 fontWeight: FontWeight.bold,
                 color: ShipXColors.black,
               ),
               AppDimensions.spaceS.h.verticalSpace,
               CustomText(
-                text: "What is the capital of Bangladesh?",
+                text: "${data.question}?",
                 fontSize: AppDimensions.fontM.sp,
                 color: ShipXColors.black,
               ),
@@ -78,7 +89,7 @@ class TeacherSolutionScreen extends StatelessWidget {
               ),
               AppDimensions.spaceS.h.verticalSpace,
               CustomTextField(
-                controller: TextEditingController(),
+                controller: cobntroller.solutionController,
                 hintText: "",
                 minLine: 15,
                 maxLine: 15,
@@ -96,11 +107,18 @@ class TeacherSolutionScreen extends StatelessWidget {
                 ),
               ),
               AppDimensions.spaceXL.h.verticalSpace,
-              CustomButton(
-                text: "Send",
-                onPressed: () {},
-                color: ShipXColors.blue,
+              Obx(
+                () => CustomButton(
+                  text: cobntroller.isLoading.value ? "Sending..." : "Send",
+                  onPressed: () {
+                    if (data.id != null && !cobntroller.isLoading.value) {
+                      cobntroller.submitSolution(data.id!);
+                    }
+                  },
+                  color: ShipXColors.blue,
+                ),
               ),
+              AppDimensions.padding40.h.verticalSpace,
             ],
           ),
         ),

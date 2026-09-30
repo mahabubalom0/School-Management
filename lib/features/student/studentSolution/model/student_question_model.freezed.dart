@@ -31,6 +31,8 @@ mixin _$StudentQuestionModel {
   String? get questionAns => throw _privateConstructorUsedError;
   @JsonKey(name: 'ans_replly', fromJson: _boolFromJson)
   bool get ansReplly => throw _privateConstructorUsedError;
+  @JsonKey(name: 'created_at')
+  String? get createdAt => throw _privateConstructorUsedError;
 
   /// Serializes this StudentQuestionModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -55,6 +57,7 @@ abstract class $StudentQuestionModelCopyWith<$Res> {
     @JsonKey(name: 'question') String question,
     @JsonKey(name: 'question_ans') String? questionAns,
     @JsonKey(name: 'ans_replly', fromJson: _boolFromJson) bool ansReplly,
+    @JsonKey(name: 'created_at') String? createdAt,
   });
 }
 
@@ -81,6 +84,7 @@ class _$StudentQuestionModelCopyWithImpl<
     Object? question = null,
     Object? questionAns = freezed,
     Object? ansReplly = null,
+    Object? createdAt = freezed,
   }) {
     return _then(
       _value.copyWith(
@@ -104,6 +108,10 @@ class _$StudentQuestionModelCopyWithImpl<
                 ? _value.ansReplly
                 : ansReplly // ignore: cast_nullable_to_non_nullable
                       as bool,
+            createdAt: freezed == createdAt
+                ? _value.createdAt
+                : createdAt // ignore: cast_nullable_to_non_nullable
+                      as String?,
           )
           as $Val,
     );
@@ -125,6 +133,7 @@ abstract class _$$StudentQuestionModelImplCopyWith<$Res>
     @JsonKey(name: 'question') String question,
     @JsonKey(name: 'question_ans') String? questionAns,
     @JsonKey(name: 'ans_replly', fromJson: _boolFromJson) bool ansReplly,
+    @JsonKey(name: 'created_at') String? createdAt,
   });
 }
 
@@ -147,6 +156,7 @@ class __$$StudentQuestionModelImplCopyWithImpl<$Res>
     Object? question = null,
     Object? questionAns = freezed,
     Object? ansReplly = null,
+    Object? createdAt = freezed,
   }) {
     return _then(
       _$StudentQuestionModelImpl(
@@ -170,6 +180,10 @@ class __$$StudentQuestionModelImplCopyWithImpl<$Res>
             ? _value.ansReplly
             : ansReplly // ignore: cast_nullable_to_non_nullable
                   as bool,
+        createdAt: freezed == createdAt
+            ? _value.createdAt
+            : createdAt // ignore: cast_nullable_to_non_nullable
+                  as String?,
       ),
     );
   }
@@ -185,6 +199,7 @@ class _$StudentQuestionModelImpl implements _StudentQuestionModel {
     @JsonKey(name: 'question_ans') this.questionAns,
     @JsonKey(name: 'ans_replly', fromJson: _boolFromJson)
     this.ansReplly = false,
+    @JsonKey(name: 'created_at') this.createdAt,
   });
 
   factory _$StudentQuestionModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -205,10 +220,13 @@ class _$StudentQuestionModelImpl implements _StudentQuestionModel {
   @override
   @JsonKey(name: 'ans_replly', fromJson: _boolFromJson)
   final bool ansReplly;
+  @override
+  @JsonKey(name: 'created_at')
+  final String? createdAt;
 
   @override
   String toString() {
-    return 'StudentQuestionModel(id: $id, name: $name, question: $question, questionAns: $questionAns, ansReplly: $ansReplly)';
+    return 'StudentQuestionModel(id: $id, name: $name, question: $question, questionAns: $questionAns, ansReplly: $ansReplly, createdAt: $createdAt)';
   }
 
   @override
@@ -223,13 +241,22 @@ class _$StudentQuestionModelImpl implements _StudentQuestionModel {
             (identical(other.questionAns, questionAns) ||
                 other.questionAns == questionAns) &&
             (identical(other.ansReplly, ansReplly) ||
-                other.ansReplly == ansReplly));
+                other.ansReplly == ansReplly) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, id, name, question, questionAns, ansReplly);
+  int get hashCode => Object.hash(
+    runtimeType,
+    id,
+    name,
+    question,
+    questionAns,
+    ansReplly,
+    createdAt,
+  );
 
   /// Create a copy of StudentQuestionModel
   /// with the given fields replaced by the non-null parameter values.
@@ -256,6 +283,7 @@ abstract class _StudentQuestionModel implements StudentQuestionModel {
     @JsonKey(name: 'question') required final String question,
     @JsonKey(name: 'question_ans') final String? questionAns,
     @JsonKey(name: 'ans_replly', fromJson: _boolFromJson) final bool ansReplly,
+    @JsonKey(name: 'created_at') final String? createdAt,
   }) = _$StudentQuestionModelImpl;
 
   factory _StudentQuestionModel.fromJson(Map<String, dynamic> json) =
@@ -276,6 +304,9 @@ abstract class _StudentQuestionModel implements StudentQuestionModel {
   @override
   @JsonKey(name: 'ans_replly', fromJson: _boolFromJson)
   bool get ansReplly;
+  @override
+  @JsonKey(name: 'created_at')
+  String? get createdAt;
 
   /// Create a copy of StudentQuestionModel
   /// with the given fields replaced by the non-null parameter values.

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-
 import '../../student/studentSolution/model/student_question_model.dart';
 import '../service/teacher_solution_service.dart';
 
@@ -79,8 +78,18 @@ class TeacherSolutionController extends GetxController {
       }
 
       const months = [
-        'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-        'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
+        'Jan',
+        'Feb',
+        'Mar',
+        'Apr',
+        'May',
+        'Jun',
+        'Jul',
+        'Aug',
+        'Sep',
+        'Oct',
+        'Nov',
+        'Dec',
       ];
       return '${date.day} ${months[date.month - 1]}';
     } catch (e) {

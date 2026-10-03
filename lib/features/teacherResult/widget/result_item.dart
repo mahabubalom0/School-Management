@@ -7,10 +7,13 @@ import '../../../core/core.dart';
 class ResultItem extends StatelessWidget {
   final String title;
   final VoidCallback? onTap;
+  final String? classId;
+  
   const ResultItem({
     super.key,
     required this.title,
     this.onTap,
+    this.classId = "",
   });
 
   @override
@@ -44,7 +47,7 @@ class ResultItem extends StatelessWidget {
               width: double.infinity,
               color: const Color(0xFF0F47B2), // Matching the blue in the image
             ),
-            
+
             // Content
             Padding(
               padding: EdgeInsets.all(AppDimensions.paddingL.w),
@@ -52,29 +55,40 @@ class ResultItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   // Title
-                  CustomText(
-                    text: title,
-                    fontSize: AppDimensions.fontL.sp,
-                    fontWeight: FontWeight.bold,
-                    color: ShipXColors.deepBlue,
+                  Row(
+                    children: [
+                      CustomText(
+                        text: title,
+                        fontSize: AppDimensions.fontXS.sp,
+                        fontWeight: FontWeight.bold,
+                        color: ShipXColors.deepBlue,
+                      ),
+                      const Spacer(),
+                      CustomText(
+                        text: "Class : $classId",
+                        fontSize: AppDimensions.fontXS.sp,
+                        fontWeight: FontWeight.bold,
+                        color: ShipXColors.deepBlue,
+                      ),
+                    ],
                   ),
-                  
+
                   AppDimensions.spaceL.h.verticalSpace,
-                  
+
                   // Grey Placeholder Area
                   Container(
                     height: 80.h,
                     width: double.infinity,
                     color: ShipXColors.placeholderLight,
                   ),
-                  
+
                   AppDimensions.spaceM.h.verticalSpace,
-                  
+
                   // Publish Button
                   Align(
                     alignment: Alignment.centerRight,
                     child: TextButton(
-                      onPressed:onTap,
+                      onPressed: onTap,
                       style: TextButton.styleFrom(
                         padding: EdgeInsets.zero,
                         minimumSize: Size.zero,
@@ -82,7 +96,7 @@ class ResultItem extends StatelessWidget {
                       ),
                       child: CustomText(
                         text: "PUBLISH",
-                        fontSize: AppDimensions.fontM.sp,
+                        fontSize: AppDimensions.fontS.sp,
                         fontWeight: FontWeight.w600,
                         color: ShipXColors.deepBlue,
                       ),

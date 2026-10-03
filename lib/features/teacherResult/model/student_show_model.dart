@@ -10,11 +10,11 @@ class StudentShowModel with _$StudentShowModel {
     String? name,
     @JsonKey(name: 'class')
     String? className, // 'class' is a reserved keyword in Dart
-    String? roll,
+    dynamic roll,
     String? section,
     String? subject,
     String? exam,
-    String? mark,
+    dynamic mark,
   }) = _StudentShowModel;
 
   factory StudentShowModel.fromJson(Map<String, dynamic> json) =>

@@ -19,4 +19,15 @@ class StudentShowService {
         .eq("exam", examID);
     return responce.map((x) => StudentShowModel.fromJson(x)).toList();
   }
+
+  Future<List<StudentShowModel>> getAllResult() async {
+    try {
+      final response = await supabaseClient.from("student_result").select();
+      print("Raw DB Response: $response");
+      return response.map((x) => StudentShowModel.fromJson(x)).toList();
+    } catch(e) {
+      print("Error parsing model in getAllResult: $e");
+      rethrow;
+    }
+  }
 }

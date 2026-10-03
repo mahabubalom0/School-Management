@@ -25,11 +25,11 @@ mixin _$StudentShowModel {
   String? get name => throw _privateConstructorUsedError;
   @JsonKey(name: 'class')
   String? get className => throw _privateConstructorUsedError; // 'class' is a reserved keyword in Dart
-  String? get roll => throw _privateConstructorUsedError;
+  dynamic get roll => throw _privateConstructorUsedError;
   String? get section => throw _privateConstructorUsedError;
   String? get subject => throw _privateConstructorUsedError;
   String? get exam => throw _privateConstructorUsedError;
-  String? get mark => throw _privateConstructorUsedError;
+  dynamic get mark => throw _privateConstructorUsedError;
 
   /// Serializes this StudentShowModel to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -52,11 +52,11 @@ abstract class $StudentShowModelCopyWith<$Res> {
     int? id,
     String? name,
     @JsonKey(name: 'class') String? className,
-    String? roll,
+    dynamic roll,
     String? section,
     String? subject,
     String? exam,
-    String? mark,
+    dynamic mark,
   });
 }
 
@@ -101,7 +101,7 @@ class _$StudentShowModelCopyWithImpl<$Res, $Val extends StudentShowModel>
             roll: freezed == roll
                 ? _value.roll
                 : roll // ignore: cast_nullable_to_non_nullable
-                      as String?,
+                      as dynamic,
             section: freezed == section
                 ? _value.section
                 : section // ignore: cast_nullable_to_non_nullable
@@ -117,7 +117,7 @@ class _$StudentShowModelCopyWithImpl<$Res, $Val extends StudentShowModel>
             mark: freezed == mark
                 ? _value.mark
                 : mark // ignore: cast_nullable_to_non_nullable
-                      as String?,
+                      as dynamic,
           )
           as $Val,
     );
@@ -137,11 +137,11 @@ abstract class _$$StudentShowModelImplCopyWith<$Res>
     int? id,
     String? name,
     @JsonKey(name: 'class') String? className,
-    String? roll,
+    dynamic roll,
     String? section,
     String? subject,
     String? exam,
-    String? mark,
+    dynamic mark,
   });
 }
 
@@ -185,7 +185,7 @@ class __$$StudentShowModelImplCopyWithImpl<$Res>
         roll: freezed == roll
             ? _value.roll
             : roll // ignore: cast_nullable_to_non_nullable
-                  as String?,
+                  as dynamic,
         section: freezed == section
             ? _value.section
             : section // ignore: cast_nullable_to_non_nullable
@@ -201,7 +201,7 @@ class __$$StudentShowModelImplCopyWithImpl<$Res>
         mark: freezed == mark
             ? _value.mark
             : mark // ignore: cast_nullable_to_non_nullable
-                  as String?,
+                  as dynamic,
       ),
     );
   }
@@ -233,7 +233,7 @@ class _$StudentShowModelImpl implements _StudentShowModel {
   final String? className;
   // 'class' is a reserved keyword in Dart
   @override
-  final String? roll;
+  final dynamic roll;
   @override
   final String? section;
   @override
@@ -241,11 +241,11 @@ class _$StudentShowModelImpl implements _StudentShowModel {
   @override
   final String? exam;
   @override
-  final String? mark;
+  final dynamic mark;
 
   @override
   String toString() {
-    return 'StudentShowModel(id: $id, name: $name, class: $className, roll: $roll, section: $section, subject: $subject, exam: $exam, mark: $mark)';
+    return 'StudentShowModel(id: $id, name: $name, className: $className, roll: $roll, section: $section, subject: $subject, exam: $exam, mark: $mark)';
   }
 
   @override
@@ -257,11 +257,11 @@ class _$StudentShowModelImpl implements _StudentShowModel {
             (identical(other.name, name) || other.name == name) &&
             (identical(other.className, className) ||
                 other.className == className) &&
-            (identical(other.roll, roll) || other.roll == roll) &&
+            const DeepCollectionEquality().equals(other.roll, roll) &&
             (identical(other.section, section) || other.section == section) &&
             (identical(other.subject, subject) || other.subject == subject) &&
             (identical(other.exam, exam) || other.exam == exam) &&
-            (identical(other.mark, mark) || other.mark == mark));
+            const DeepCollectionEquality().equals(other.mark, mark));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -271,11 +271,11 @@ class _$StudentShowModelImpl implements _StudentShowModel {
     id,
     name,
     className,
-    roll,
+    const DeepCollectionEquality().hash(roll),
     section,
     subject,
     exam,
-    mark,
+    const DeepCollectionEquality().hash(mark),
   );
 
   /// Create a copy of StudentShowModel
@@ -300,11 +300,11 @@ abstract class _StudentShowModel implements StudentShowModel {
     final int? id,
     final String? name,
     @JsonKey(name: 'class') final String? className,
-    final String? roll,
+    final dynamic roll,
     final String? section,
     final String? subject,
     final String? exam,
-    final String? mark,
+    final dynamic mark,
   }) = _$StudentShowModelImpl;
 
   factory _StudentShowModel.fromJson(Map<String, dynamic> json) =
@@ -318,7 +318,7 @@ abstract class _StudentShowModel implements StudentShowModel {
   @JsonKey(name: 'class')
   String? get className; // 'class' is a reserved keyword in Dart
   @override
-  String? get roll;
+  dynamic get roll;
   @override
   String? get section;
   @override
@@ -326,7 +326,7 @@ abstract class _StudentShowModel implements StudentShowModel {
   @override
   String? get exam;
   @override
-  String? get mark;
+  dynamic get mark;
 
   /// Create a copy of StudentShowModel
   /// with the given fields replaced by the non-null parameter values.

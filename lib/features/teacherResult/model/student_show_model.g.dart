@@ -12,11 +12,11 @@ _$StudentShowModelImpl _$$StudentShowModelImplFromJson(
   id: (json['id'] as num?)?.toInt(),
   name: json['name'] as String?,
   className: json['class'] as String?,
-  roll: json['roll'] as String?,
+  roll: json['roll'],
   section: json['section'] as String?,
   subject: json['subject'] as String?,
   exam: json['exam'] as String?,
-  mark: json['mark'] as String?,
+  mark: json['mark'],
 );
 
 Map<String, dynamic> _$$StudentShowModelImplToJson(

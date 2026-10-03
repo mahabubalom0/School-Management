@@ -15,116 +15,134 @@ class AllStudentScreen extends StatelessWidget {
     final controller = Get.find<AllStudentController>();
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: ShipXColors.blue,
+        leading: IconButton(
+          onPressed: () {
+            Get.back();
+          },
+          icon: const Icon(Icons.arrow_back, color: ShipXColors.white),
+        ),
         title: const CustomText(
           text: "All Student",
           fontSize: AppDimensions.fontM,
           fontWeight: FontWeight.bold,
+          color: ShipXColors.white,
         ),
       ),
       body: RefreshIndicator(
         onRefresh: () async {
           await controller.getAllStudent();
         },
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                children: List.generate(
-                  controller.semesterName.length,
-                  (index) => Obx(
-                    () => GestureDetector(
-                      onTap: () {
-                        controller.selectedSemesterIndex.value = index;
-                      },
-                      child: Container(
-                        margin: EdgeInsets.only(
-                          left: AppDimensions.paddingS.w,
-                          right: AppDimensions.paddingS.w,
-                        ),
-                        padding: EdgeInsets.symmetric(
-                          horizontal: 10.w,
-                          vertical: 10.h,
-                        ),
-                        decoration: BoxDecoration(
-                          color: controller.selectedSemesterIndex.value == index
-                              ? ShipXColors.blue
-                              : ShipXColors.body,
-                          borderRadius: BorderRadius.circular(
-                            AppDimensions.radiusM.r,
+        child: SafeArea(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Padding(
+                  padding: EdgeInsetsGeometry.only(
+                    top: AppDimensions.paddingXL.h,
+                  ),
+                  child: Row(
+                    children: List.generate(
+                      controller.semesterName.length,
+                      (index) => Obx(
+                        () => GestureDetector(
+                          onTap: () {
+                            controller.selectedSemesterIndex.value = index;
+                          },
+                          child: Container(
+                            margin: EdgeInsets.only(
+                              left: AppDimensions.paddingS.w,
+                              right: AppDimensions.paddingS.w,
+                            ),
+                            padding: EdgeInsets.symmetric(
+                              horizontal: 10.w,
+                              vertical: 10.h,
+                            ),
+                            decoration: BoxDecoration(
+                              color:
+                                  controller.selectedSemesterIndex.value ==
+                                      index
+                                  ? ShipXColors.blue
+                                  : ShipXColors.body,
+                              borderRadius: BorderRadius.circular(
+                                AppDimensions.radiusM.r,
+                              ),
+                            ),
+                            child: CustomText(
+                              text: controller.semesterName[index].toString(),
+                              color: ShipXColors.background,
+                              fontSize: AppDimensions.fontM,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
-                        ),
-                        child: CustomText(
-                          text: controller.semesterName[index].toString(),
-                          color: ShipXColors.background,
-                          fontSize: AppDimensions.fontM,
-                          fontWeight: FontWeight.bold,
                         ),
                       ),
                     ),
                   ),
                 ),
               ),
-            ),
 
-            AppDimensions.spaceL.h.verticalSpace,
-            Expanded(
-              child: SingleChildScrollView(
-                child: Padding(
-                  padding: EdgeInsetsGeometry.symmetric(
-                    horizontal: AppDimensions.paddingXL.w,
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Obx(
-                        () => CustomText(
-                          text: controller.selectedSemesterIndex.value == 0
-                              ? "All Student (${controller.filteredStudentList.length})"
-                              : "${controller.semesterName[controller.selectedSemesterIndex.value]} Semester (${controller.filteredStudentList.length})",
-                          fontSize: AppDimensions.fontL,
-                          fontWeight: FontWeight.bold,
+              AppDimensions.spaceL.h.verticalSpace,
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Padding(
+                    padding: EdgeInsetsGeometry.symmetric(
+                      horizontal: AppDimensions.paddingXL.w,
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Obx(
+                          () => CustomText(
+                            text: controller.selectedSemesterIndex.value == 0
+                                ? "All Student (${controller.filteredStudentList.length})"
+                                : "${controller.semesterName[controller.selectedSemesterIndex.value]} Semester (${controller.filteredStudentList.length})",
+                            fontSize: AppDimensions.fontL,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
-                      ),
-                      AppDimensions.spaceL.h.verticalSpace,
-                      Obx(() {
-                        if (controller.isLoading.value) {
-                          return const Center(
-                            child: CircularProgressIndicator(),
-                          );
-                        }
-
-                        if (controller.filteredStudentList.isEmpty) {
-                          return const NoDataItem();
-                        }
-                        return ListView.builder(
-                          itemCount: controller.filteredStudentList.length,
-                          shrinkWrap: true,
-                          physics: const NeverScrollableScrollPhysics(),
-                          itemBuilder: (_, index) {
-                            final item = controller.filteredStudentList[index];
-                            return StudentItemCard(
-                              onTap: () {
-                                Get.toNamed(
-                                  AppRoutes.studentDeatilesScreen,
-                                  arguments: item,
-                                );
-                              },
-                              className: item.studentClass ?? 'N/A',
-                              name: item.name ?? 'Unknown',
-                              studentId: item.studentId ?? 'N/A',
+                        AppDimensions.spaceL.h.verticalSpace,
+                        Obx(() {
+                          if (controller.isLoading.value) {
+                            return const Center(
+                              child: CircularProgressIndicator(),
                             );
-                          },
-                        );
-                      }),
-                    ],
+                          }
+
+                          if (controller.filteredStudentList.isEmpty) {
+                            return const NoDataItem();
+                          }
+                          return ListView.builder(
+                            itemCount: controller.filteredStudentList.length,
+                            shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
+                            itemBuilder: (_, index) {
+                              final item =
+                                  controller.filteredStudentList[index];
+                              return StudentItemCard(
+                                onTap: () {
+                                  Get.toNamed(
+                                    AppRoutes.studentDeatilesScreen,
+                                    arguments: item,
+                                  );
+                                },
+                                className: item.studentClass ?? 'N/A',
+                                name: item.name ?? 'Unknown',
+                                studentId: item.studentId ?? 'N/A',
+                              );
+                            },
+                          );
+                        }),
+                      ],
+                    ),
                   ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

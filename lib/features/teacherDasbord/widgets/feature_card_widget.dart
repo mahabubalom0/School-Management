@@ -33,6 +33,7 @@ class FeatureCardWidget extends StatelessWidget {
             child: Center(
               child: CustomImageView(
                 imagePath: imagePath,
+                color: ShipXColors.blue,
                 height: AppDimensions.imageSize60.h,
                 width: AppDimensions.imageSize60.w,
               ),

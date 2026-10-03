@@ -62,7 +62,7 @@ class TeacherDashbordScreen extends StatelessWidget {
                             imagePath: ImagePath.resultImage,
                             title: 'Result',
                             onTap: () {
-                              Get.toNamed(AppRoutes.teacherResult);
+                              Get.toNamed(AppRoutes.studentAddMark);
                             },
                           ),
                         ],
@@ -74,9 +74,7 @@ class TeacherDashbordScreen extends StatelessWidget {
                           FeatureCardWidget(
                             imagePath: ImagePath.examRutineImage,
                             title: 'Exam Routine',
-                            onTap: () {
-                              Get.toNamed(AppRoutes.allStudent);
-                            },
+                            onTap: () {},
                           ),
                           FeatureCardWidget(
                             imagePath: ImagePath.solutionImage,
@@ -98,12 +96,20 @@ class TeacherDashbordScreen extends StatelessWidget {
                       ),
                       AppDimensions.spaceS.h.verticalSpace,
                       Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                           FeatureCardWidget(
                             imagePath: ImagePath.addUserMale,
                             title: "Add Student ",
                             onTap: () {
                               Get.toNamed(AppRoutes.addAccount);
+                            },
+                          ),
+                          FeatureCardWidget(
+                            imagePath: ImagePath.persionImage,
+                            title: "All Student ",
+                            onTap: () {
+                              Get.toNamed(AppRoutes.allStudent);
                             },
                           ),
                         ],

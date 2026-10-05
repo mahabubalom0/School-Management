@@ -9,6 +9,7 @@ class CustomTextField extends StatelessWidget {
   final bool isPassword;
   final bool obscureText;
   final VoidCallback? onTogglePassword;
+  final Function(String)? onchange;
   final TextInputType keyboardType;
   final String? Function(String?)? validator;
   final Widget? prefixIcon;
@@ -21,12 +22,13 @@ class CustomTextField extends StatelessWidget {
     required this.hintText,
     this.isPassword = false,
     this.obscureText = false,
+    this.onchange,
     this.onTogglePassword,
     this.keyboardType = TextInputType.text,
     this.validator,
     this.prefixIcon,
     this.maxLine,
-    this.minLine
+    this.minLine,
   });
 
   @override
@@ -40,6 +42,7 @@ class CustomTextField extends StatelessWidget {
       maxLines: maxLine,
       minLines: minLine,
       validator: validator,
+      onChanged: onchange,
       style: ShipXTextStyles.body3.copyWith(
         color: colors.textPrimary,
         fontSize: getSp(16),
@@ -54,7 +57,9 @@ class CustomTextField extends StatelessWidget {
         ),
         filled: true,
         fillColor: colors.surface,
-        constraints: ((maxLine != null && maxLine! > 1) || (minLine != null && minLine! > 1))
+        constraints:
+            ((maxLine != null && maxLine! > 1) ||
+                (minLine != null && minLine! > 1))
             ? null
             : BoxConstraints(
                 maxHeight: getHeight(50),

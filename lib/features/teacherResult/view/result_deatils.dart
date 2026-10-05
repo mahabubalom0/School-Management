@@ -2,18 +2,57 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../core/core.dart';
+import '../controller/teacher_result_controller.dart';
 import '../model/student_show_model.dart';
 
-class ResultDeatils extends StatelessWidget {
+class ResultDeatils extends StatefulWidget {
   const ResultDeatils({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    final args = Get.arguments as Map<String, dynamic>? ?? {};
-    final String className = args["class"] ?? "Unknown Class";
-    final String exam = args["exam"] ?? "Unknown Exam";
-    final List<StudentShowModel> students = args["students"] ?? [];
+  State<ResultDeatils> createState() => _ResultDeatilsState();
+}
 
+class _ResultDeatilsState extends State<ResultDeatils> {
+  late List<StudentShowModel> allStudents;
+  late List<StudentShowModel> filteredStudents;
+  late String className;
+  late String exam;
+  final controller = Get.find<TeacherResultController>();
+
+  @override
+  void initState() {
+    super.initState();
+    final args = Get.arguments as Map<String, dynamic>? ?? {};
+    className = args["class"] ?? "Unknown Class";
+    exam = args["exam"] ?? "Unknown Exam";
+    allStudents = args["students"] ?? [];
+    filteredStudents = allStudents;
+
+    // Clear search controller when screen opens
+    controller.searchCLT.clear();
+  }
+
+  void _runFilter(String enteredKeyword) {
+    List<StudentShowModel> results = [];
+    if (enteredKeyword.isEmpty) {
+      results = allStudents;
+    } else {
+      results = allStudents
+          .where(
+            (student) => student.roll.toString().toLowerCase().contains(
+              enteredKeyword.toLowerCase(),
+            ),
+          )
+          .toList();
+    }
+
+    setState(() {
+      filteredStudents = results;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey.shade50,
       appBar: AppBar(
@@ -28,53 +67,59 @@ class ResultDeatils extends StatelessWidget {
         backgroundColor: Colors.white,
         foregroundColor: Colors.black87,
       ),
-      body: Column(
-        children: [
-          Padding(
-            padding: EdgeInsetsGeometry.only(
-              left: AppDimensions.paddingXL.w,
-              right: AppDimensions.paddingXL.w,
-              top: AppDimensions.paddingXL.h,
-            ),
-            child: Container(
-              decoration: const BoxDecoration(
-                boxShadow: [
-                  BoxShadow(
-                    color: Color.fromARGB(255, 61, 47, 47),
-                    spreadRadius: 0,
-                    blurRadius: 5,
-                    offset: Offset(0, 1),
-                  ),
-                ],
+      body: RefreshIndicator(
+        onRefresh: () async {
+          controller.getAllStudentResult();
+        },
+        child: Column(
+          children: [
+            Padding(
+              padding: EdgeInsetsGeometry.only(
+                left: AppDimensions.paddingXL.w,
+                right: AppDimensions.paddingXL.w,
+                top: AppDimensions.paddingXL.h,
               ),
-              child: CustomTextField(
-                controller: TextEditingController(),
-                hintText: "Search",
-              ),
-            ),
-          ),
-          Expanded(
-            child: students.isEmpty
-                ? const Center(
-                    child: Text(
-                      "No results found.",
-                      style: TextStyle(fontSize: 16, color: Colors.black54),
+              child: Container(
+                decoration: const BoxDecoration(
+                  boxShadow: [
+                    BoxShadow(
+                      color: Color.fromARGB(255, 61, 47, 47),
+                      spreadRadius: 0,
+                      blurRadius: 5,
+                      offset: Offset(0, 1),
                     ),
-                  )
-                : ListView.builder(
-                    padding: const EdgeInsets.all(16.0),
-                    itemCount: students.length,
-                    shrinkWrap: true,
-                    itemBuilder: (context, index) {
-                      final studentResult = students[index];
-                      return Padding(
-                        padding: const EdgeInsets.only(bottom: 16.0),
-                        child: _buildStudentCard(studentResult),
-                      );
-                    },
-                  ),
-          ),
-        ],
+                  ],
+                ),
+                child: CustomTextField(
+                  controller: controller.searchCLT,
+                  hintText: "Search by roll no",
+                  onchange: (d) => _runFilter(d),
+                ),
+              ),
+            ),
+            Expanded(
+              child: filteredStudents.isEmpty
+                  ? const Center(
+                      child: Text(
+                        "No results found.",
+                        style: TextStyle(fontSize: 16, color: Colors.black54),
+                      ),
+                    )
+                  : ListView.builder(
+                      padding: const EdgeInsets.all(16.0),
+                      itemCount: filteredStudents.length,
+                      shrinkWrap: true,
+                      itemBuilder: (context, index) {
+                        final studentResult = filteredStudents[index];
+                        return Padding(
+                          padding: const EdgeInsets.only(bottom: 16.0),
+                          child: _buildStudentCard(studentResult),
+                        );
+                      },
+                    ),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -179,7 +224,7 @@ class ResultDeatils extends StatelessWidget {
           style: const TextStyle(
             fontSize: 14,
             fontWeight: FontWeight.bold,
-            color: Colors.black87,
+            color: ShipXColors.background,
           ),
         ),
       ],

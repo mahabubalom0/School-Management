@@ -10,6 +10,7 @@ class TeacherResultController extends GetxController {
 
   final RxBool isLoading = false.obs;
   final RxList<StudentShowModel> studentResult = <StudentShowModel>[].obs;
+  final searchCLT=TextEditingController();
 
   @override
   void onInit() {

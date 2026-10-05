@@ -30,6 +30,8 @@ class TeacherResultScreen extends StatelessWidget {
           vertical: AppDimensions.paddingXL.h,
         ),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const CustomText(
               text: "All Student Result",
@@ -72,11 +74,18 @@ class TeacherResultScreen extends StatelessWidget {
                       title: item.exam ?? "Unknown Exam",
                       classId: item.className ?? "Unknown",
                       onTap: () {
-                        _showStudentsBottomSheet(
-                          context,
-                          item.className,
-                          item.exam,
-                          controller.studentResult,
+                        final filteredStudents = controller.studentResult
+                            .where((s) =>
+                                s.className == item.className &&
+                                s.exam == item.exam)
+                            .toList();
+                        Get.toNamed(
+                          AppRoutes.resultDeatils,
+                          arguments: {
+                            "class": item.className,
+                            "exam": item.exam,
+                            "students": filteredStudents,
+                          },
                         );
                       },
                     );

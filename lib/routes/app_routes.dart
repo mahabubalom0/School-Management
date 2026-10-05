@@ -13,6 +13,7 @@ class AppRoutes {
   static const String teacherSolution = '/teacherSolution';
   static const String teacherSolutionQuestionList = '/teacherSolutionQuestionList';
   static const String studentAddMark='/studentAddMark';
+  static const String resultDeatils='/resultDeatils';
 
   static const String studentDashbord="/studentDashbord";
   static const String addAccount="/addAccount";

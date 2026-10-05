@@ -20,6 +20,7 @@ import '../features/studentSolution/view/teacher_solution_screen.dart';
 import '../features/teacherDasbord/binding/teacher_dashbord_binding.dart';
 import '../features/teacherDasbord/view/teacher_dashbord_screen.dart';
 import '../features/teacherResult/binding/teacher_result_binding,.dart';
+import '../features/teacherResult/view/result_deatils.dart';
 import '../features/teacherResult/view/teacher_result_screen.dart';
 import '../features/teacher_nutice/binding/teacher_notice_binding.dart';
 import '../features/teacher_nutice/view/teacher_nutice_screen.dart';
@@ -153,6 +154,12 @@ class AppPages {
       name: AppRoutes.studentDeatilsSolution,
       page: () => const StudentDeatilsSolution(),
       binding: StudentSolutionBinding(),
+      transition: Transition.zoom,
+    ),
+    GetPage(
+      name: AppRoutes.resultDeatils,
+      page: () => const ResultDeatils(),
+      binding: TeacherResultBinding(),
       transition: Transition.zoom,
     ),
   ];

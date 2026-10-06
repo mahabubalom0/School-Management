@@ -62,6 +62,19 @@ class _ResultDeatilsState extends State<ResultDeatils> {
           color: ShipXColors.deepBlue,
           fontWeight: FontWeight.bold,
         ),
+        actions: [
+          IconButton(
+            onPressed: () {
+              controller.generateAndPrintPdf(
+                className: className,
+                exam: exam,
+                students: filteredStudents,
+              );
+            },
+            icon: Icon(Icons.print, size: AppDimensions.iconM.sp),
+          ),
+          AppDimensions.spaceS.w.horizontalSpace,
+        ],
         centerTitle: true,
         elevation: 0,
         backgroundColor: Colors.white,

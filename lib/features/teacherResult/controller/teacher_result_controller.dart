@@ -78,16 +78,15 @@ class TeacherResultController extends GetxController {
               else
                 pw.TableHelper.fromTextArray(
                   context: context,
-                  headers: ['Roll', 'ID', 'Name', 'GPA', 'Subject', 'Section'],
+                  headers: ['Roll', 'Name', 'Subject', 'Section', 'GPA'],
                   data: students
                       .map(
                         (student) => [
                           student.roll?.toString() ?? 'N/A',
-                          student.id?.toString() ?? 'N/A',
                           student.name ?? 'N/A',
-                          student.mark?.toString() ?? '0',
                           student.subject ?? 'N/A',
                           student.section ?? 'N/A',
+                          student.mark?.toString() ?? '0',
                         ],
                       )
                       .toList(),

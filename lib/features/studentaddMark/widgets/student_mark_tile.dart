@@ -48,6 +48,7 @@ class StudentMarkTile extends StatelessWidget {
                 ),
                 const SizedBox(height: AppDimensions.spaceL),
                 CustomTextField(
+                  keyboardType: TextInputType.number,
                   controller: rollNumber,
                   hintText: "Enter Roll Number",
                 ),

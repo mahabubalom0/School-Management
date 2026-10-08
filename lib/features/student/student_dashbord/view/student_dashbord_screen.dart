@@ -113,7 +113,7 @@ class StudentDashbordScreen extends StatelessWidget {
                             imagePath: ImagePath.homeWorkImage,
                             title: 'Homework',
                             onTap: () {
-                              Get.toNamed(AppRoutes.teacherHomeWork);
+                              Get.toNamed(AppRoutes.studentHomeWork);
                             },
                           ),
                           FeatureCardWidget(
@@ -138,7 +138,7 @@ class StudentDashbordScreen extends StatelessWidget {
                             imagePath: ImagePath.solutionImage,
                             title: 'Solution',
                             onTap: () {
-                            Get.toNamed(AppRoutes.studentSolution);
+                              Get.toNamed(AppRoutes.studentSolution);
                             },
                           ),
                           FeatureCardWidget(

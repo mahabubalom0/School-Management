@@ -6,6 +6,8 @@ import '../features/allStudent/view/all_student_screen.dart';
 import '../features/allStudent/view/student_deatiles_view.dart';
 import '../features/auth/register/binding/register_binding.dart';
 import '../features/auth/register/view/register_screen.dart';
+import '../features/student/studentHomeWork/binding/student_home_work_binding.dart';
+import '../features/student/studentHomeWork/view/student_home_work_screen.dart';
 import '../features/student/studentSolution/binding/student_solution_binding.dart';
 import '../features/student/studentSolution/view/student_add_question.dart';
 import '../features/student/studentSolution/view/student_deatils_solution.dart';
@@ -161,6 +163,12 @@ class AppPages {
       page: () => const ResultDeatils(),
       binding: TeacherResultBinding(),
       transition: Transition.zoom,
+    ),
+    GetPage(
+      name: AppRoutes.studentHomeWork,
+      page: () => const StudentHomeWorkScreen(),
+      binding: StudentHomeWorkBinding(),
+      transition: Transition.leftToRight,
     ),
   ];
 }

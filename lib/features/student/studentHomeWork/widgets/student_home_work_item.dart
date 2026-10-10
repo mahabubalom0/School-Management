@@ -74,6 +74,8 @@ class StudentHomeWorkItem extends StatelessWidget {
                   text: section ?? "Null",
                   fontSize: AppDimensions.font13.sp,
                   color: ShipXColors.black,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                 ),
                 AppDimensions.paddingS.h.verticalSpace,
                 CustomText(

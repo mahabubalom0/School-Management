@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/route_manager.dart';
+import 'package:get/get.dart';
 import '../../../../core/core.dart';
+import '../controller/student_home_work_controller.dart';
 import '../widgets/student_home_work_item.dart';
 
 class StudentHomeWorkScreen extends StatelessWidget {
@@ -9,6 +10,7 @@ class StudentHomeWorkScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.find<StudentHomeWorkController>();
     return Scaffold(
       appBar: AppBar(
         backgroundColor: ShipXColors.blue,
@@ -41,18 +43,28 @@ class StudentHomeWorkScreen extends StatelessWidget {
 
             AppDimensions.spaceM.h.verticalSpace,
             Expanded(
-              child: ListView.builder(
-                shrinkWrap: true,
-                itemCount: 20,
-                itemBuilder: (context, index) {
-                  return const StudentHomeWorkItem(
-                    className: "1St Semister",
-                    department: "Computer Sceince And TechNology",
-                    submissionDate: "1 OctoBar 2026",
-                    section: "A ",
-                  );
-                },
-              ),
+              child: Obx(() {
+                if (controller.isLoading.value) {
+                  return const Center(child: CircularProgressIndicator());
+                }
+                if (controller.homeWorkModel.isEmpty) {
+                  return const Center(child: Text("No homework available"));
+                }
+                return ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: controller.homeWorkModel.length,
+                  itemBuilder: (context, index) {
+                    final item = controller.homeWorkModel[index];
+
+                    return StudentHomeWorkItem(
+                      className: item.className ?? "",
+                      department: item.subject ?? "",
+                      submissionDate: controller.formatDate(item.dateLine),
+                      section: item.section ?? "A ",
+                    );
+                  },
+                );
+              }),
             ),
           ],
         ),

@@ -10,7 +10,7 @@ class HomeWorkModel with _$HomeWorkModel {
     @JsonKey(name: 'class') String? className, // 'class' is a reserved keyword in Dart
     String? section,
     String? subject,
-    @JsonKey(name: 'add_homework') String? addHomework,
+    @JsonKey(name: 'addHomework') String? addHomework,
     @JsonKey(name: 'created_at') DateTime? createAt,
     @JsonKey(name: 'date_line') DateTime? dateLine,
   }) = _HomeWorkModel;

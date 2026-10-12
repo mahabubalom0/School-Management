@@ -12,7 +12,7 @@ _$HomeWorkModelImpl _$$HomeWorkModelImplFromJson(Map<String, dynamic> json) =>
       className: json['class'] as String?,
       section: json['section'] as String?,
       subject: json['subject'] as String?,
-      addHomework: json['add_homework'] as String?,
+      addHomework: json['addHomework'] as String?,
       createAt: json['created_at'] == null
           ? null
           : DateTime.parse(json['created_at'] as String),
@@ -27,7 +27,7 @@ Map<String, dynamic> _$$HomeWorkModelImplToJson(_$HomeWorkModelImpl instance) =>
       'class': instance.className,
       'section': instance.section,
       'subject': instance.subject,
-      'add_homework': instance.addHomework,
+      'addHomework': instance.addHomework,
       'created_at': instance.createAt?.toIso8601String(),
       'date_line': instance.dateLine?.toIso8601String(),
     };

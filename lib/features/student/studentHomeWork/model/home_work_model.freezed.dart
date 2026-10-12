@@ -26,7 +26,7 @@ mixin _$HomeWorkModel {
   String? get className => throw _privateConstructorUsedError; // 'class' is a reserved keyword in Dart
   String? get section => throw _privateConstructorUsedError;
   String? get subject => throw _privateConstructorUsedError;
-  @JsonKey(name: 'add_homework')
+  @JsonKey(name: 'addHomework')
   String? get addHomework => throw _privateConstructorUsedError;
   @JsonKey(name: 'created_at')
   DateTime? get createAt => throw _privateConstructorUsedError;
@@ -55,7 +55,7 @@ abstract class $HomeWorkModelCopyWith<$Res> {
     @JsonKey(name: 'class') String? className,
     String? section,
     String? subject,
-    @JsonKey(name: 'add_homework') String? addHomework,
+    @JsonKey(name: 'addHomework') String? addHomework,
     @JsonKey(name: 'created_at') DateTime? createAt,
     @JsonKey(name: 'date_line') DateTime? dateLine,
   });
@@ -134,7 +134,7 @@ abstract class _$$HomeWorkModelImplCopyWith<$Res>
     @JsonKey(name: 'class') String? className,
     String? section,
     String? subject,
-    @JsonKey(name: 'add_homework') String? addHomework,
+    @JsonKey(name: 'addHomework') String? addHomework,
     @JsonKey(name: 'created_at') DateTime? createAt,
     @JsonKey(name: 'date_line') DateTime? dateLine,
   });
@@ -205,7 +205,7 @@ class _$HomeWorkModelImpl implements _HomeWorkModel {
     @JsonKey(name: 'class') this.className,
     this.section,
     this.subject,
-    @JsonKey(name: 'add_homework') this.addHomework,
+    @JsonKey(name: 'addHomework') this.addHomework,
     @JsonKey(name: 'created_at') this.createAt,
     @JsonKey(name: 'date_line') this.dateLine,
   });
@@ -224,7 +224,7 @@ class _$HomeWorkModelImpl implements _HomeWorkModel {
   @override
   final String? subject;
   @override
-  @JsonKey(name: 'add_homework')
+  @JsonKey(name: 'addHomework')
   final String? addHomework;
   @override
   @JsonKey(name: 'created_at')
@@ -289,7 +289,7 @@ abstract class _HomeWorkModel implements HomeWorkModel {
     @JsonKey(name: 'class') final String? className,
     final String? section,
     final String? subject,
-    @JsonKey(name: 'add_homework') final String? addHomework,
+    @JsonKey(name: 'addHomework') final String? addHomework,
     @JsonKey(name: 'created_at') final DateTime? createAt,
     @JsonKey(name: 'date_line') final DateTime? dateLine,
   }) = _$HomeWorkModelImpl;
@@ -307,7 +307,7 @@ abstract class _HomeWorkModel implements HomeWorkModel {
   @override
   String? get subject;
   @override
-  @JsonKey(name: 'add_homework')
+  @JsonKey(name: 'addHomework')
   String? get addHomework;
   @override
   @JsonKey(name: 'created_at')

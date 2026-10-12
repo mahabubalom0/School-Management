@@ -24,4 +24,5 @@ class AppRoutes {
   static const String studentAddQuestion="/studentAddQuestion";
   static const String studentDeatilsSolution="/studentDeatilsSolution";
   static const String studentHomeWork="/studentHomeWork";
+  static const String studentHomeWorkDeatils="/studentHomeWorkDeatils";
 }

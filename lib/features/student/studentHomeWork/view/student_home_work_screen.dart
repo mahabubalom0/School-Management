@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../../core/core.dart';
+import '../../../../routes/app_routes.dart';
 import '../controller/student_home_work_controller.dart';
 import '../widgets/student_home_work_item.dart';
 
@@ -57,6 +58,12 @@ class StudentHomeWorkScreen extends StatelessWidget {
                     final item = controller.homeWorkModel[index];
 
                     return StudentHomeWorkItem(
+                      onTap: () {
+                        Get.toNamed(
+                          AppRoutes.studentHomeWorkDeatils,
+                          arguments: {"hwData": item, "index": index},
+                        );
+                      },
                       className: item.className ?? "",
                       department: item.subject ?? "",
                       submissionDate: controller.formatDate(item.dateLine),

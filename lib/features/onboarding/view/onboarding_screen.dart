@@ -24,7 +24,7 @@ class OnboardingScreen extends StatelessWidget {
 
           AppDimensions.spaceXL.h.verticalSpace,
           CustomText(
-            text: "Choose your option",
+            text: AppStrings.chooseYourOption.tr,
             fontSize: AppDimensions.fontL.sp,
             fontWeight: FontWeight.w600,
           ),
@@ -41,7 +41,7 @@ class OnboardingScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     ManagementItem(
-                      title: 'Student',
+                      title: AppStrings.student.tr,
                       iconPath: ImagePath.studentMale,
                       onTap: () {
                         // Handle tap
@@ -50,7 +50,7 @@ class OnboardingScreen extends StatelessWidget {
                     ),
                     AppDimensions.spaceHuge.w.horizontalSpace,
                     ManagementItem(
-                      title: 'Teacher',
+                      title: AppStrings.teacher.tr,
                       iconPath: ImagePath.tutionImage,
                       onTap: () {
                         // Handle tap
@@ -65,7 +65,7 @@ class OnboardingScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     ManagementItem(
-                      title: "Guest",
+                      title: AppStrings.guest.tr,
                       iconPath: ImagePath.persionImage,
                       onTap: () {},
                     ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 import '../../../core/core.dart';
 
@@ -42,7 +43,7 @@ class StudentItemCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   CustomText(
-                    text: "Name- $name",
+                    text: "${AppStrings.name.tr}- $name",
                     fontSize: AppDimensions.fontM,
                     color: ShipXColors.backgroundLight,
                     maxLines: 1,
@@ -50,7 +51,7 @@ class StudentItemCard extends StatelessWidget {
                   ),
                   AppDimensions.spaceS.h.verticalSpace,
                   CustomText(
-                    text: "Student Id- $studentId",
+                    text: "${AppStrings.studentId.tr}- $studentId",
                     fontSize: AppDimensions.fontM,
                     color: ShipXColors.backgroundLight,
                     maxLines: 1,
@@ -60,7 +61,7 @@ class StudentItemCard extends StatelessWidget {
               ),
             ),
             CustomText(
-              text: "Class- $className",
+              text: "${AppStrings.className.tr}- $className",
               fontSize: AppDimensions.fontM,
               color: ShipXColors.backgroundLight,
             ),

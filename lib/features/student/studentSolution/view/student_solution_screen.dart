@@ -50,8 +50,8 @@ class StudentSolutionScreen extends StatelessWidget {
               color: ShipXColors.bg2,
             ),
             AppDimensions.spaceS.w.horizontalSpace,
-            const CustomText(
-              text: "Question List",
+            CustomText(
+              text: AppStrings.questionList.tr,
               fontSize: AppDimensions.fontM,
               color: ShipXColors.background,
             ),
@@ -75,9 +75,9 @@ class StudentSolutionScreen extends StatelessWidget {
               return const Center(child: CircularProgressIndicator());
             }
             if (controller.questionsList.isEmpty) {
-              return const Center(
+              return Center(
                 child: CustomText(
-                  text: "No questions found",
+                  text: AppStrings.noQuestionsFound.tr,
                   color: Colors.red,
                 ),
               );

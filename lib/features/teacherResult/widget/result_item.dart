@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get_utils/src/extensions/internacionalization.dart';
 
 import '../../../core/core.dart';
 
@@ -65,7 +66,7 @@ class ResultItem extends StatelessWidget {
                       ),
                       const Spacer(),
                       CustomText(
-                        text: "Class : $classId",
+                        text: "${AppStrings.className.tr} : $classId",
                         fontSize: AppDimensions.fontXS.sp,
                         fontWeight: FontWeight.bold,
                         color: ShipXColors.deepBlue,
@@ -95,7 +96,7 @@ class ResultItem extends StatelessWidget {
                         tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                       ),
                       child: CustomText(
-                        text: "PUBLISH",
+                        text: AppStrings.publish.tr,
                         fontSize: AppDimensions.fontS.sp,
                         fontWeight: FontWeight.w600,
                         color: ShipXColors.deepBlue,

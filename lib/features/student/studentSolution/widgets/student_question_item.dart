@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import '../../../../core/core.dart';
 
 class StudentQuestionItem extends StatelessWidget {
@@ -50,7 +51,7 @@ class StudentQuestionItem extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 CustomText(
-                  text: "Question #$index",
+                  text: "${AppStrings.question.tr} #$index",
                   fontSize: AppDimensions.fontL,
                   fontWeight: FontWeight.bold,
                   color: ShipXColors.blue,
@@ -75,8 +76,8 @@ class StudentQuestionItem extends StatelessWidget {
                       minimumSize: Size.zero,
                       tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                     ),
-                    child: const CustomText(
-                      text: 'VIEW',
+                    child: CustomText(
+                      text: AppStrings.view.tr,
                       fontSize: AppDimensions.fontL,
                       fontWeight: FontWeight.w500,
                       color: ShipXColors.blue,

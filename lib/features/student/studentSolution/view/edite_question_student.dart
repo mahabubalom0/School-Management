@@ -18,8 +18,8 @@ class EditeQuestionStudent extends StatelessWidget {
           onPressed: () => Get.back(),
           icon: Icon(Icons.arrow_back_ios_new, size: AppDimensions.iconM.sp),
         ),
-        title: const CustomText(
-          text: "Edite Question",
+        title: CustomText(
+          text: AppStrings.editQuestion.tr,
           fontSize: AppDimensions.fontL,
           color: ShipXColors.white,
         ),
@@ -30,7 +30,7 @@ class EditeQuestionStudent extends StatelessWidget {
           vertical: AppDimensions.paddingHUGE.h,
         ),
         child: CustomButton(
-          text: "Edite Question",
+          text: AppStrings.editQuestion.tr,
           isLoading: controller.isLoading.value,
           onPressed: () {
             controller.editeQuestion(id);
@@ -48,7 +48,7 @@ class EditeQuestionStudent extends StatelessWidget {
           children: [
             CustomTextField(
               controller: controller.editequestionController,
-              hintText: "Write your question",
+              hintText: AppStrings.writeYourQuestion.tr,
               maxLine: 5,
               minLine: 5,
             ),
@@ -64,8 +64,8 @@ class EditeQuestionStudent extends StatelessWidget {
                   borderRadius: BorderRadius.circular(AppDimensions.radiusM.r),
                   color: ShipXColors.blue,
                 ),
-                child: const CustomText(
-                  text: "Upload File",
+                child: CustomText(
+                  text: AppStrings.uploadFile.tr,
                   fontSize: AppDimensions.fontL,
                   color: ShipXColors.background,
                 ),

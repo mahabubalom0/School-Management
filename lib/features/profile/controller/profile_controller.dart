@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
+import '../../../core/core.dart';
 import '../../../routes/app_routes.dart';
 import '../../auth/service/login_service.dart';
 
@@ -14,7 +15,7 @@ class ProfileController extends GetxController {
       await loginService.logout();
       Get.offAllNamed(AppRoutes.login);
     } catch (e) {
-      Get.snackbar('Error', e.toString());
+      Get.snackbar(AppStrings.error.tr, e.toString());
     } finally {
       isLoading.value = false;
     }

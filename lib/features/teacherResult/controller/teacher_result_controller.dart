@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
+import '../../../core/core.dart';
 import '../model/student_show_model.dart';
 import '../service/student_show_service.dart';
 import 'package:pdf/pdf.dart';
@@ -31,7 +32,7 @@ class TeacherResultController extends GetxController {
     } catch (e, stacktrace) {
       debugPrint("Error fetching results: $e");
       debugPrint("Stacktrace: $stacktrace");
-      showSnackbar("Error", e.toString());
+      showSnackbar(AppStrings.error.tr, e.toString());
     } finally {
       isLoading.value = false;
     }
@@ -114,7 +115,7 @@ class TeacherResultController extends GetxController {
         name: '${className}_${exam}_Result',
       );
     } catch (e) {
-      showSnackbar("Error", "Failed to generate PDF: $e");
+      showSnackbar(AppStrings.error.tr, "Failed to generate PDF: $e");
     }
   }
 

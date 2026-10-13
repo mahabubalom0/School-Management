@@ -68,7 +68,7 @@ class SplashScreen extends StatelessWidget {
                   borderRadius: BorderRadius.circular(999.r),
                 ),
                 child: CustomText(
-                  text: 'Powered by:XYZ COM',
+                  text: AppStrings.poweredBy.tr,
                   fontSize: AppDimensions.fontXS.sp,
                   color: ShipXColors.background,
                 ),

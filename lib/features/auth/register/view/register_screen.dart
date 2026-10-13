@@ -31,55 +31,55 @@ class RegisterScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     CustomLabelTextfiledItem(
-                      title: "Name",
-                      hintText: "Enter Your Name",
+                      title: AppStrings.name.tr,
+                      hintText: AppStrings.enterYourName.tr,
                       controller: controller.nameController,
                     ),
                     AppDimensions.spaceM.h.verticalSpace,
                     CustomLabelTextfiledItem(
-                      title: "Email",
-                      hintText: "Enter Your Email",
+                      title: AppStrings.email.tr,
+                      hintText: AppStrings.enterYourEmail.tr,
                       controller: controller.emailController,
                     ),
                      CustomLabelTextfiledItem(
-                      title: "Password",
-                      hintText: "Enter Your Password",
+                      title: AppStrings.password.tr,
+                      hintText: AppStrings.enterYourPassword.tr,
                       controller: controller.passwordController,
                     ),
                     AppDimensions.spaceM.h.verticalSpace,
                     CustomLabelTextfiledItem(
-                      title: "Class",
-                      hintText: "Enter Your Class",
+                      title: AppStrings.className.tr,
+                      hintText: AppStrings.enterYourClass.tr,
                       controller: controller.classController,
                     ),
                     AppDimensions.spaceM.h.verticalSpace,
                     CustomLabelTextfiledItem(
-                      title: "Section",
-                      hintText: "Enter Your Sction",
+                      title: AppStrings.section.tr,
+                      hintText: AppStrings.enterYourSection.tr,
                       controller: controller.sectionController,
                     ),
                     AppDimensions.spaceM.h.verticalSpace,
                     CustomLabelTextfiledItem(
-                      title: "Roll No",
-                      hintText: "Enter Your Roll No",
+                      title: AppStrings.rollNo.tr,
+                      hintText: AppStrings.enterYourRollNo.tr,
                       controller: controller.rollNoController,
                     ),
                     AppDimensions.spaceM.h.verticalSpace,
                     CustomLabelTextfiledItem(
-                      title: "Group",
-                      hintText: "Enter Your Group",
+                      title: AppStrings.group.tr,
+                      hintText: AppStrings.enterYourGroup.tr,
                       controller: controller.groupController,
                     ),
 
                     AppDimensions.spaceM.h.verticalSpace,
                     CustomLabelTextfiledItem(
-                      title: "Address",
-                      hintText: "Enter Your Address",
+                      title: AppStrings.address.tr,
+                      hintText: AppStrings.enterYourAddress.tr,
                       controller: controller.addressController,
                     ),
                     AppDimensions.spaceM.h.verticalSpace,
                     CustomDropdownField<String>(
-                      hintText: "Gender",
+                      hintText: AppStrings.gender.tr,
                       items: controller.genderOptions,
                       getLabel: (String value) => value,
                       onChanged: (String? change) {
@@ -87,7 +87,7 @@ class RegisterScreen extends StatelessWidget {
                       },
                     ),
                     AppDimensions.spaceHuge.h.verticalSpace,
-                    CustomButton(text: "Singin", onPressed: () {
+                    CustomButton(text: AppStrings.signUp.tr, onPressed: () {
                       controller.handleRegistration();
                     }),
                     AppDimensions.spaceM.h.verticalSpace,
@@ -95,7 +95,7 @@ class RegisterScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         CustomText(
-                          text: "Already have an account? ",
+                          text: AppStrings.alreadyHaveAccount.tr,
                           color: context.appColors.textPrimary,
                           fontSize: AppDimensions.fontS,
                         ),
@@ -104,7 +104,7 @@ class RegisterScreen extends StatelessWidget {
                             Get.toNamed(AppRoutes.login);
                           },
                           child: CustomText(
-                            text: "Login",
+                            text: AppStrings.login.tr,
                             color: context.appColors.primary,
                             fontSize: AppDimensions.fontS,
                             fontWeight: FontWeight.bold,

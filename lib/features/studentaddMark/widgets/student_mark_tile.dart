@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get_utils/src/extensions/internacionalization.dart';
 
 import '../../../core/core.dart';
 
@@ -44,13 +45,13 @@ class StudentMarkTile extends StatelessWidget {
               children: [
                 CustomTextField(
                   controller: name,
-                  hintText: "Enter Student Name",
+                  hintText: AppStrings.enterStudentName.tr,
                 ),
                 const SizedBox(height: AppDimensions.spaceL),
                 CustomTextField(
                   keyboardType: TextInputType.number,
                   controller: rollNumber,
-                  hintText: "Enter Roll Number",
+                  hintText: AppStrings.enterRollNumber.tr,
                 ),
               ],
             ),
@@ -75,7 +76,7 @@ class StudentMarkTile extends StatelessWidget {
                     color: Colors.grey.shade800,
                   ),
                   decoration: InputDecoration(
-                    hintText: 'Mark',
+                    hintText: AppStrings.mark.tr,
                     contentPadding: const EdgeInsets.symmetric(
                       horizontal: 8,
                       vertical: 12,

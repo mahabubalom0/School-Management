@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
+import '../../../../core/core.dart';
 import '../model/home_work_model.dart';
 import '../service/student_home_work_service.dart';
 
@@ -15,12 +16,12 @@ class StudentHomeWorkController extends GetxController {
       isLoading.value = true;
       final res = await service.studentHomeWorkService();
       homeWorkModel.value = res;
-      showSnackbar('Success', 'Student Home Work Loaded Successfully');
+      showSnackbar(AppStrings.success.tr, AppStrings.studentHomeWork.tr);
       debugPrint(
         "Student Home Work Loaded Successfully ${homeWorkModel.length}",
       );
     } catch (e) {
-      showSnackbar('Error', e.toString());
+      showSnackbar(AppStrings.error.tr, e.toString());
       debugPrint(e.toString());
     } finally {
       isLoading.value = false;

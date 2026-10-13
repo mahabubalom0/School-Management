@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
+import '../../../../core/core.dart';
 import '../service/techer_notice_service.dart';
 
 class TeacherNoticeController extends GetxController {
@@ -18,15 +19,15 @@ class TeacherNoticeController extends GetxController {
   Future<void> getSendNotice() async {
     try {
       if (nameController.text.isEmpty) {
-        _showSnackbar("Error", "Please enter your name");
+        _showSnackbar(AppStrings.error.tr, AppStrings.pleaseEnterName.tr);
         return;
       }
       if (professionController.text.isEmpty) {
-        _showSnackbar("Error", "Please enter your profession");
+        _showSnackbar(AppStrings.error.tr, AppStrings.pleaseEnterProfession.tr);
         return;
       }
       if (noticeController.text.isEmpty) {
-        _showSnackbar("Error", "Please enter your notice");
+        _showSnackbar(AppStrings.error.tr, AppStrings.pleaseEnterNotice.tr);
         return;
       }
       isLoading.value = true;
@@ -39,9 +40,9 @@ class TeacherNoticeController extends GetxController {
       professionController.clear();
       noticeController.clear();
       Get.back();
-      _showSnackbar("Success", "Notice sent successfully!");
+      _showSnackbar(AppStrings.success.tr, AppStrings.noticeSentSuccess.tr);
     } catch (e) {
-      _showSnackbar("Error", "Notice sending failed!");
+      _showSnackbar(AppStrings.error.tr, AppStrings.noticeSentFailed.tr);
     } finally {
       isLoading.value = false;
     }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:get/route_manager.dart';
 import '../../../core/core.dart';
 import '../../../core/utils/app_images.dart';
@@ -34,11 +35,10 @@ class TeacherDashbordScreen extends StatelessWidget {
                   ),
                   child: Column(
                     children: [
-                      const TopMassageCard(
-                        title: 'Welcome Back!',
-                        subtitle: 'Stay updated with your academic activities.',
-                        message:
-                            'Here you can find your daily classes, upcoming assignments, and important school announcements. Keep up the great work!',
+                      TopMassageCard(
+                        title: AppStrings.welcomeBack.tr,
+                        subtitle: AppStrings.stayUpdatedAcademic.tr,
+                        message: AppStrings.dashboardMessage.tr,
                       ),
                       AppDimensions.spaceHuge.h.verticalSpace,
                       Row(
@@ -46,21 +46,21 @@ class TeacherDashbordScreen extends StatelessWidget {
                         children: [
                           FeatureCardWidget(
                             imagePath: ImagePath.attenndenceImage,
-                            title: 'Attendance',
+                            title: AppStrings.attendance.tr,
                             onTap: () {
                               Get.toNamed(AppRoutes.studentAttendance);
                             },
                           ),
                           FeatureCardWidget(
                             imagePath: ImagePath.homeWorkImage,
-                            title: 'Homework',
+                            title: AppStrings.homework.tr,
                             onTap: () {
                               Get.toNamed(AppRoutes.teacherHomeWork);
                             },
                           ),
                           FeatureCardWidget(
                             imagePath: ImagePath.resultImage,
-                            title: 'Result',
+                            title: AppStrings.result.tr,
                             onTap: () {
                               Get.toNamed(AppRoutes.studentAddMark);
                             },
@@ -73,12 +73,12 @@ class TeacherDashbordScreen extends StatelessWidget {
                         children: [
                           FeatureCardWidget(
                             imagePath: ImagePath.examRutineImage,
-                            title: 'Exam Routine',
+                            title: AppStrings.examRoutine.tr,
                             onTap: () {},
                           ),
                           FeatureCardWidget(
                             imagePath: ImagePath.solutionImage,
-                            title: 'Solution',
+                            title: AppStrings.solution.tr,
                             onTap: () {
                               Get.toNamed(
                                 AppRoutes.teacherSolutionQuestionList,
@@ -87,7 +87,7 @@ class TeacherDashbordScreen extends StatelessWidget {
                           ),
                           FeatureCardWidget(
                             imagePath: ImagePath.noticeImage,
-                            title: 'Notice',
+                            title: AppStrings.notice.tr,
                             onTap: () {
                               Get.toNamed(AppRoutes.teacherNotice);
                             },
@@ -100,14 +100,14 @@ class TeacherDashbordScreen extends StatelessWidget {
                         children: [
                           FeatureCardWidget(
                             imagePath: ImagePath.addUserMale,
-                            title: "Add Student ",
+                            title: AppStrings.addStudent.tr,
                             onTap: () {
                               Get.toNamed(AppRoutes.addAccount);
                             },
                           ),
                           FeatureCardWidget(
                             imagePath: ImagePath.persionImage,
-                            title: "All Student ",
+                            title: AppStrings.allStudent.tr,
                             onTap: () {
                               Get.toNamed(AppRoutes.allStudent);
                             },

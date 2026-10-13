@@ -105,17 +105,17 @@ class _ResultDeatilsState extends State<ResultDeatils> {
                 ),
                 child: CustomTextField(
                   controller: controller.searchCLT,
-                  hintText: "Search by roll no",
+                  hintText: AppStrings.searchByRollNo.tr,
                   onchange: (d) => _runFilter(d),
                 ),
               ),
             ),
             Expanded(
               child: filteredStudents.isEmpty
-                  ? const Center(
+                  ? Center(
                       child: Text(
-                        "No results found.",
-                        style: TextStyle(fontSize: 16, color: Colors.black54),
+                        AppStrings.noResultFound.tr,
+                        style: const TextStyle(fontSize: 16, color: Colors.black54),
                       ),
                     )
                   : ListView.builder(
@@ -160,14 +160,14 @@ class _ResultDeatilsState extends State<ResultDeatils> {
             ),
           ),
           title: CustomText(
-            text: studentResult.name ?? "Name Not Found",
+            text: studentResult.name ?? AppStrings.nameNotFound.tr,
             fontSize: AppDimensions.fontL,
             color: ShipXColors.white,
             fontWeight: FontWeight.bold,
           ),
           subtitle: CustomText(
             text:
-                "Roll: ${studentResult.roll ?? 'N/A'} | ID: ${studentResult.id ?? 'N/A'}",
+                "${AppStrings.roll.tr}: ${studentResult.roll ?? 'N/A'} | ${AppStrings.id.tr}: ${studentResult.id ?? 'N/A'}",
             fontSize: AppDimensions.font13,
             color: ShipXColors.white,
             fontWeight: FontWeight.bold,
@@ -179,7 +179,7 @@ class _ResultDeatilsState extends State<ResultDeatils> {
               borderRadius: BorderRadius.circular(12),
             ),
             child: CustomText(
-              text: "GPA: ${studentResult.mark?.toString() ?? "0"}",
+              text: "${AppStrings.gpa.tr}: ${studentResult.mark?.toString() ?? "0"}",
               fontSize: AppDimensions.font13,
               color: ShipXColors.white,
               fontWeight: FontWeight.bold,
@@ -194,19 +194,19 @@ class _ResultDeatilsState extends State<ResultDeatils> {
                   const SizedBox(height: 8),
                   _buildInfoRow(
                     Icons.book_outlined,
-                    "Subject",
+                    AppStrings.subject.tr,
                     studentResult.subject ?? "N/A",
                   ),
                   const SizedBox(height: 8),
                   _buildInfoRow(
                     Icons.group_outlined,
-                    "Section",
+                    AppStrings.section.tr,
                     studentResult.section ?? "N/A",
                   ),
                   const SizedBox(height: 8),
                   _buildInfoRow(
                     Icons.class_outlined,
-                    "Class",
+                    AppStrings.className.tr,
                     studentResult.className ?? "N/A",
                   ),
                 ],

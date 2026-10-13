@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
+import '../../../core/core.dart';
 import '../model/all_student_model.dart';
 import '../service/all_student_service.dart';
 
@@ -59,9 +60,9 @@ class AllStudentController extends GetxController {
       isLoading.value = true;
       final allStudent = await studentService.getAllStudent();
       allStudentList.assignAll(allStudent);
-      _showSnackbar("Success", "All student fetched successfully");
+      _showSnackbar(AppStrings.success.tr, AppStrings.allStudentFetchedSuccess.tr);
     } catch (e) {
-      _showSnackbar('Error', e.toString());
+      _showSnackbar(AppStrings.error.tr, e.toString());
     } finally {
       isLoading.value = false;
     }
@@ -73,10 +74,10 @@ class AllStudentController extends GetxController {
       isLoading.value = true;
       await studentService.getStudentDeletd(studentId: studentId);
       allStudentList.removeWhere((element) => element.studentId == studentId);
-      _showSnackbar("Success", "Student deleted successfully");
+      _showSnackbar(AppStrings.success.tr, AppStrings.studentDeletedSuccess.tr);
       Get.back();
     } catch (e) {
-      _showSnackbar('Error', e.toString());
+      _showSnackbar(AppStrings.error.tr, e.toString());
     } finally {
       isLoading.value = false;
     }

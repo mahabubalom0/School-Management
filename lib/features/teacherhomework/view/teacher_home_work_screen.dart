@@ -42,7 +42,7 @@ class TeacherHomeWorkScreen extends StatelessWidget {
             ),
             AppDimensions.spaceS.w.horizontalSpace,
             CustomText(
-              text: "HomeWork",
+              text: AppStrings.homework.tr,
               fontSize: AppDimensions.fontXXL.sp,
               color: ShipXColors.background,
               fontWeight: FontWeight.bold,
@@ -62,15 +62,14 @@ class TeacherHomeWorkScreen extends StatelessWidget {
               children: [
                 AppDimensions.spaceHuge.h.verticalSpace,
                 CustomText(
-                  text: "Your Daily Homework",
+                  text: AppStrings.yourDailyHomework.tr,
                   fontSize: AppDimensions.fontM.sp,
                   fontWeight: FontWeight.bold,
                   color: ShipXColors.black,
                 ),
                 AppDimensions.spaceS.h.verticalSpace,
                 CustomText(
-                  text:
-                      "Stay on top of your studies! Check below for the latest homework and assignments given by your teachers.",
+                  text: AppStrings.homeworkDescription.tr,
                   fontSize: AppDimensions.fontXS.sp,
                   color: ShipXColors.black,
                 ),
@@ -82,7 +81,7 @@ class TeacherHomeWorkScreen extends StatelessWidget {
                 ),
                 AppDimensions.spaceXL.h.verticalSpace,
                 CustomText(
-                  text: "Add Homeworks",
+                  text: AppStrings.addHomework.tr,
                   fontSize: AppDimensions.fontM.sp,
                   fontWeight: FontWeight.bold,
                   color: ShipXColors.black,
@@ -90,13 +89,13 @@ class TeacherHomeWorkScreen extends StatelessWidget {
                 AppDimensions.spaceM.h.verticalSpace,
                 CustomTextField(
                   controller: controller.addHomeWorkClt,
-                  hintText: "enter home work..",
+                  hintText: AppStrings.enterHomework.tr,
                 ),
                 AppDimensions.spaceXL.h.verticalSpace,
                 Obx(
                   () => CustomButton(
                     isLoading: controller.isloading.value,
-                    text: "Submit",
+                    text: AppStrings.submit.tr,
                     onPressed: () {
                       controller.submitButton();
                     },

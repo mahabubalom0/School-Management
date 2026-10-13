@@ -1,5 +1,7 @@
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import '../../../core/core.dart';
 
 
 class ShipXAlert extends StatelessWidget {
@@ -87,7 +89,7 @@ class ShipXAlert extends StatelessWidget {
                       ),
                     ),
                     child: Text(
-                      "Cancel",
+                      AppStrings.cancel.tr,
                       style: TextStyle(
                         fontSize: 16.sp,
                         color: Colors.grey.shade700,
@@ -109,7 +111,7 @@ class ShipXAlert extends StatelessWidget {
                       ),
                     ),
                     child: Text(
-                      "Delete",
+                      AppStrings.delete.tr,
                       style: TextStyle(
                         fontSize: 16.sp,
                         color: Colors.white,

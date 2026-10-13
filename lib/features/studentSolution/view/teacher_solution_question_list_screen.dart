@@ -17,7 +17,7 @@ class TeacherSolutionQuestionListScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: ShipXColors.blue,
         title: CustomText(
-          text: "Question List",
+          text: AppStrings.questionList.tr,
           fontSize: AppDimensions.fontL.sp,
           color: ShipXColors.white,
         ),
@@ -36,8 +36,8 @@ class TeacherSolutionQuestionListScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const CustomText(
-              text: "Question List",
+            CustomText(
+              text: AppStrings.questionList.tr,
               fontSize: AppDimensions.fontM,
             ),
             AppDimensions.spaceS.h.verticalSpace,
@@ -64,9 +64,9 @@ class TeacherSolutionQuestionListScreen extends StatelessWidget {
                       physics: const AlwaysScrollableScrollPhysics(
                         parent: BouncingScrollPhysics(),
                       ),
-                      children: const [
-                        SizedBox(height: 100),
-                        Center(child: Text("No questions available.")),
+                      children: [
+                        const SizedBox(height: 100),
+                        Center(child: Text(AppStrings.noQuestionsAvailable.tr)),
                       ],
                     );
                   }
@@ -79,7 +79,7 @@ class TeacherSolutionQuestionListScreen extends StatelessWidget {
                     children: [
                       if (unansweredList.isNotEmpty) ...[
                         CustomText(
-                          text: "Pending Solutions (${unansweredList.length})",
+                          text: "${AppStrings.pendingSolutions.tr} (${unansweredList.length})",
                           fontSize: AppDimensions.fontM.sp,
                           fontWeight: FontWeight.bold,
                           color: ShipXColors
@@ -111,7 +111,7 @@ class TeacherSolutionQuestionListScreen extends StatelessWidget {
                       ],
                       if (answeredList.isNotEmpty) ...[
                         CustomText(
-                          text: "Completed Solutions (${answeredList.length})",
+                          text: "${AppStrings.completedSolutions.tr} (${answeredList.length})",
                           fontSize: AppDimensions.fontM.sp,
                           fontWeight: FontWeight.bold,
                           color: ShipXColors

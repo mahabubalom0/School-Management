@@ -16,9 +16,9 @@ class StudentAddMarkScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.grey.shade100,
       appBar: AppBar(
-        title: const Text(
-          'Add Student Marks',
-          style: TextStyle(fontWeight: FontWeight.bold),
+        title: Text(
+          AppStrings.addStudentMarks.tr,
+          style: const TextStyle(fontWeight: FontWeight.bold),
         ),
         backgroundColor: ShipXColors.primary,
         foregroundColor: Colors.black,
@@ -39,8 +39,8 @@ class StudentAddMarkScreen extends StatelessWidget {
                       Expanded(
                         child: Obx(
                           () => DropdownSelector(
-                            label: 'Class',
-                            hint: 'Select Class',
+                            label: AppStrings.className.tr,
+                            hint: AppStrings.selectClass.tr,
                             value: controller.selectedClass.value,
                             items: controller.classes,
                             onChanged: (val) {
@@ -55,8 +55,8 @@ class StudentAddMarkScreen extends StatelessWidget {
                       Expanded(
                         child: Obx(
                           () => DropdownSelector(
-                            label: 'Section',
-                            hint: 'Select Section',
+                            label: AppStrings.section.tr,
+                            hint: AppStrings.selectSection.tr,
                             value: controller.selectedSection.value,
                             items: controller.sections,
                             onChanged: (val) {
@@ -75,8 +75,8 @@ class StudentAddMarkScreen extends StatelessWidget {
                       Expanded(
                         child: Obx(
                           () => DropdownSelector(
-                            label: 'Subject',
-                            hint: 'Select Subject',
+                            label: AppStrings.subject.tr,
+                            hint: AppStrings.selectSubject.tr,
                             value: controller.selectedSubject.value,
                             items: controller.subjects,
                             onChanged: (val) {
@@ -91,8 +91,8 @@ class StudentAddMarkScreen extends StatelessWidget {
                       Expanded(
                         child: Obx(
                           () => DropdownSelector(
-                            label: 'Exam',
-                            hint: 'Select Exam',
+                            label: AppStrings.exam.tr,
+                            hint: AppStrings.selectExam.tr,
                             value: controller.selectedExam.value,
                             items: controller.exams,
                             onChanged: (val) {
@@ -116,7 +116,7 @@ class StudentAddMarkScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    'Student List',
+                    AppStrings.studentList.tr,
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
@@ -125,7 +125,7 @@ class StudentAddMarkScreen extends StatelessWidget {
                   ),
                   Obx(
                     () => Text(
-                      '${controller.studentInputs.length} Students',
+                      '${controller.studentInputs.length} ${AppStrings.students.tr}',
                       style: TextStyle(
                         fontSize: 14,
                         color: Colors.grey.shade600,
@@ -146,7 +146,7 @@ class StudentAddMarkScreen extends StatelessWidget {
                 if (controller.studentInputs.isEmpty) {
                   return Center(
                     child: Text(
-                      'No students found',
+                      AppStrings.noStudentsFound.tr,
                       style: TextStyle(color: Colors.grey.shade600),
                     ),
                   );
@@ -165,7 +165,7 @@ class StudentAddMarkScreen extends StatelessWidget {
                               controller.addStudentInput();
                             },
                             icon: const Icon(Icons.add),
-                            label: const Text("Add Another Student"),
+                            label: Text(AppStrings.addAnotherStudent.tr),
                             style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.blue.shade50,
                               foregroundColor: Colors.blue.shade800,
@@ -204,7 +204,7 @@ class StudentAddMarkScreen extends StatelessWidget {
           bottom: AppDimensions.paddingHUGE.h,
         ),
         child: CustomButton(
-          text: "Save Marks",
+          text: AppStrings.saveMarks.tr,
           onPressed: () {
             controller.submitMarks();
           },

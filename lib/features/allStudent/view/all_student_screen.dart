@@ -22,8 +22,8 @@ class AllStudentScreen extends StatelessWidget {
           },
           icon: const Icon(Icons.arrow_back, color: ShipXColors.white),
         ),
-        title: const CustomText(
-          text: "All Student",
+        title: CustomText(
+          text: AppStrings.allStudent.tr,
           fontSize: AppDimensions.fontM,
           fontWeight: FontWeight.bold,
           color: ShipXColors.white,
@@ -72,7 +72,9 @@ class AllStudentScreen extends StatelessWidget {
                               ),
                             ),
                             child: CustomText(
-                              text: controller.semesterName[index].toString(),
+                              text: index == 0
+                                  ? AppStrings.allStudent.tr
+                                  : controller.semesterName[index].toString(),
                               color: ShipXColors.background,
                               fontSize: AppDimensions.fontM,
                               fontWeight: FontWeight.bold,
@@ -98,8 +100,8 @@ class AllStudentScreen extends StatelessWidget {
                         Obx(
                           () => CustomText(
                             text: controller.selectedSemesterIndex.value == 0
-                                ? "All Student (${controller.filteredStudentList.length})"
-                                : "${controller.semesterName[controller.selectedSemesterIndex.value]} Semester (${controller.filteredStudentList.length})",
+                                ? "${AppStrings.allStudent.tr} (${controller.filteredStudentList.length})"
+                                : "${controller.semesterName[controller.selectedSemesterIndex.value]} ${AppStrings.semester.tr} (${controller.filteredStudentList.length})",
                             fontSize: AppDimensions.fontL,
                             fontWeight: FontWeight.bold,
                           ),

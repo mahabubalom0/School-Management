@@ -61,7 +61,7 @@ class ProfileScreen extends StatelessWidget {
                                   ),
                                   SizedBox(height: AppDimensions.spaceXL.h),
                                   CustomText(
-                                    text: "Are you sure you want to logout?",
+                                    text: AppStrings.logoutConfirmation.tr,
                                     fontSize: AppDimensions.fontM.sp,
                                     color: ShipXColors.background,
                                   ),
@@ -72,7 +72,7 @@ class ProfileScreen extends StatelessWidget {
                                       TextButton(
                                         onPressed: () => Get.back(),
                                         child: CustomText(
-                                          text: "Cancel",
+                                          text: AppStrings.cancel.tr,
                                           fontSize: AppDimensions.fontXS.sp,
                                           color: ShipXColors.background,
                                         ),
@@ -88,7 +88,7 @@ class ProfileScreen extends StatelessWidget {
                                           () => controller.isLoading.value
                                               ? const CircularProgressIndicator()
                                               : CustomText(
-                                                  text: "Logout",
+                                                  text: AppStrings.logout.tr,
                                                   fontSize:
                                                       AppDimensions.fontXS.sp,
                                                   color: ShipXColors.error,

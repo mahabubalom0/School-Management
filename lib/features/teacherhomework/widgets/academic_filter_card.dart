@@ -63,7 +63,7 @@ class _AcademicFilterCardState extends State<AcademicFilterCard> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 _buildFilterItem(
-                  title: "Class",
+                  title: AppStrings.className.tr,
                   items: widget.classList,
                   selectedValue: selectedClass,
                   onChanged: (val) {
@@ -75,7 +75,7 @@ class _AcademicFilterCardState extends State<AcademicFilterCard> {
                 ),
                 AppDimensions.spaceL.h.verticalSpace,
                 _buildFilterItem(
-                  title: "Section",
+                  title: AppStrings.section.tr,
                   items: widget.sectionsList,
                   selectedValue: selectedSection,
                   onChanged: (val) {
@@ -93,11 +93,11 @@ class _AcademicFilterCardState extends State<AcademicFilterCard> {
                       flex: 10,
                       child: Obx(() {
                         return controller.selectedBool.value
-                            ? Column(
+                             ? Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   CustomText(
-                                    text: "Subject",
+                                    text: AppStrings.subject.tr,
                                     fontSize: AppDimensions.fontS.sp,
                                     color: ShipXColors.black,
                                   ),
@@ -132,7 +132,7 @@ class _AcademicFilterCardState extends State<AcademicFilterCard> {
                                           AppDimensions.radiusS.r,
                                         ),
                                       ),
-                                      hintText: "Enter Subject",
+                                      hintText: AppStrings.enterSubject.tr,
                                       hintStyle: TextStyle(
                                         fontSize: AppDimensions.fontS.sp,
                                         color: ShipXColors.bodyLight,
@@ -142,7 +142,7 @@ class _AcademicFilterCardState extends State<AcademicFilterCard> {
                                 ],
                               )
                             : _buildFilterItem(
-                                title: "Subject",
+                                title: AppStrings.subject.tr,
                                 items: widget.subjectsList,
                                 selectedValue: selectedSubject,
                                 onChanged: (val) {
@@ -213,7 +213,7 @@ class _AcademicFilterCardState extends State<AcademicFilterCard> {
               isExpanded: true,
               isDense: true,
               hint: CustomText(
-                text: "Select",
+                text: AppStrings.select.tr,
                 fontSize: AppDimensions.fontS.sp,
                 color: ShipXColors.bodyLight,
               ),

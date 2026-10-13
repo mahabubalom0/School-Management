@@ -15,8 +15,8 @@ class AddAccountScreen extends StatelessWidget {
     final controller = Get.find<AddAccountController>();
     return Scaffold(
       appBar: AppBar(
-        title: const CustomText(
-          text: "Add ACoount",
+        title: CustomText(
+          text: AppStrings.addAccount.tr,
           fontSize: AppDimensions.fontM,
           color: ShipXColors.success,
         ),
@@ -32,33 +32,33 @@ class AddAccountScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 CustomLabelTextfiledItem(
-                  title: "Name",
-                  hintText: "Enter Your Name",
+                  title: AppStrings.name.tr,
+                  hintText: AppStrings.enterYourName.tr,
                   controller: controller.nameController,
                 ),
                 AppDimensions.spaceM.h.verticalSpace,
                 CustomLabelTextfiledItem(
-                  title: "Email Address",
-                  hintText: "Enter Your Email Address",
+                  title: AppStrings.emailAddress.tr,
+                  hintText: AppStrings.enterYourEmailAddress.tr,
                   controller: controller.emailController,
                 ),
                 AppDimensions.spaceM.h.verticalSpace,
                 CustomLabelTextfiledItem(
-                  title: "Student ID",
-                  hintText: "Enter Your Student ID",
+                  title: AppStrings.studentId.tr,
+                  hintText: AppStrings.enterYourStudentId.tr,
                   controller: controller.studentRoolClt,
                 ),
                 AppDimensions.spaceM.h.verticalSpace,
                 CustomLabelTextfiledItem(
-                  title: "Student Phone Number",
-                  hintText: "Enter Your Student Phone Number",
+                  title: AppStrings.studentPhoneNumber.tr,
+                  hintText: AppStrings.enterYourStudentPhoneNumber.tr,
                   controller: controller.studentPhoneClt,
                 ),
                 AppDimensions.spaceM.h.verticalSpace,
-                const CustomText(text: "Gender", fontSize: AppDimensions.fontM),
+                CustomText(text: AppStrings.gender.tr, fontSize: AppDimensions.fontM),
                 AppDimensions.spaceS.h.verticalSpace,
                 CustomDropdownField(
-                  hintText: "Select Your Gender",
+                  hintText: AppStrings.selectYourGender.tr,
                   items: controller.gender,
                   getLabel: (item) => item.toString(),
                   onChanged: (value) {
@@ -68,43 +68,43 @@ class AddAccountScreen extends StatelessWidget {
                 ),
                 AppDimensions.spaceM.h.verticalSpace,
                 CustomLabelTextfiledItem(
-                  title: "Class",
-                  hintText: "Enter Your Class",
+                  title: AppStrings.className.tr,
+                  hintText: AppStrings.enterYourClass.tr,
                   controller: controller.classAdmissionController,
                 ),
                 AppDimensions.spaceM.h.verticalSpace,
                 CustomLabelTextfiledItem(
-                  title: "Father's Name",
-                  hintText: "Enter Your Father's Name",
+                  title: AppStrings.fathersName.tr,
+                  hintText: AppStrings.enterYourFathersName.tr,
                   controller: controller.fatherNameController,
                 ),
                 AppDimensions.spaceM.h.verticalSpace,
                 CustomLabelTextfiledItem(
-                  title: "Mother's Name",
-                  hintText: "Enter Your Mother's Name",
+                  title: AppStrings.mothersName.tr,
+                  hintText: AppStrings.enterYourMothersName.tr,
                   controller: controller.motherNameController,
                 ),
                 AppDimensions.spaceM.h.verticalSpace,
                 CustomLabelTextfiledItem(
-                  title: "Date of Birth",
-                  hintText: "Enter Your Date of Birth",
+                  title: AppStrings.dateOfBirth.tr,
+                  hintText: AppStrings.enterYourDateOfBirth.tr,
                   controller: controller.dateOfBirthController,
                 ),
                 AppDimensions.spaceM.h.verticalSpace,
                 CustomLabelTextfiledItem(
-                  title: "Address",
-                  hintText: "Enter Your Address",
+                  title: AppStrings.address.tr,
+                  hintText: AppStrings.enterYourAddress.tr,
                   controller: controller.addressController,
                 ),
                 AppDimensions.spaceM.h.verticalSpace,
-                const CustomText(
-                  text: "Religion",
+                CustomText(
+                  text: AppStrings.religion.tr,
                   fontSize: AppDimensions.fontM,
                 ),
                 AppDimensions.spaceS.h.verticalSpace,
 
                 CustomDropdownField(
-                  hintText: "Select Your Religion",
+                  hintText: AppStrings.selectYourReligion.tr,
                   items: controller.religion,
                   getLabel: (item) => item.toString(),
                   onChanged: (value) {
@@ -113,13 +113,13 @@ class AddAccountScreen extends StatelessWidget {
                   },
                 ),
                 AppDimensions.spaceM.h.verticalSpace,
-                const CustomText(
-                  text: "Blood Group",
+                CustomText(
+                  text: AppStrings.bloodGroup.tr,
                   fontSize: AppDimensions.fontM,
                 ),
                 AppDimensions.spaceS.h.verticalSpace,
                 CustomDropdownField(
-                  hintText: "Select Your Blood Group",
+                  hintText: AppStrings.selectYourBloodGroup.tr,
                   items: controller.bloodGroup,
                   getLabel: (item) => item.toString(),
                   onChanged: (value) {
@@ -129,8 +129,8 @@ class AddAccountScreen extends StatelessWidget {
                 ),
                 AppDimensions.spaceM.h.verticalSpace,
                 CustomLabelTextfiledItem(
-                  title: "Guardian's Phone Number",
-                  hintText: "Enter Your Guardian's Phone Number",
+                  title: AppStrings.guardiansPhoneNumber.tr,
+                  hintText: AppStrings.enterYourGuardiansPhoneNumber.tr,
                   controller: controller.gradientPhoneNumberClt,
                 ),
                 AppDimensions.spaceXXL.h.verticalSpace,
@@ -138,7 +138,7 @@ class AddAccountScreen extends StatelessWidget {
                   () => controller.isLoading.value
                       ? const Center(child: CircularProgressIndicator())
                       : CustomButton(
-                          text: "Add Student",
+                          text: AppStrings.addStudent.tr,
                           onPressed: () {
                             controller.addStudent();
                           },

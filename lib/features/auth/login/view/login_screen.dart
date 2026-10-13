@@ -31,18 +31,18 @@ class LoginScreen extends StatelessWidget {
                 children: [
                   AppDimensions.spaceMassive.h.verticalSpace,
                   CustomLabelTextfiledItem(
-                    title: 'UserName',
-                    hintText: 'Enter Your UserName',
+                    title: AppStrings.userName.tr,
+                    hintText: AppStrings.enterYourUserName.tr,
                     controller: controller.usernameController,
                   ),
                   AppDimensions.paddingXL.h.verticalSpace,
                   CustomLabelTextfiledItem(
-                    title: 'Password',
-                    hintText: 'Enter Your Password',
+                    title: AppStrings.password.tr,
+                    hintText: AppStrings.enterYourPassword.tr,
                     controller: controller.passwordController,
                   ),
                   AppDimensions.paddingXXL.h.verticalSpace,
-                  CustomButton(text: "Login", onPressed: () {
+                  CustomButton(text: AppStrings.login.tr, onPressed: () {
                     controller.login();
                   }),
                   AppDimensions.spaceXL.h.verticalSpace,
@@ -50,7 +50,7 @@ class LoginScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       CustomText(
-                        text: "Don't have an account? ",
+                        text: AppStrings.dontHaveAccount.tr,
                         color: context.appColors.textPrimary,
                         fontSize: AppDimensions.fontS,
                       ),
@@ -59,7 +59,7 @@ class LoginScreen extends StatelessWidget {
                           Get.toNamed(AppRoutes.register);
                         },
                         child: CustomText(
-                          text: "Sign Up",
+                          text: AppStrings.signUp.tr,
                           color: context.appColors.primary,
                           fontSize: AppDimensions.fontS,
                           fontWeight: FontWeight.bold,

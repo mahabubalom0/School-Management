@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
+import '../../../../core/core.dart';
 import '../../../../routes/app_routes.dart';
 import '../../service/register_service.dart';
 
@@ -24,25 +25,25 @@ class RegisterController extends GetxController {
     try {
       isLoading.value = true;
       if (nameController.text.isEmpty) {
-        showErrorSnackbar("Please enter your name");
+        showErrorSnackbar(AppStrings.pleaseEnterName.tr);
       } else if (emailController.text.isEmpty) {
-        showErrorSnackbar("Please enter your email");
+        showErrorSnackbar(AppStrings.pleaseEnterEmail.tr);
       } else if (passwordController.text.isEmpty) {
-        showErrorSnackbar("Please enter your password");
+        showErrorSnackbar(AppStrings.pleaseEnterPassword.tr);
       } else if (passwordController.text.length < 8) {
-        showErrorSnackbar("Password must be at least 8 characters");
+        showErrorSnackbar(AppStrings.passwordMinLength.tr);
       } else if (classController.text.isEmpty) {
-        showErrorSnackbar("Please enter your class");
+        showErrorSnackbar(AppStrings.pleaseEnterClass.tr);
       } else if (sectionController.text.isEmpty) {
-        showErrorSnackbar("Please enter your section");
+        showErrorSnackbar(AppStrings.pleaseEnterSection.tr);
       } else if (rollNoController.text.isEmpty) {
-        showErrorSnackbar("Please enter your roll no");
+        showErrorSnackbar(AppStrings.pleaseEnterRollNo.tr);
       } else if (groupController.text.isEmpty) {
-        showErrorSnackbar("Please enter your group");
+        showErrorSnackbar(AppStrings.pleaseEnterGroup.tr);
       } else if (addressController.text.isEmpty) {
-        showErrorSnackbar("Please enter your address");
+        showErrorSnackbar(AppStrings.pleaseEnterAddress.tr);
       } else if (genderController.text.isEmpty) {
-        showErrorSnackbar("Please enter your gender");
+        showErrorSnackbar(AppStrings.pleaseEnterGender.tr);
       } else {
         final response = await _supabasewClient.signUpUser(
           email: emailController.text.trim(),
@@ -56,9 +57,9 @@ class RegisterController extends GetxController {
           gender: genderController.text.trim(),
         );
         if (response.session != null) {
-          showErrorSnackbar("Success");
+          showErrorSnackbar(AppStrings.success.tr);
         }
-        showErrorSnackbar("Succes application");
+        showErrorSnackbar(AppStrings.registrationSuccess.tr);
         clearTextField();
         Get.toNamed(AppRoutes.login);
       }

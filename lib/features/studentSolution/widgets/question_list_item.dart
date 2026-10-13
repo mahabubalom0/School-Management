@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 import '../../../core/core.dart';
 
@@ -65,7 +66,7 @@ class QuestionListItem extends StatelessWidget {
                     children: [
                       Expanded(
                         child: CustomText(
-                          text: "Name : $name",
+                          text: "${AppStrings.name.tr} : $name",
                           fontSize: AppDimensions.font13,
                           color: ShipXColors.white,
                           overflow: TextOverflow.ellipsis,
@@ -73,7 +74,7 @@ class QuestionListItem extends StatelessWidget {
                         ),
                       ),
                       CustomText(
-                        text: time ?? "0 Min ago",
+                        text: time ?? AppStrings.zeroMinAgo.tr,
                         fontSize: AppDimensions.font10,
                         color: ShipXColors.white,
                       ),

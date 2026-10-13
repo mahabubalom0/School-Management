@@ -22,8 +22,8 @@ class StudentDeatilesView extends StatelessWidget {
             onPressed: () {
               Get.dialog(
                 ShipXAlert(
-                  title: "Delete Student",
-                  content: "Are you sure you want to delete this student?",
+                  title: AppStrings.deleteStudent.tr,
+                  content: AppStrings.deleteStudentConfirmation.tr,
                   cancelTap: () {
                     Get.back();
                   },
@@ -47,8 +47,8 @@ class StudentDeatilesView extends StatelessWidget {
         elevation: 0,
         centerTitle: true,
         iconTheme: const IconThemeData(color: Colors.black87),
-        title: const CustomText(
-          text: "Student Details",
+        title: CustomText(
+          text: AppStrings.studentDetails.tr,
           fontSize: AppDimensions.fontL,
           fontWeight: FontWeight.bold,
         ),
@@ -87,7 +87,7 @@ class StudentDeatilesView extends StatelessWidget {
                   ),
                   SizedBox(height: 15.h),
                   Text(
-                    arguments.name ?? 'Unknown Name',
+                    arguments.name ?? AppStrings.unknown.tr,
                     style: TextStyle(
                       fontSize: 22.sp,
                       fontWeight: FontWeight.bold,
@@ -106,7 +106,7 @@ class StudentDeatilesView extends StatelessWidget {
                     ),
                     child: CustomText(
                       text:
-                          "ID: ${arguments.studentId ?? 'N/A'}  |  Class: ${arguments.studentClass ?? 'N/A'}",
+                          "${AppStrings.id.tr}: ${arguments.studentId ?? 'N/A'}  |  ${AppStrings.className.tr}: ${arguments.studentClass ?? 'N/A'}",
                       fontWeight: FontWeight.w600,
                       color: Colors.blue.shade700,
                     ),
@@ -121,21 +121,21 @@ class StudentDeatilesView extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  _buildSectionCard("Personal Information", [
-                    _buildInfoRow("Date of Birth", arguments.dateBirth),
-                    _buildInfoRow("Gender", arguments.gender),
-                    _buildInfoRow("Blood Group", arguments.bloodGroup),
-                    _buildInfoRow("Religion", arguments.religion),
+                  _buildSectionCard(AppStrings.personalInformation.tr, [
+                    _buildInfoRow(AppStrings.dateOfBirth.tr, arguments.dateBirth),
+                    _buildInfoRow(AppStrings.gender.tr, arguments.gender),
+                    _buildInfoRow(AppStrings.bloodGroup.tr, arguments.bloodGroup),
+                    _buildInfoRow(AppStrings.religion.tr, arguments.religion),
                   ]),
-                  _buildSectionCard("Family Information", [
-                    _buildInfoRow("Father's Name", arguments.fatherName),
-                    _buildInfoRow("Mother's Name", arguments.motherName),
+                  _buildSectionCard(AppStrings.familyInformation.tr, [
+                    _buildInfoRow(AppStrings.fathersName.tr, arguments.fatherName),
+                    _buildInfoRow(AppStrings.mothersName.tr, arguments.motherName),
                   ]),
-                  _buildSectionCard("Contact & Address", [
-                    _buildInfoRow("Student Phone", arguments.studentNumber),
-                    _buildInfoRow("Guardian Phone", arguments.guardinNumber),
-                    _buildInfoRow("Email", arguments.email),
-                    _buildInfoRow("Address", arguments.address),
+                  _buildSectionCard(AppStrings.contactAndAddress.tr, [
+                    _buildInfoRow(AppStrings.studentPhone.tr, arguments.studentNumber),
+                    _buildInfoRow(AppStrings.guardianPhone.tr, arguments.guardinNumber),
+                    _buildInfoRow(AppStrings.email.tr, arguments.email),
+                    _buildInfoRow(AppStrings.address.tr, arguments.address),
                   ]),
                 ],
               ),

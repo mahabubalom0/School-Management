@@ -21,8 +21,8 @@ class StudentHomeWorkScreen extends StatelessWidget {
           },
           icon: Icon(Icons.arrow_back_ios, size: AppDimensions.iconM.sp),
         ),
-        title: const CustomText(
-          text: "Student Home Work",
+        title: CustomText(
+          text: AppStrings.studentHomeWork.tr,
           fontSize: AppDimensions.font13,
           color: ShipXColors.background,
         ),
@@ -40,7 +40,7 @@ class StudentHomeWorkScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            CustomText(text: "Home Work", fontSize: AppDimensions.font13.sp),
+            CustomText(text: AppStrings.homework.tr, fontSize: AppDimensions.font13.sp),
 
             AppDimensions.spaceM.h.verticalSpace,
             Expanded(
@@ -49,7 +49,7 @@ class StudentHomeWorkScreen extends StatelessWidget {
                   return const Center(child: CircularProgressIndicator());
                 }
                 if (controller.homeWorkModel.isEmpty) {
-                  return const Center(child: Text("No homework available"));
+                  return Center(child: Text(AppStrings.noHomeworkAvailable.tr));
                 }
                 return ListView.builder(
                   shrinkWrap: true,

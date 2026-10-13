@@ -5,6 +5,7 @@ import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:printing/printing.dart';
 
+import '../../../../core/utils/app_strings.dart';
 import '../model/student_question_model.dart';
 import '../service/student_solution_service.dart';
 
@@ -28,25 +29,25 @@ class StudentSolutionController extends GetxController {
 
   Future<void> askQuestion() async {
     if (questionController.text.trim().isEmpty) {
-      showSnackbar("Error", "Please enter a question");
+      showSnackbar(AppStrings.error.tr, AppStrings.pleaseEnterQuestion.tr);
       return;
     }
     if (user == null) {
-      showSnackbar("Error", "You are not logged in");
+      showSnackbar(AppStrings.error.tr, AppStrings.notLoggedIn.tr);
       return;
     }
     try {
       isLoading.value = true;
       await service.addQuestion(
         question: questionController.text,
-        name: user!.email ?? "Unknown",
+        name: user!.email ?? AppStrings.unknown.tr,
       );
-      showSnackbar("Success", "Question added successfully");
+      showSnackbar(AppStrings.success.tr, AppStrings.questionAddedSuccess.tr);
       questionController.clear();
       getQuestions();
       Get.back();
     } catch (e) {
-      showSnackbar("Error", e.toString());
+      showSnackbar(AppStrings.error.tr, e.toString());
       debugPrint(e.toString());
     } finally {
       isLoading.value = false;
@@ -61,7 +62,7 @@ class StudentSolutionController extends GetxController {
         questionsList.assignAll(response);
       }
     } catch (e) {
-      showSnackbar("Error", e.toString());
+      showSnackbar(AppStrings.error.tr, e.toString());
       debugPrint(e.toString());
     } finally {
       isLoading.value = false;
@@ -72,10 +73,10 @@ class StudentSolutionController extends GetxController {
     try {
       await service.deleteQuestion(id);
       questionsList.removeWhere((element) => element.id == id);
-      showSnackbar("Success", "Question deleted successfully");
+      showSnackbar(AppStrings.success.tr, AppStrings.questionDeletedSuccess.tr);
       return true;
     } catch (e) {
-      showSnackbar("Error", e.toString());
+      showSnackbar(AppStrings.error.tr, e.toString());
       debugPrint(e.toString());
       return false;
     }
@@ -83,11 +84,11 @@ class StudentSolutionController extends GetxController {
 
   Future<void> editeQuestion(int id) async {
     if (editequestionController.text.trim().isEmpty) {
-      showSnackbar("Error", "Please enter a question");
+      showSnackbar(AppStrings.error.tr, AppStrings.pleaseEnterQuestion.tr);
       return;
     }
     if (user == null) {
-      showSnackbar("Error", "You are not logged in");
+      showSnackbar(AppStrings.error.tr, AppStrings.notLoggedIn.tr);
       return;
     }
     try {
@@ -95,15 +96,15 @@ class StudentSolutionController extends GetxController {
       await service.editeQuestion(
         id: id,
         question: editequestionController.text,
-        name: user!.email ?? "Unknown",
+        name: user!.email ?? AppStrings.unknown.tr,
         questionAns: editequestionAnsController.text,
       );
-      showSnackbar("Success", "Question edite successfully");
+      showSnackbar(AppStrings.success.tr, AppStrings.questionEditedSuccess.tr);
       questionController.clear();
       getQuestions();
       Get.back();
     } catch (e) {
-      showSnackbar("Error", e.toString());
+      showSnackbar(AppStrings.error.tr, e.toString());
       debugPrint(e.toString());
     } finally {
       isLoading.value = false;
@@ -161,7 +162,7 @@ class StudentSolutionController extends GetxController {
         filename: '$question solution.pdf',
       );
     } catch (e) {
-      showSnackbar("Error", "Could not generate PDF: ${e.toString()}");
+      showSnackbar(AppStrings.error.tr, "Could not generate PDF: ${e.toString()}");
       debugPrint(e.toString());
     }
   }

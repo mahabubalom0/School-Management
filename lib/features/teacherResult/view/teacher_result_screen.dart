@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:get/route_manager.dart';
-
 import '../../../core/core.dart';
 import '../../../routes/app_routes.dart';
 import '../controller/teacher_result_controller.dart';
@@ -19,7 +17,7 @@ class TeacherResultScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: ShipXColors.green,
         title: CustomText(
-          text: "Student Result",
+          text: AppStrings.studentResult.tr,
           color: ShipXColors.black,
           fontSize: AppDimensions.fontL.sp,
         ),
@@ -33,8 +31,8 @@ class TeacherResultScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const CustomText(
-              text: "All Student Result",
+            CustomText(
+              text: AppStrings.allStudentResult.tr,
               fontSize: AppDimensions.font13,
               color: ShipXColors.black,
             ),
@@ -57,9 +55,9 @@ class TeacherResultScreen extends StatelessWidget {
                 final groupedList = uniqueResults.values.toList();
 
                 if (groupedList.isEmpty) {
-                  return const Center(
+                  return Center(
                     child: CustomText(
-                      text: "No result found",
+                      text: AppStrings.noResultFound.tr,
                       fontSize: AppDimensions.font13,
                       color: ShipXColors.black,
                     ),
@@ -71,13 +69,15 @@ class TeacherResultScreen extends StatelessWidget {
                   itemBuilder: (context, index) {
                     final item = groupedList[index];
                     return ResultItem(
-                      title: item.exam ?? "Unknown Exam",
-                      classId: item.className ?? "Unknown",
+                      title: item.exam ?? AppStrings.unknownExam.tr,
+                      classId: item.className ?? AppStrings.unknown.tr,
                       onTap: () {
                         final filteredStudents = controller.studentResult
-                            .where((s) =>
-                                s.className == item.className &&
-                                s.exam == item.exam)
+                            .where(
+                              (s) =>
+                                  s.className == item.className &&
+                                  s.exam == item.exam,
+                            )
                             .toList();
                         Get.toNamed(
                           AppRoutes.resultDeatils,
@@ -92,68 +92,6 @@ class TeacherResultScreen extends StatelessWidget {
                   },
                 );
               }),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  void _showStudentsBottomSheet(
-    BuildContext context,
-    String? className,
-    String? exam,
-    List<StudentShowModel> allStudents,
-  ) {
-    final students = allStudents
-        .where((s) => s.className == className && s.exam == exam)
-        .toList();
-
-    Get.bottomSheet(
-      Container(
-        padding: EdgeInsets.all(AppDimensions.paddingL.w),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.vertical(
-            top: Radius.circular(AppDimensions.radiusXL.r),
-          ),
-        ),
-        child: Column(
-          children: [
-            CustomText(
-              text: "Class ${className ?? 'N/A'} - ${exam ?? 'N/A'}",
-              fontSize: AppDimensions.fontL.sp,
-              fontWeight: FontWeight.bold,
-              color: ShipXColors.deepBlue,
-            ),
-            AppDimensions.spaceM.h.verticalSpace,
-            Expanded(
-              child: ListView.builder(
-                itemCount: students.length,
-                itemBuilder: (context, index) {
-                  final s = students[index];
-                  return ListTile(
-                    title: CustomText(
-                      text: s.name ?? "Unknown",
-                      fontSize: AppDimensions.fontM.sp,
-                      color: ShipXColors.deepBlue,
-                      fontWeight: FontWeight.w600,
-                    ),
-                    subtitle: CustomText(
-                      text:
-                          "Roll: ${s.roll ?? 'N/A'} | Section: ${s.section ?? 'N/A'} | Subject: ${s.subject ?? 'N/A'}",
-                      fontSize: AppDimensions.fontXS.sp,
-                      color: Colors.grey,
-                    ),
-                    trailing: CustomText(
-                      text: "${s.mark ?? 0}",
-                      fontSize: AppDimensions.fontL.sp,
-                      fontWeight: FontWeight.bold,
-                      color: ShipXColors.green,
-                    ),
-                  );
-                },
-              ),
             ),
           ],
         ),

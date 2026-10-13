@@ -43,7 +43,7 @@ class TeacherSolutionScreen extends StatelessWidget {
             ),
             AppDimensions.spaceL.w.horizontalSpace,
             CustomText(
-              text: "SOLUTION",
+              text: AppStrings.solution.tr,
               fontSize: AppDimensions.fontM.sp,
               color: ShipXColors.background,
               fontWeight: FontWeight.bold,
@@ -63,14 +63,14 @@ class TeacherSolutionScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               CustomText(
-                text: "Name: ${data.name}",
+                text: "${AppStrings.name.tr}: ${data.name}",
                 fontSize: AppDimensions.fontXS.sp,
                 fontWeight: FontWeight.bold,
                 color: ShipXColors.black,
               ),
               AppDimensions.spaceS.h.verticalSpace,
               CustomText(
-                text: "Question #${index + 1}",
+                text: "${AppStrings.question.tr} #${index + 1}",
                 fontSize: AppDimensions.fontM.sp,
                 fontWeight: FontWeight.bold,
                 color: ShipXColors.black,
@@ -83,7 +83,7 @@ class TeacherSolutionScreen extends StatelessWidget {
               ),
               AppDimensions.spaceL.h.verticalSpace,
               CustomText(
-                text: "Enter Details:",
+                text: AppStrings.enterDetails.tr,
                 fontSize: AppDimensions.fontM.sp,
                 color: ShipXColors.black,
               ),
@@ -101,7 +101,7 @@ class TeacherSolutionScreen extends StatelessWidget {
                 ),
                 onPressed: () {},
                 child: CustomText(
-                  text: "Upload File",
+                  text: AppStrings.uploadFile.tr,
                   fontSize: AppDimensions.fontS.sp,
                   color: ShipXColors.background,
                 ),
@@ -109,7 +109,7 @@ class TeacherSolutionScreen extends StatelessWidget {
               AppDimensions.spaceXL.h.verticalSpace,
               Obx(
                 () => CustomButton(
-                  text: cobntroller.isLoading.value ? "Sending..." : "Send",
+                  text: cobntroller.isLoading.value ? AppStrings.sending.tr : AppStrings.send.tr,
                   onPressed: () {
                     if (data.id != null && !cobntroller.isLoading.value) {
                       cobntroller.submitSolution(data.id!);

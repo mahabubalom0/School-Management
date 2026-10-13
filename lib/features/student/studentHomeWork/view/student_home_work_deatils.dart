@@ -11,20 +11,35 @@ class StudentHomeWorkDeatils extends StatelessWidget {
   Widget build(BuildContext context) {
     final arguments = Get.arguments as Map<String, dynamic>?;
     final hwData = arguments?['hwData'] as HomeWorkModel?;
-    // ignore: unused_local_variable
     final index = arguments?['index'];
 
     if (hwData == null) {
       return Scaffold(
-        appBar: AppBar(title: const Text("Student Home Work Details")),
-        body: const Center(child: Text("No homework details found")),
+        appBar: AppBar(title: Text(AppStrings.studentHomeWorkDetails.tr)),
+        body: Center(child: Text(AppStrings.noHomeworkDetailsFound.tr)),
       );
     }
 
     return Scaffold(
       appBar: AppBar(
         backgroundColor: ShipXColors.blue,
-        title: const Text("Student Home Work Details"),
+        title: Text(
+          AppStrings.studentHomeWorkDetails.tr,
+          style: TextStyle(
+            fontSize: AppDimensions.fontS.sp,
+            color: ShipXColors.background,
+          ),
+        ),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: Icon(
+              Icons.print,
+              color: ShipXColors.white,
+              size: AppDimensions.iconM.sp,
+            ),
+          ),
+        ],
       ),
       body: Padding(
         padding: EdgeInsetsGeometry.only(
@@ -52,31 +67,31 @@ class StudentHomeWorkDeatils extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   CustomText(
-                    text: "Subject : ${hwData.subject ?? "No Data"}",
+                    text: "${AppStrings.subject.tr} : ${hwData.subject ?? AppStrings.noData.tr}",
                     fontSize: AppDimensions.font13,
                     color: ShipXColors.black,
                   ),
                   AppDimensions.spaceS.h.verticalSpace,
                   CustomText(
-                    text: "Class : ${hwData.className ?? "No Class"}",
+                    text: "${AppStrings.className.tr} : ${hwData.className ?? AppStrings.noClass.tr}",
                     fontSize: AppDimensions.font13,
                     color: ShipXColors.black,
                   ),
                   AppDimensions.spaceS.h.verticalSpace,
                   CustomText(
-                    text: "Section : ${hwData.section}",
+                    text: "${AppStrings.section.tr} : ${hwData.section}",
                     fontSize: AppDimensions.font13,
                     color: ShipXColors.black,
                   ),
                   AppDimensions.spaceS.h.verticalSpace,
                   CustomText(
-                    text: "DateLine : ${hwData.dateLine ?? "No Data"}",
+                    text: "${AppStrings.deadline.tr} : ${hwData.dateLine ?? AppStrings.noData.tr}",
                     fontSize: AppDimensions.font13,
                     color: ShipXColors.black,
                   ),
                   AppDimensions.spaceS.h.verticalSpace,
                   CustomText(
-                    text: "Create At : ${hwData.createAt ?? "No Data"}",
+                    text: "${AppStrings.createdAt.tr} : ${hwData.createAt ?? AppStrings.noData.tr}",
                     fontSize: AppDimensions.font13,
                     color: ShipXColors.black,
                   ),
@@ -85,13 +100,13 @@ class StudentHomeWorkDeatils extends StatelessWidget {
             ),
             AppDimensions.spaceXL.h.verticalSpace,
             CustomText(
-              text: "Home Work : $index :- ",
+              text: "${AppStrings.homework.tr} : $index :- ",
               fontSize: AppDimensions.fontS,
               color: ShipXColors.black,
             ),
             AppDimensions.spaceL.verticalSpace,
             CustomText(
-              text: hwData.addHomework ?? "No Home Work today",
+              text: hwData.addHomework ?? AppStrings.noHomeworkToday.tr,
               fontSize: AppDimensions.fontL,
               color: ShipXColors.black,
             ),

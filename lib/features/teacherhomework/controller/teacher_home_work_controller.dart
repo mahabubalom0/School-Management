@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
+import '../../../../core/core.dart';
 import '../service/teacher_home_work_service.dart';
 
 class TeacherHomeWorkController extends GetxController {
@@ -67,19 +68,19 @@ class TeacherHomeWorkController extends GetxController {
     try {
       isloading.value = true;
       if (addHomeWorkClt.text.isEmpty) {
-        _showSnackbar("Error", "Please enter homework");
+        _showSnackbar(AppStrings.error.tr, AppStrings.pleaseEnterHomework.tr);
         return;
       }
       if (selectedClass == "Select Class") {
-        _showSnackbar("Error", "Please select Class");
+        _showSnackbar(AppStrings.error.tr, AppStrings.pleaseSelectClass.tr);
         return;
       }
       if (selectedSection == "Select Section") {
-        _showSnackbar("Error", "Please select Section");
+        _showSnackbar(AppStrings.error.tr, AppStrings.pleaseSelectSection.tr);
         return;
       }
       if (selectedSubject == "Select Subject") {
-        _showSnackbar("Error", "Please select Subject");
+        _showSnackbar(AppStrings.error.tr, AppStrings.pleaseSelectSubject.tr);
         return;
       }
       await service.homewokuploadservice(
@@ -88,11 +89,11 @@ class TeacherHomeWorkController extends GetxController {
         subject: selectedSubject,
         homework: addHomeWorkClt.text,
       );
-      _showSnackbar("Success", "Homework submitted successfully!");
+      _showSnackbar(AppStrings.success.tr, AppStrings.homeworkSubmitSuccess.tr);
       Get.back();
       addHomeWorkClt.clear();
     } catch (e) {
-      _showSnackbar("Error", "Homework submission failed!");
+      _showSnackbar(AppStrings.error.tr, AppStrings.homeworkSubmitFailed.tr);
     } finally {
       isloading.value = false;
     }

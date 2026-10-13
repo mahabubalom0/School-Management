@@ -27,8 +27,8 @@ class StudentAddQuestion extends StatelessWidget {
               color: ShipXColors.background,
             ),
             AppDimensions.spaceS.w.horizontalSpace,
-            const CustomText(
-              text: "ASK QUESTION",
+            CustomText(
+              text: AppStrings.askQuestion.tr,
               color: ShipXColors.white,
               fontSize: AppDimensions.fontL,
             ),
@@ -42,7 +42,7 @@ class StudentAddQuestion extends StatelessWidget {
         ),
         child: Obx(
           () => CustomButton(
-            text: "Ask Question",
+            text: AppStrings.askQuestion.tr,
             isLoading: controller.isLoading.value,
             onPressed: () {
               controller.askQuestion();
@@ -60,14 +60,14 @@ class StudentAddQuestion extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const CustomText(
-                text: "Write Your Question",
+              CustomText(
+                text: AppStrings.writeYourQuestion.tr,
                 fontSize: AppDimensions.fontL,
               ),
               AppDimensions.spaceXS.h.verticalSpace,
               CustomTextField(
                 controller: controller.questionController,
-                hintText: "Write your question",
+                hintText: AppStrings.writeYourQuestion.tr,
                 maxLine: 8,
                 minLine: 8,
               ),
@@ -85,8 +85,8 @@ class StudentAddQuestion extends StatelessWidget {
                     ),
                     color: ShipXColors.blue,
                   ),
-                  child: const CustomText(
-                    text: "Upload File",
+                  child: CustomText(
+                    text: AppStrings.uploadFile.tr,
                     fontSize: AppDimensions.fontL,
                     color: ShipXColors.background,
                   ),

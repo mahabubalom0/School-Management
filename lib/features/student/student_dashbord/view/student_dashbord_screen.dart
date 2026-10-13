@@ -47,31 +47,31 @@ class StudentDashbordScreen extends StatelessWidget {
               child: Column(
                 children: [
                   StudentDrawerItem(
-                    title: "Profile of School",
+                    title: AppStrings.profileOfSchool.tr,
                     iconPath: ImagePath.schoolHouseImage,
                     onTap: () {},
                   ),
                   AppDimensions.spaceXL.h.verticalSpace,
                   StudentDrawerItem(
-                    title: "Profile of Publication",
+                    title: AppStrings.profileOfPublication.tr,
                     iconPath: ImagePath.profilePublicatonImage,
                     onTap: () {},
                   ),
                   AppDimensions.spaceXL.h.verticalSpace,
                   StudentDrawerItem(
-                    title: "Emergency Contacts",
+                    title: AppStrings.emergencyContacts.tr,
                     iconPath: ImagePath.emergencyContactImage,
                     onTap: () {},
                   ),
                   AppDimensions.spaceXL.h.verticalSpace,
                   StudentDrawerItem(
-                    title: "Settings",
+                    title: AppStrings.settingsTitle.tr,
                     iconPath: ImagePath.settingImage,
                     onTap: () {},
                   ),
                   AppDimensions.spaceXL.h.verticalSpace,
                   StudentDrawerItem(
-                    title: "LogOut",
+                    title: AppStrings.logout.tr,
                     iconPath: ImagePath.logOutImage,
                     onTap: () {},
                   ),
@@ -94,11 +94,10 @@ class StudentDashbordScreen extends StatelessWidget {
                   ),
                   child: Column(
                     children: [
-                      const TopMassageCard(
-                        title: 'Welcome Back!',
-                        subtitle: 'Stay updated with your academic activities.',
-                        message:
-                            'Here you can find your daily classes, upcoming assignments, and important school announcements. Keep up the great work!',
+                      TopMassageCard(
+                        title: AppStrings.welcomeBack.tr,
+                        subtitle: AppStrings.stayUpdatedAcademic.tr,
+                        message: AppStrings.dashboardMessage.tr,
                       ),
                       AppDimensions.spaceHuge.h.verticalSpace,
                       Row(
@@ -106,19 +105,19 @@ class StudentDashbordScreen extends StatelessWidget {
                         children: [
                           FeatureCardWidget(
                             imagePath: ImagePath.attenndenceImage,
-                            title: 'Attendance',
+                            title: AppStrings.attendance.tr,
                             onTap: () {},
                           ),
                           FeatureCardWidget(
                             imagePath: ImagePath.homeWorkImage,
-                            title: 'Homework',
+                            title: AppStrings.homework.tr,
                             onTap: () {
                               Get.toNamed(AppRoutes.studentHomeWork);
                             },
                           ),
                           FeatureCardWidget(
                             imagePath: ImagePath.resultImage,
-                            title: 'Result',
+                            title: AppStrings.result.tr,
                             onTap: () {
                               Get.toNamed(AppRoutes.teacherResult);
                             },
@@ -131,19 +130,19 @@ class StudentDashbordScreen extends StatelessWidget {
                         children: [
                           FeatureCardWidget(
                             imagePath: ImagePath.examRutineImage,
-                            title: 'Exam Routine',
+                            title: AppStrings.examRoutine.tr,
                             onTap: () {},
                           ),
                           FeatureCardWidget(
                             imagePath: ImagePath.solutionImage,
-                            title: 'Solution',
+                            title: AppStrings.solution.tr,
                             onTap: () {
                               Get.toNamed(AppRoutes.studentSolution);
                             },
                           ),
                           FeatureCardWidget(
                             imagePath: ImagePath.quizeImage,
-                            title: 'Quiz',
+                            title: AppStrings.quiz.tr,
                             onTap: () {
                               // Get.toNamed(AppRoutes.studentQuize);
                             },

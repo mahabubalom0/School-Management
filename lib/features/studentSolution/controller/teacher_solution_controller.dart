@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import '../../../../core/core.dart';
 import '../../student/studentSolution/model/student_question_model.dart';
 import '../service/teacher_solution_service.dart';
 
@@ -21,10 +22,10 @@ class TeacherSolutionController extends GetxController {
       isLoading.value = true;
       final response = await service.getQuestion();
       questinList.assignAll(response);
-      _showSnackbar("Success", "Questions loaded successfully");
+      _showSnackbar(AppStrings.success.tr, AppStrings.success.tr);
     } catch (e) {
       debugPrint('Error in getQuestion: $e');
-      _showSnackbar("Error", "Failed to load questions");
+      _showSnackbar(AppStrings.error.tr, AppStrings.failedToAddSolution.tr);
     } finally {
       isLoading.value = false;
     }
@@ -34,19 +35,19 @@ class TeacherSolutionController extends GetxController {
   Future<void> submitSolution(int questionId) async {
     try {
       if (solutionController.text.isEmpty) {
-        _showSnackbar("Error", "Please enter a solution");
+        _showSnackbar(AppStrings.error.tr, AppStrings.pleaseEnterSolution.tr);
         return;
       }
 
       isLoading.value = true;
       await service.updateSolution(questionId, solutionController.text);
-      _showSnackbar("Success", "Solution added successfully");
+      _showSnackbar(AppStrings.success.tr, AppStrings.solutionAddedSuccess.tr);
       solutionController.clear();
       getQuestion(); // Refresh the list
       Get.back(); // Go back to the previous screen
     } catch (e) {
       debugPrint('Error in submitSolution: $e');
-      _showSnackbar("Error", "Failed to add solution");
+      _showSnackbar(AppStrings.error.tr, AppStrings.failedToAddSolution.tr);
     } finally {
       isLoading.value = false;
     }
@@ -64,17 +65,17 @@ class TeacherSolutionController extends GetxController {
       if (aDate == today) {
         final difference = now.difference(date);
         if (difference.inMinutes < 1) {
-          return 'Just now';
+          return AppStrings.justNow.tr;
         } else if (difference.inHours < 1) {
-          return '${difference.inMinutes} Min ago';
+          return '${difference.inMinutes} ${AppStrings.minAgo.tr}';
         } else {
-          return '${difference.inHours} Hr ago';
+          return '${difference.inHours} ${AppStrings.hrAgo.tr}';
         }
       }
 
       final yesterday = today.subtract(const Duration(days: 1));
       if (aDate == yesterday) {
-        return 'Yesterday';
+        return AppStrings.yesterday.tr;
       }
 
       const months = [

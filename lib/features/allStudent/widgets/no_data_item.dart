@@ -20,8 +20,8 @@ class NoDataItem extends StatelessWidget {
           children: [
             Image.asset(ImagePath.noDataaImage, height: 150.h),
             AppDimensions.spaceL.verticalSpace,
-            const CustomText(
-              text: "No student found",
+            CustomText(
+              text: AppStrings.noStudentFound.tr,
               fontSize: AppDimensions.fontM,
               fontWeight: FontWeight.w600,
             ),
@@ -29,8 +29,8 @@ class NoDataItem extends StatelessWidget {
             Obx(
               () => CustomText(
                 text: controller.selectedSemesterIndex.value == 0
-                    ? "No student added yet"
-                    : "No student found in this semester",
+                    ? AppStrings.noStudentAddedYet.tr
+                    : AppStrings.noStudentFoundInSemester.tr,
                 fontSize: AppDimensions.fontS,
                 color: Colors.grey.shade600,
               ),
@@ -40,7 +40,7 @@ class NoDataItem extends StatelessWidget {
               onPressed: () {
                 Get.toNamed(AppRoutes.addAccount);
               },
-              text: "Add Student",
+              text: AppStrings.addStudent.tr,
               color: ShipXColors.blue,
               textColor: ShipXColors.background,
             ),

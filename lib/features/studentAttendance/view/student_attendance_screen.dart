@@ -16,14 +16,14 @@ class StudentAttendanceScreen extends StatelessWidget {
       backgroundColor: const Color(0xFFF8F9FA),
       appBar: AppBar(
         title: CustomText(
-          text: 'Semester 7th',
+          text: AppStrings.semester7th.tr,
           fontSize: AppDimensions.fontL.sp,
           fontWeight: FontWeight.w600,
           color: Colors.black,
         ),
         actions: [
           CustomText(
-            text: "Date : 12:10:2026",
+            text: "${AppStrings.date.tr} : 12:10:2026",
             fontSize: AppDimensions.fontL.sp,
             fontWeight: FontWeight.w600,
             color: ShipXColors.black,
@@ -50,7 +50,7 @@ class StudentAttendanceScreen extends StatelessWidget {
                 Expanded(
                   flex: 2,
                   child: CustomText(
-                    text: "Student Name",
+                    text: AppStrings.studentName.tr,
                     fontSize: AppDimensions.fontS.sp,
                     fontWeight: FontWeight.bold,
                     color: Colors.white,
@@ -59,7 +59,7 @@ class StudentAttendanceScreen extends StatelessWidget {
                 Expanded(
                   flex: 1,
                   child: CustomText(
-                    text: "Present",
+                    text: AppStrings.present.tr,
                     fontSize: AppDimensions.fontS.sp,
                     fontWeight: FontWeight.bold,
                     color: Colors.white,
@@ -69,7 +69,7 @@ class StudentAttendanceScreen extends StatelessWidget {
                 Expanded(
                   flex: 1,
                   child: CustomText(
-                    text: "Absent",
+                    text: AppStrings.absent.tr,
                     fontSize: AppDimensions.fontS.sp,
                     fontWeight: FontWeight.bold,
                     color: Colors.white,

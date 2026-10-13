@@ -36,7 +36,7 @@ class TeacherNoticeScreen extends StatelessWidget {
             ),
             AppDimensions.spaceS.w.horizontalSpace,
             CustomText(
-              text: "NOTICE AND EVENTS",
+              text: AppStrings.noticeAndEvents.tr,
               fontSize: AppDimensions.fontS.sp,
               color: ShipXColors.background,
             ),
@@ -51,7 +51,7 @@ class TeacherNoticeScreen extends StatelessWidget {
         ),
         child: Obx(() {
           return CustomButton(
-            text: "Send",
+            text: AppStrings.send.tr,
             isLoading: controler.isLoading.value,
             onPressed: () {
               controler.getSendNotice();
@@ -91,14 +91,14 @@ class TeacherNoticeScreen extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         CustomLabelTextfiledItem(
-                          title: "Name",
-                          hintText: "Enter Your Name",
+                          title: AppStrings.name.tr,
+                          hintText: AppStrings.enterYourName.tr,
                           controller: controler.nameController,
                         ),
                         AppDimensions.spaceS.h.verticalSpace,
                         CustomLabelTextfiledItem(
-                          title: "Profession",
-                          hintText: "Enter Your Profession",
+                          title: AppStrings.profession.tr,
+                          hintText: AppStrings.enterYourProfession.tr,
                           controller: controler.professionController,
                         ),
                       ],
@@ -106,7 +106,7 @@ class TeacherNoticeScreen extends StatelessWidget {
                   ),
                   AppDimensions.spaceL.h.verticalSpace,
                   CustomText(
-                    text: "Enter Notice ",
+                    text: AppStrings.enterNotice.tr,
                     fontSize: AppDimensions.fontXS.sp,
                   ),
                   AppDimensions.spaceM.h.verticalSpace,
@@ -129,7 +129,7 @@ class TeacherNoticeScreen extends StatelessWidget {
                       color: ShipXColors.blue,
                     ),
                     child: CustomText(
-                      text: "Upload Image",
+                      text: AppStrings.uploadImage.tr,
                       fontSize: AppDimensions.fontS.sp,
                       color: ShipXColors.background,
                     ),

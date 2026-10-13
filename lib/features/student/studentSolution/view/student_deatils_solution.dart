@@ -17,8 +17,8 @@ class StudentDeatilsSolution extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: ShipXColors.blue,
-        title: const CustomText(
-          text: "Question Solution From Teacher",
+        title: CustomText(
+          text: AppStrings.questionSolutionFromTeacher.tr,
           fontSize: AppDimensions.fontL,
           color: ShipXColors.backgroundLight,
         ),
@@ -29,12 +29,12 @@ class StudentDeatilsSolution extends StatelessWidget {
           vertical: AppDimensions.paddingHUGE.h,
         ),
         child: CustomButton(
-          text: "Share Answer",
+          text: AppStrings.shareAnswer.tr,
           onPressed: () {
             if (item.questionAns != null && item.questionAns!.isNotEmpty) {
               controller.downloadAnswerAsPdf(item.question, item.questionAns!);
             } else {
-              controller.showSnackbar("Error", "No Solution Available");
+              controller.showSnackbar(AppStrings.error.tr, AppStrings.noSolutionAvailable.tr);
             }
           },
           color: ShipXColors.blue,
@@ -56,7 +56,7 @@ class StudentDeatilsSolution extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 CustomText(
-                  text: "Question #${index + 1}",
+                  text: "${AppStrings.question.tr} #${index + 1}",
                   fontSize: AppDimensions.fontXL,
                   fontWeight: FontWeight.bold,
                   color: ShipXColors.black,
@@ -73,18 +73,18 @@ class StudentDeatilsSolution extends StatelessWidget {
 
                 Obx(() {
                   if (controller.isLoading.value) {
-                    return const Center(
+                    return Center(
                       child: CustomText(
-                        text: "Answer Loading......",
+                        text: AppStrings.answerLoading.tr,
                         fontSize: AppDimensions.fontXL,
                         color: ShipXColors.blue,
                       ),
                     );
                   }
                   if (controller.questionsList[index].questionAns!.isEmpty) {
-                    return const Center(
+                    return Center(
                       child: CustomText(
-                        text: "No Solution Yet",
+                        text: AppStrings.noSolutionYet.tr,
                         fontSize: AppDimensions.fontXL,
                         color: ShipXColors.black,
                       ),

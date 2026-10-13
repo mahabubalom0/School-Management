@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import '../../../../core/core.dart';
 import '../service/student_mark_service.dart';
 
 class StudentMarkInputItem {
@@ -68,8 +69,8 @@ class StudentAddMarkController extends GetxController {
           selectedSection.value.isEmpty ||
           selectedExam.value.isEmpty) {
         _showSnackbar(
-          "Error",
-          "Please select class, section, subject and exam",
+          AppStrings.error.tr,
+          AppStrings.pleaseSelectClassSectionSubjectExam.tr,
         );
         return;
       }
@@ -86,7 +87,7 @@ class StudentAddMarkController extends GetxController {
       }
 
       if (hasError) {
-        _showSnackbar("Error", "Please fill all the student fields");
+        _showSnackbar(AppStrings.error.tr, AppStrings.pleaseFillAllStudentFields.tr);
         return;
       }
 
@@ -102,7 +103,7 @@ class StudentAddMarkController extends GetxController {
         );
       }
 
-      _showSnackbar("Success", "Marks added successfully");
+      _showSnackbar(AppStrings.success.tr, AppStrings.marksAddedSuccess.tr);
 
       // Reset inputs after successful submission
       for (var input in studentInputs) {
@@ -112,7 +113,7 @@ class StudentAddMarkController extends GetxController {
       addStudentInput();
     } catch (e) {
       debugPrint(e.toString());
-      _showSnackbar("Error", "Failed to add mark");
+      _showSnackbar(AppStrings.error.tr, AppStrings.failedToAddMark.tr);
     } finally {
       isLoading.value = false;
     }

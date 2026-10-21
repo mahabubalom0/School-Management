@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../../core/core.dart';
+import '../controller/student_home_work_controller.dart';
 import '../model/home_work_model.dart';
 
 class StudentHomeWorkDeatils extends StatelessWidget {
@@ -9,6 +10,7 @@ class StudentHomeWorkDeatils extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.find<StudentHomeWorkController>();
     final arguments = Get.arguments as Map<String, dynamic>?;
     final hwData = arguments?['hwData'] as HomeWorkModel?;
     final index = arguments?['index'];
@@ -32,7 +34,12 @@ class StudentHomeWorkDeatils extends StatelessWidget {
         ),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              controller.printHomeWorkDetails(
+                hwData: hwData,
+                index: index,
+              );
+            },
             icon: Icon(
               Icons.print,
               color: ShipXColors.white,
@@ -85,13 +92,13 @@ class StudentHomeWorkDeatils extends StatelessWidget {
                   ),
                   AppDimensions.spaceS.h.verticalSpace,
                   CustomText(
-                    text: "${AppStrings.deadline.tr} : ${hwData.dateLine ?? AppStrings.noData.tr}",
+                    text: "${AppStrings.deadline.tr} : ${hwData.dateLine != null ? controller.formatDate(hwData.dateLine) : AppStrings.noData.tr}",
                     fontSize: AppDimensions.font13,
                     color: ShipXColors.black,
                   ),
                   AppDimensions.spaceS.h.verticalSpace,
                   CustomText(
-                    text: "${AppStrings.createdAt.tr} : ${hwData.createAt ?? AppStrings.noData.tr}",
+                    text: "${AppStrings.createdAt.tr} : ${hwData.createAt != null ? controller.formatDate(hwData.createAt) : AppStrings.noData.tr}",
                     fontSize: AppDimensions.font13,
                     color: ShipXColors.black,
                   ),

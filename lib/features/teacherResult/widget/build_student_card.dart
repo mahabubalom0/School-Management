@@ -9,7 +9,7 @@ class BuildStudent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-     final studentResult=const StudentShowModel();
+    final studentResult = const StudentShowModel();
     return Card(
       elevation: 2,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
@@ -51,7 +51,8 @@ class BuildStudent extends StatelessWidget {
               borderRadius: BorderRadius.circular(12),
             ),
             child: CustomText(
-              text: "${AppStrings.gpa.tr}: ${studentResult.mark?.toString() ?? "0"}",
+              text:
+                  "${AppStrings.gpa.tr}: ${studentResult.mark?.toString() ?? "0"}",
               fontSize: AppDimensions.font13,
               color: ShipXColors.white,
               fontWeight: FontWeight.bold,
@@ -90,7 +91,7 @@ class BuildStudent extends StatelessWidget {
     );
   }
 
-   Widget _buildInfoRow(IconData icon, String label, String value) {
+  Widget _buildInfoRow(IconData icon, String label, String value) {
     return Row(
       children: [
         Icon(icon, size: 18, color: Colors.blue.shade700),
@@ -115,4 +116,4 @@ class BuildStudent extends StatelessWidget {
       ],
     );
   }
-  }
+}

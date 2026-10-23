@@ -25,4 +25,5 @@ class AppRoutes {
   static const String studentDeatilsSolution="/studentDeatilsSolution";
   static const String studentHomeWork="/studentHomeWork";
   static const String studentHomeWorkDeatils="/studentHomeWorkDeatils";
+  static const String teacherRoutine="/teacherRoutine";
 }

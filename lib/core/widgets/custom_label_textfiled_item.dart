@@ -30,6 +30,8 @@ class CustomLabelTextfiledItem extends StatelessWidget {
           hintText: hintText,
           isPassword: isPassword,
           prefixIcon: prefixIcon,
+          minLine: 1,
+          maxLine: 1,
         ),
       ],
     );

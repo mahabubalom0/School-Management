@@ -29,6 +29,8 @@ import '../features/teacher_nutice/binding/teacher_notice_binding.dart';
 import '../features/teacher_nutice/view/teacher_nutice_screen.dart';
 import '../features/studentaddMark/binding/student_add_mark_binding.dart';
 import '../features/studentaddMark/view/student_add_mark_screen.dart';
+import '../features/teacher_routine/binding/teacher_routine_binding.dart';
+import '../features/teacher_routine/screen/teacher_routine_screen.dart';
 import '../features/teacherhomework/binding/teacher_home_work_binding.dart';
 import '../features/teacherhomework/view/teacher_home_work_screen.dart';
 import 'app_routes.dart';
@@ -175,6 +177,12 @@ class AppPages {
       name: AppRoutes.studentHomeWorkDeatils,
       page: () => const StudentHomeWorkDeatils(),
       binding: StudentHomeWorkBinding(),
+      transition: Transition.leftToRight,
+    ),
+    GetPage(
+      name: AppRoutes.teacherRoutine,
+      page: () => const TeacherRoutineScreen(),
+      binding: TeacherRoutineBinding(),
       transition: Transition.leftToRight,
     ),
   ];

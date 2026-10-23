@@ -264,4 +264,25 @@ class AppStrings {
   static const String noInternet = 'no_internet';
   static const String requestTimeout = 'request_timeout';
   static const String requestFailed = 'request_failed';
+
+  // ─── Teacher Routine ───────────────────────────────────────────────────────────────
+  static const String routine = 'routine';
+  static const String teacherRoutine = 'teacher_routine';
+  static const String subjectName = 'subject_name';
+  static const String enterSubjectName = 'enter_subject_name';
+  static const String examDate = 'exam_date';
+  static const String enterExamDate = 'enter_exam_date';
+  static const String subjectCode = 'subject_code';
+  static const String enterSubjectCode = 'enter_subject_code';
+  static const String classNames = 'class_names';
+  static const String enterClassName = 'enter_class_name';
+  static const String day = 'day';
+  static const String saturday = 'saturday';
+  static const String sunday = 'sunday';
+  static const String monday = 'monday';
+  static const String tuesday = 'tuesday';
+  static const String wednesday = 'wednesday';
+  static const String thursday = 'thursday';
+  static const String friday = 'friday';
 }
+

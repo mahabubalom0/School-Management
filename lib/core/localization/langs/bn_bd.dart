@@ -266,4 +266,25 @@ const Map<String, String> bnBD = {
   'request_failed': 'অনুরোধটি সম্পন্ন করা সম্ভব হয়নি।',
   'retry': 'আবার চেষ্টা করুন',
   'latest_posts': 'সাম্প্রতিক কার্যক্রম',
+
+  //Teacher Routine Screen
+  'routine': "রুটিন",
+  'teacher_routine': 'শিক্ষকের রুটিন',
+  'subject_name': 'বিষয়ের নাম',
+  'enter_subject_name': 'আপনার বিষয়ের নাম লিখুন',
+  'exam_date': 'পরীক্ষার তারিখ',
+  'enter_exam_date': 'পরীক্ষার তারিখ দিন',
+  'subject_code': 'বিষয় কোড',
+  'enter_subject_code': 'আপনার বিষয় কোড লিখুন',
+  'class_names': 'ক্লাসের নাম',
+  'enter_class_name': 'আপনার ক্লাসের নাম লিখুন',
+  'day': 'দিন',
+  'saturday': 'শনিবার',
+  'sunday': 'রবিবার',
+  'monday': 'সোমবার',
+  'tuesday': 'মঙ্গলবার',
+  'wednesday': 'বুধবার',
+  'thursday': 'বৃহস্পতিবার',
+  'friday': 'শুক্রবার',
 };
+

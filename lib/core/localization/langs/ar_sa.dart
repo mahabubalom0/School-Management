@@ -265,4 +265,25 @@ const Map<String, String> arSA = {
   'request_failed': 'تعذر إكمال الطلب.',
   'retry': 'إعادة المحاولة',
   'latest_posts': 'النشاط الأخير',
+
+  //Teacher Routine
+  'routine': "روتين",
+  'teacher_routine': 'روتين المعلم',
+  'subject_name': 'اسم المادة',
+  'enter_subject_name': 'أدخل اسم المادة',
+  'exam_date': 'تاريخ الامتحان',
+  'enter_exam_date': 'أدخل تاريخ الامتحان',
+  'subject_code': 'رمز المادة',
+  'enter_subject_code': 'أدخل رمز المادة',
+  'class_names': 'اسم الفصل',
+  'enter_class_name': 'أدخل اسم الفصل',
+  'day': 'اليوم',
+  'saturday': 'السبت',
+  'sunday': 'الأحد',
+  'monday': 'الإثنين',
+  'tuesday': 'الثلاثاء',
+  'wednesday': 'الأربعاء',
+  'thursday': 'الخميس',
+  'friday': 'الجمعة',
 };
+

@@ -15,6 +15,7 @@ class StudentHomeWorkScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: ShipXColors.blue,
+        centerTitle: true,
         leading: IconButton(
           onPressed: () {
             Get.back();
@@ -26,10 +27,6 @@ class StudentHomeWorkScreen extends StatelessWidget {
           fontSize: AppDimensions.font13,
           color: ShipXColors.background,
         ),
-        actions: [
-          Icon(Icons.print, size: AppDimensions.iconM.sp),
-          AppDimensions.spaceM.w.horizontalSpace,
-        ],
       ),
       body: Padding(
         padding: EdgeInsetsGeometry.symmetric(
@@ -40,7 +37,10 @@ class StudentHomeWorkScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            CustomText(text: AppStrings.homework.tr, fontSize: AppDimensions.font13.sp),
+            CustomText(
+              text: AppStrings.homework.tr,
+              fontSize: AppDimensions.font13.sp,
+            ),
 
             AppDimensions.spaceM.h.verticalSpace,
             Expanded(

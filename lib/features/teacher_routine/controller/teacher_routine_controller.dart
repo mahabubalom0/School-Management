@@ -1,18 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:intl/intl.dart';
 
 import '../../../../core/core.dart';
+import '../model/routine_item_model.dart';
 
 class TeacherRoutineController extends GetxController {
-  final subjectController = TextEditingController();
-  final dateController = TextEditingController();
-  final timeController = TextEditingController();
-  final subjectCodeController = TextEditingController();
-  final classNameController = TextEditingController();
-
-  final Rx<DateTime?> selectedDate = Rx<DateTime?>(null);
-  final Rx<TimeOfDay?> selectedTime = Rx<TimeOfDay?>(null);
+  final RxList<RoutineItemModel> routineList = <RoutineItemModel>[].obs;
 
   /// 7 Days of the week (Localization keys)
   final List<String> days = [
@@ -25,48 +18,64 @@ class TeacherRoutineController extends GetxController {
     AppStrings.friday,
   ];
 
-  final Rx<String?> selectedDay = Rx<String?>(null);
-
-  void setDay(String? day) {
-    selectedDay.value = day;
+  @override
+  void onInit() {
+    super.onInit();
+    addRoutine();
   }
 
-  /// Pick Date (Date, Month, Year) using Flutter's showDatePicker
-  Future<void> pickDate(BuildContext context) async {
-    final DateTime? picked = await showDatePicker(
-      context: context,
-      initialDate: selectedDate.value ?? DateTime.now(),
-      firstDate: DateTime(2000),
-      lastDate: DateTime(2100),
-    );
+  void addRoutine() {
+    routineList.add(RoutineItemModel());
+  }
 
-    if (picked != null) {
-      selectedDate.value = picked;
-      // Formats as "23 Oct 2026" (Day Month Year)
-      dateController.text = DateFormat('dd MMM yyyy').format(picked);
+  void removeRoutine(int index) {
+    if (routineList.length > 1 && index >= 0 && index < routineList.length) {
+      final item = routineList.removeAt(index);
+      item.dispose();
     }
   }
 
-  /// Pick Time using Flutter's showTimePicker
-  Future<void> pickTime(BuildContext context) async {
-    final TimeOfDay? picked = await showTimePicker(
-      context: context,
-      initialTime: selectedTime.value ?? TimeOfDay.now(),
-    );
+  // Getters for first item (backward compatibility)
+  TextEditingController get subjectController =>
+      routineList.isNotEmpty ? routineList.first.subjectController : TextEditingController();
+  TextEditingController get dateController =>
+      routineList.isNotEmpty ? routineList.first.dateController : TextEditingController();
+  TextEditingController get timeController =>
+      routineList.isNotEmpty ? routineList.first.timeController : TextEditingController();
+  TextEditingController get subjectCodeController =>
+      routineList.isNotEmpty ? routineList.first.subjectCodeController : TextEditingController();
+  TextEditingController get classNameController =>
+      routineList.isNotEmpty ? routineList.first.classNameController : TextEditingController();
+  Rx<DateTime?> get selectedDate =>
+      routineList.isNotEmpty ? routineList.first.selectedDate : Rx<DateTime?>(null);
+  Rx<TimeOfDay?> get selectedTime =>
+      routineList.isNotEmpty ? routineList.first.selectedTime : Rx<TimeOfDay?>(null);
+  Rx<String?> get selectedDay =>
+      routineList.isNotEmpty ? routineList.first.selectedDay : Rx<String?>(null);
 
-    if (picked != null) {
-      selectedTime.value = picked;
-      timeController.text = picked.format(context);
+  Future<void> pickDate(BuildContext context) async {
+    if (routineList.isNotEmpty) {
+      await routineList.first.pickDate(context);
+    }
+  }
+
+  Future<void> pickTime(BuildContext context) async {
+    if (routineList.isNotEmpty) {
+      await routineList.first.pickTime(context);
+    }
+  }
+
+  void setDay(String? day) {
+    if (routineList.isNotEmpty) {
+      routineList.first.setDay(day);
     }
   }
 
   @override
   void onClose() {
-    subjectController.dispose();
-    dateController.dispose();
-    timeController.dispose();
-    subjectCodeController.dispose();
-    classNameController.dispose();
+    for (final item in routineList) {
+      item.dispose();
+    }
     super.onClose();
   }
 }

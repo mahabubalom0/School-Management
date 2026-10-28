@@ -285,5 +285,7 @@ const Map<String, String> arSA = {
   'wednesday': 'الأربعاء',
   'thursday': 'الخميس',
   'friday': 'الجمعة',
+  'add_more': 'إضافة المزيد',
+  'add_routine': 'إضافة روتين',
 };
 

@@ -1,14 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-
 import '../../../core/core.dart';
 import '../../../core/widgets/custom_dropdown_field.dart';
 import '../../../core/widgets/custom_label_textfiled_item.dart';
 import '../controller/teacher_routine_controller.dart';
+import '../model/routine_item_model.dart';
 
 class TeacherRoutineItem extends StatelessWidget {
-  const TeacherRoutineItem({super.key});
+  final RoutineItemModel? item;
+  final int index;
+  final bool showRemove;
+  final VoidCallback? onRemove;
+
+  const TeacherRoutineItem({
+    super.key,
+    this.item,
+    this.index = 0,
+    this.showRemove = false,
+    this.onRemove,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -16,6 +27,11 @@ class TeacherRoutineItem extends StatelessWidget {
     final controller = Get.isRegistered<TeacherRoutineController>()
         ? Get.find<TeacherRoutineController>()
         : Get.put(TeacherRoutineController());
+
+    final routineItem = item ??
+        (controller.routineList.isNotEmpty
+            ? controller.routineList.first
+            : RoutineItemModel());
 
     return Container(
       padding: EdgeInsetsGeometry.only(
@@ -34,14 +50,39 @@ class TeacherRoutineItem extends StatelessWidget {
         ),
       ),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              CustomText(
+                text: "${AppStrings.routine.tr} #${index + 1}",
+                fontSize: AppDimensions.font13.sp,
+                fontWeight: FontWeight.w600,
+                color: ShipXColors.blue,
+              ),
+              if (showRemove)
+                IconButton(
+                  onPressed: onRemove,
+                  icon: Icon(
+                    Icons.delete_outline,
+                    color: ShipXColors.red,
+                    size: AppDimensions.iconL.sp,
+                  ),
+                  tooltip: 'Remove',
+                  padding: EdgeInsets.zero,
+                  constraints: const BoxConstraints(),
+                ),
+            ],
+          ),
+          AppDimensions.spaceM.h.verticalSpace,
           Row(
             children: [
               Expanded(
                 child: CustomLabelTextfiledItem(
                   title: AppStrings.subjectName.tr,
                   hintText: AppStrings.enterSubjectName.tr,
-                  controller: controller.subjectController,
+                  controller: routineItem.subjectController,
                 ),
               ),
               AppDimensions.spaceL.w.horizontalSpace,
@@ -56,9 +97,9 @@ class TeacherRoutineItem extends StatelessWidget {
                     ),
                     AppDimensions.spaceXS.h.verticalSpace,
                     TextFormField(
-                      controller: controller.dateController,
+                      controller: routineItem.dateController,
                       readOnly: true,
-                      onTap: () => controller.pickDate(context),
+                      onTap: () => routineItem.pickDate(context),
                       style: ShipXTextStyles.body3.copyWith(
                         color: colors.textPrimary,
                         fontSize: getSp(16),
@@ -66,7 +107,7 @@ class TeacherRoutineItem extends StatelessWidget {
                       decoration: InputDecoration(
                         hintText: AppStrings.enterExamDate.tr,
                         suffixIcon: IconButton(
-                          onPressed: () => controller.pickDate(context),
+                          onPressed: () => routineItem.pickDate(context),
                           icon: Icon(
                             Icons.calendar_today,
                             size: AppDimensions.iconM.sp,
@@ -133,7 +174,7 @@ class TeacherRoutineItem extends StatelessWidget {
                 child: CustomLabelTextfiledItem(
                   title: AppStrings.subjectCode.tr,
                   hintText: AppStrings.enterSubjectCode.tr,
-                  controller: controller.subjectCodeController,
+                  controller: routineItem.subjectCodeController,
                 ),
               ),
               AppDimensions.spaceL.w.horizontalSpace,
@@ -141,20 +182,22 @@ class TeacherRoutineItem extends StatelessWidget {
                 child: CustomLabelTextfiledItem(
                   title: AppStrings.className.tr,
                   hintText: AppStrings.enterClassName.tr,
-                  controller: controller.classNameController,
+                  controller: routineItem.classNameController,
                 ),
               ),
             ],
           ),
           AppDimensions.spaceL.h.verticalSpace,
-          CustomDropdownField<String>(
-            hintText: AppStrings.day.tr,
-            items: controller.days,
-            initialValue: controller.selectedDay.value,
-            getLabel: (value) => value.tr,
-            onChanged: (value) {
-              controller.setDay(value);
-            },
+          Obx(
+            () => CustomDropdownField<String>(
+              hintText: AppStrings.day.tr,
+              items: controller.days,
+              initialValue: routineItem.selectedDay.value,
+              getLabel: (value) => value.tr,
+              onChanged: (value) {
+                routineItem.setDay(value);
+              },
+            ),
           ),
         ],
       ),

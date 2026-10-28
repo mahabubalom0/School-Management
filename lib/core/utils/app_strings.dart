@@ -284,5 +284,7 @@ class AppStrings {
   static const String wednesday = 'wednesday';
   static const String thursday = 'thursday';
   static const String friday = 'friday';
+  static const String addMore = 'add_more';
+  static const String addRoutine = 'add_routine';
 }
 

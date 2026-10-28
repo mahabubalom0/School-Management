@@ -283,5 +283,7 @@ const Map<String, String> enUS = {
   'wednesday': 'Wednesday',
   'thursday': 'Thursday',
   'friday': 'Friday',
+  'add_more': 'Add More',
+  'add_routine': 'Add Routine',
 };
 

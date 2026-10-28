@@ -286,5 +286,7 @@ const Map<String, String> bnBD = {
   'wednesday': 'বুধবার',
   'thursday': 'বৃহস্পতিবার',
   'friday': 'শুক্রবার',
+  'add_more': 'আরও যোগ করুন',
+  'add_routine': 'রুটিন যোগ করুন',
 };
 
